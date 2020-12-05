@@ -47,9 +47,7 @@
  ##
  docker pull postgres:alpine
  ##
- docker run -d --restart unless-stopped --name postgres-0 -e POSTGRES_PASSWORD=postgres -e 
- ##
- POSTGRES_DB=postgres -p 5432:5432 postgres:alpine
+ docker run -d --restart unless-stopped --name postgres-0 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=postgres -p 5432:5432 postgres:alpine
  ##
  docker exec -it postgres-0 bash
  ##
