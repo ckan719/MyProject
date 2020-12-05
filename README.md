@@ -31,13 +31,23 @@
 
 ## command in ubuntu
  ssh -p 4567 hestia@192.168.1.16 ; <192.168.1.16, hestia is my ip and name vitual, ix them with your own >
+ ##
  docker build -t backend .
+ ##
  docker run -d --name backend --env db_ip=10.0.2.15 -p 8080:8080 backend
+ ##
  docker pull postgres:alpine
- docker run -d --restart unless-stopped --name postgres-0 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=postgres -p 5432:5432 postgres:alpine
+ ##
+ docker run -d --restart unless-stopped --name postgres-0 -e POSTGRES_PASSWORD=postgres -e 
+ ##
+ POSTGRES_DB=postgres -p 5432:5432 postgres:alpine
+ ##
  docker exec -it postgres-0 bash
+ ##
  psql -U postgres
+ ##
  Something create database here ... < \l is show list database >
+ ##
 
 
 
