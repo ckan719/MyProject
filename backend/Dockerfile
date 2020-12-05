@@ -14,4 +14,4 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 EXPOSE 8080
 
 # Run the specified command within the container.
-CMD [ "python", "app.py" ]
+CMD [ "pyhton", "app.py" ]
