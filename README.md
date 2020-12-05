@@ -6,17 +6,26 @@
  link database : https://docs.yugabyte.com/latest/sample-data/northwind/#1-download-the-sql-scripts
 
 ## Some command
-
  Remvove container : docker rm <id or name> ; <firstly , stop container : docker stop <id or name> >
+ ##
  Remove all container : docker rm &(docker ps -a -q)
+ ##
  Remove images : docker image prune  && docker rmi <id or name>
+ ##
  Remove directory : sudo rm -rf <name direc>
+ ##
  Show port : sudo netstat -nl | head
+ ##
  Remove port : sudo kill -9 $(sudo lsof -t -i:5432) (if exists port 5432)
+ ##
  Show ip : ifconfig
+ ##
  New direc : mkdir name_direc
+ ##
  New file : touch name_file
+ ##
  Open and fix file : nano name_file
+ ##
 
 
 ## Clone project
