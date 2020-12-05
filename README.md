@@ -31,7 +31,9 @@
 ## Clone project
 
  Clone git project : git clone https://github.com/ckan719/MyProject.git
+ ##
  Get new : git pull
+ ##
  Myproject/backend/
 
 ## Postgres db
