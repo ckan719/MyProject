@@ -1,4 +1,4 @@
-class Employees:
+class employees:
     def __init__(self, employee_id, last_name, first_name , title ,title_of_courtesy,
                  birth_date, hire_date , address , city , region, postal_code ,
                  country ,home_phone ,extension ,photo ,notes ,reports_to ,photo_path ):
@@ -21,6 +21,3 @@ class Employees:
         self.notes = notes
         self.reports_to = reports_to
         self.photo_path = photo_path
-
-if __name__ == "__main__":
-    print('build object')
