@@ -22,7 +22,8 @@ def hello_world():
 def insert_categories():
     cn_db = db_cate.categories(con_db)
     data = request.json
-    cate1 = cate.categories(data['category_id'], data['category_name'], data['description'], data['picture'])
+    # cate1 = cate.categories(data['category_id'], data['category_name'], data['description'], data['picture'])
+    cate1 = cate.categories(1, 'cate_name', 'descri', '')
     rs = cn_db.insert(cate1)
     result = {}
     result['msg'] = rs
