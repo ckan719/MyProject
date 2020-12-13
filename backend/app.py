@@ -25,9 +25,7 @@ def insert_categories():
     # cate1 = cate.categories(data['category_id'], data['category_name'], data['description'], data['picture'])
     cate1 = cate.categories(1, 'cate_name', 'descri', '')
     rs = cn_db.insert(cate1)
-    result = {}
-    result['msg'] = rs
-    return jsonify(result) , 200
+    print(rs)
 
 if __name__ == '__main__' :
     app.run(host='0.0.0.0', port=8080)
