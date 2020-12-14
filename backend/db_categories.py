@@ -15,8 +15,8 @@ class categories:
                                    database=self.connect_db['dp_ip'])
 
             cur = con.cursor()
-            sql = "INSERT INTO categories(category_name,description,picture) VALUES (%s,%s,%s)"
-            result = ( category.category_name, category.description, category.picture)
+            sql = "INSERT INTO categories(category_id,category_name,description,picture) VALUES (%d,%s,%s,%s)"
+            result = (category.category_id ,category.category_name, category.description, category.picture)
             cur.execute(sql, result)
             con.commit()
             con.close()
