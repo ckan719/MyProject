@@ -15,15 +15,15 @@ class categories:
                                    database=self.connect_db['dp_ip'])
 
             cur = con.cursor()
-            sql = "INSERT INTO categories VALUES (%d,%s,%s,%s)"
-            result = (category.category_id, category.category_name, category.description, category.picture)
+            sql = "INSERT INTO categories(category_name,description,picture) VALUES (%s,%s,%s)"
+            result = ( category.category_name, category.description, category.picture)
             cur.execute(sql, result)
             con.commit()
             con.close()
             return 'Insert Susscess!'
 
         except (Exception, psycopg2.DatabaseError) as error:
-            return str(error)
+            return 'Insert fail'
 
     def get_all(self):
         con = None
