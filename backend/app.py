@@ -18,7 +18,7 @@ con_db['database'] = 'northwind_db'
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
-@app.route('/insert_categories')
+@app.route('/insert_categories', method = ['POST'])
 def insert_categories():
     cn_db = db_cate.categories(con_db)
     data = request.json
