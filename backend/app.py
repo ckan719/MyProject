@@ -19,7 +19,7 @@ con_db['database'] = 'northwind_db'
 def hello_world():
     c1 = cate.categories(1, 'name', 'dip', '')
     return c1.category_name
-@app.route('/insert_categories', method = ['POST'])
+@app.route('/insert_categories')
 def insert_categories():
     cn_db = db_cate.categories(con_db)
     # data = request.json
