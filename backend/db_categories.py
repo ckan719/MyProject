@@ -20,7 +20,7 @@ class categories:
             cur.execute(sql, result)
             con.commit()
             con.close()
-            return 'Inset Susscess!'
+            return 'Insert Susscess!'
 
         except (Exception, psycopg2.DatabaseError) as error:
             return str(error)

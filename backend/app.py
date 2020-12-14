@@ -17,15 +17,16 @@ con_db['database'] = 'northwind_db'
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    c1 = cate.categories(1, 'name', 'dip', '')
+    return c1.category_name
 @app.route('/insert_categories', method = ['POST'])
 def insert_categories():
     cn_db = db_cate.categories(con_db)
-    data = request.json
+    # data = request.json
     # cate1 = cate.categories(data['category_id'], data['category_name'], data['description'], data['picture'])
     cate1 = cate.categories(1, 'cate_name', 'descri', '')
     rs = cn_db.insert(cate1)
-    print(rs)
+    return rs
 
 if __name__ == '__main__' :
     app.run(host='0.0.0.0', port=8080)
