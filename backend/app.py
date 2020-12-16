@@ -16,7 +16,7 @@ con_db['database'] = 'northwind_db'
 @app.route('/')
 def hello_world():
     c1 = cate.categories(1, 'Beverages', 'Soft drinks, coffees, teas, beers, and ales', '')
-    return c1.category_name
+    return str(c1.category_name + " | " + c1.description)
 @app.route('/insert_categories')
 def insert_categories():
     cn_db = db_cate.categories(con_db)
