@@ -23,7 +23,7 @@ class categories:
             return 'Insert Susscess!'
 
         except (Exception, psycopg2.DatabaseError) as error:
-            return 'Insert fail'
+            return error
 
     def get_all(self):
         con = None
