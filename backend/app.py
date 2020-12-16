@@ -21,7 +21,7 @@ def hello_world():
     return str(c1.category_name + " | " + c1.description)
 
 @app.route('/insert_customers' , methods=['POST'])
-def insert_categories():
+def insert_customers():
     cn_db = db_cus.customers(con_db)
     data = request.json
     cus1 = cus.customers(data['customer_id'],data['company_name'], data['contact_name'], data['contact_title'],
