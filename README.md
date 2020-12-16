@@ -4,7 +4,13 @@
  ## Phạm Hùng Vương
 
  link database : https://docs.yugabyte.com/latest/sample-data/northwind/#1-download-the-sql-scripts
-
+##
+# Note
+Lúc create database chỗ nào có "smallint NOT NULL PRIMARY KEY" thì sửa thành "SERIAL PRIMARY KEY" nhé, 
+ví dụ "category_id smallint NOT NULL PRIMARY KEY" thành "category_id SERIAL PRIMARY KEY",
+còn mấy cái smallint mà k có primary thì giữ nguyên
+#Happy Coding
+##
 ## Some command
  Remvove container : docker rm <id or name> ; <firstly , stop container : docker stop <id or name> >
  ##
