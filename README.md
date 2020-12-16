@@ -9,6 +9,7 @@
 Lúc create database chỗ nào có "smallint NOT NULL PRIMARY KEY" thì sửa thành "SERIAL PRIMARY KEY" nhé, 
 ví dụ "category_id smallint NOT NULL PRIMARY KEY" thành "category_id SERIAL PRIMARY KEY",
 còn mấy cái smallint mà k có primary thì giữ nguyên
+cái trường picture chuyển thành 'text' nữa nhé
 #Happy Coding
 ##
 ## Some command
