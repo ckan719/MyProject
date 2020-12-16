@@ -17,14 +17,14 @@ con_db['database'] = 'northwind_db'
 
 @app.route('/')
 def hello_world():
-    c1 = cate.categories(1, 'Beverages', 'Soft drinks, coffees, teas, beers, and ales', '\\x')
+    c1 = cate.categories(1, 'Beverages', 'Soft drinks, coffees, teas, beers, and ales', '\x')
     return c1.category_id +" | "+ c1.category_name + " | " + c1.description + " | " + c1.picture
 @app.route('/insert_categories')
 def insert_categories():
     cn_db = db_cate.categories(con_db)
     # data = request.json
     # cate1 = cate.categories(data['category_id'], data['category_name'], data['description'], data['picture'])
-    cate1 = cate.categories(1, 'Beverages', 'Soft drinks, coffees, teas, beers, and ales', '\\x')
+    cate1 = cate.categories(1, 'Beverages', 'Soft drinks, coffees, teas, beers, and ales', '\x')
     rs = cn_db.insert(cate1)
     return rs
 
