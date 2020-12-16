@@ -22,7 +22,7 @@ def insert_categories():
     cn_db = db_cate.categories(con_db)
     # data = request.json
     # cate1 = cate.categories(data['category_id'], data['category_name'], data['description'], data['picture'])
-    cate1 = cate.categories(1, 'Beverages', 'Soft drinks, coffees, teas, beers, and ales', '')
+    cate1 = cate.categories(100, 'Beverages', 'Soft drinks, coffees, teas, beers, and ales', '')
     rs = cn_db.insert(cate1)
     return rs
 
