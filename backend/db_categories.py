@@ -21,7 +21,7 @@ class categories:
             con.close()
             return 'Insert Susscess!'
         except (Exception, psycopg2.DatabaseError) as error:
-            return error
+            return str(error)
         finally:
             if con is not None:
                 con.close()
