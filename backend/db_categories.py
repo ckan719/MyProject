@@ -12,7 +12,7 @@ class categories:
                                    password=self.connect_db['password'],
                                    host=self.connect_db['host'],
                                    port=self.connect_db['port'],
-                                   database=self.connect_db['dp_ip'])
+                                   database=self.connect_db['database'])
 
             cur = con.cursor()
             sql = "INSERT INTO categories(category_id,category_name,description,picture) VALUES (%d,%s,%s,%s)"
@@ -32,7 +32,7 @@ class categories:
                                    password=self.connect_db['password'],
                                    host=self.connect_db['host'],
                                    port=self.connect_db['port'],
-                                   database=self.connect_db['dp_ip'])
+                                   database=self.connect_db['database'])
 
             cur = con.cursor()
             sql = "SELECT * FROM categories"
