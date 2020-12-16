@@ -5,6 +5,9 @@
 
  link database : https://docs.yugabyte.com/latest/sample-data/northwind/#1-download-the-sql-scripts
 ##
+# UPDATE
+Đã insert đc bảng categories và bảng customers = client rồi nhé, # py test.py
+##
 # Note
 Lúc create database chỗ nào có "smallint NOT NULL PRIMARY KEY" thì sửa thành "SERIAL PRIMARY KEY" nhé, 
 ví dụ "category_id smallint NOT NULL PRIMARY KEY" thành "category_id SERIAL PRIMARY KEY",
