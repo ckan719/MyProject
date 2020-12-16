@@ -11,7 +11,7 @@ ADD . /app
 RUN apt-get update
 RUN apt-get install -y libpq-dev python3-dev build-essential postgresql-server-dev-all
 
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
+RUN pip install -y --upgrade --trusted-host pypi.python.org -r requirements.txt
 
 # RUN apt-get install -y libpq-dev python3-dev build-essential postgresql-server-dev-all
 
