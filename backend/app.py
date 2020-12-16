@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify, request
 import os
 import db_categories as db_cate
 import  categories as cate
@@ -25,6 +25,13 @@ def insert_categories():
     cate1 = cate.categories(1, 'Beverages', 'Soft drinks, coffees, teas, beers, and ales', '')
     rs = cn_db.insert(cate1)
     return rs
+@app.route('/test_send_receive', methods=['POST'])
+def test_send_reseive():
+    x = request.json['x']
+    x += 1
+    result = {}
+    result['x'] = x
+    return jsonify(result), 200
 
 if __name__ == '__main__' :
     app.run(host='0.0.0.0', port=8080)
