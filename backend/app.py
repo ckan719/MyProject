@@ -13,12 +13,8 @@ con_db['host'] = str(dp_ip)
 con_db['port'] = '5432'
 con_db['database'] = 'northwind_db'
 
-
-
 @app.route('/')
 def hello_world():
-
-
     c1 = cate.categories(1, 'name', 'dip', '')
     return c1.category_name
 @app.route('/insert_categories')

@@ -13,24 +13,18 @@ class categories:
                                    host=self.connect_db['host'],
                                    port=self.connect_db['port'],
                                    database=self.connect_db['database'])
-
             cur = con.cursor()
-
             sql = "INSERT INTO categories VALUES (%d,%s,%s,%s)"
             result = (category.category_id, category.category_name, category.description, category.picture)
-
             cur.execute(sql, result)
             con.commit()
             con.close()
             return 'Insert Susscess!'
-
         except (Exception, psycopg2.DatabaseError) as error:
             return error
         finally:
             if con is not None:
                 con.close()
-
-            return 'Insert fail'
 
     def get_all(self):
         con = None
