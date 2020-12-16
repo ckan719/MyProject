@@ -1,6 +1,4 @@
 import psycopg2
-
-
 class categories:
     def __init__(self, connect_db):
         self.connect_db = connect_db
@@ -15,8 +13,8 @@ class categories:
                                    database=self.connect_db['database'])
 
             cur = con.cursor()
-            sql = "INSERT INTO categories(category_id,category_name,description,picture) VALUES (%d,%s,%s,%s)"
-            result = (category.category_id ,category.category_name, category.description, category.picture)
+            sql = "INSERT INTO categories VALUES (%d,%s,%s,%s)"
+            result = (category.category_id, category.category_name, category.description, category.picture)
             cur.execute(sql, result)
             con.commit()
             con.close()
@@ -24,6 +22,9 @@ class categories:
 
         except (Exception, psycopg2.DatabaseError) as error:
             return error
+        finally:
+            if con is not None:
+                con.close()
 
     def get_all(self):
         con = None
@@ -41,3 +42,6 @@ class categories:
             con.close()
         except (Exception, psycopg2.DatabaseError) as error:
             return str(error)
+        finally:
+            if con is not None:
+                con.close()
