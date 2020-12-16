@@ -10,7 +10,7 @@ class categories:
                                    password=self.connect_db['password'],
                                    host=self.connect_db['host'],
                                    port=self.connect_db['port'],
-                                   database=self.connect_db['database'])
+                                   database=self.connect_db['dp_ip'])
 
             cur = con.cursor()
 
@@ -35,7 +35,7 @@ class categories:
                                    password=self.connect_db['password'],
                                    host=self.connect_db['host'],
                                    port=self.connect_db['port'],
-                                   database=self.connect_db['database'])
+                                   database=self.connect_db['dp_ip'])
 
             cur = con.cursor()
             sql = "SELECT * FROM categories"
