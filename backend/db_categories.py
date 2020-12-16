@@ -14,8 +14,8 @@ class categories:
                                    port=self.connect_db['port'],
                                    database=self.connect_db['database'])
             cur = con.cursor()
-            sql = "INSERT INTO categories VALUES (%s,%s,%s,%s)"
-            result = (category.category_id, category.category_name, category.description, category.picture)
+            sql = "INSERT INTO categories (category_name, description, picture ) VALUES (%s,%s,%s)"
+            result = (category.category_name, category.description, category.picture)
             cur.execute(sql, result)
             con.commit()
             con.close()
