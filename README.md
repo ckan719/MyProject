@@ -72,7 +72,16 @@ cái trường picture chuyển thành 'text' nữa nhé
  ##
  \dt     // show all table in name_db
  ##
- 
+ - xóa bảng khi không có ràng buộc 
+ ##
+ drop table if exists table_name
+ ## 
+ - khi có ràng buộc ( xóa hẳn ràng buộc )
+ ##
+  drop table if exists table_name CASCADE
+  ## 
+  
+  
  Something create database here ... < \l is show list database >
  ##
 
