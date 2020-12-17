@@ -9,9 +9,18 @@ import requests
 # print(report.text)
 
 # Test delete  bang categories with ID
+# data = {}
+# data['category_id'] = '3'
+# report = requests.post('http://192.168.1.13:8080/delete_categories', json=data)
+# print(report.text)
+
+# Test update bang categories
 data = {}
 data['category_id'] = '3'
-report = requests.post('http://192.168.1.13:8080/delete_categories', json=data)
+data['category_name'] = 'Beverages'
+data['description'] = 'Soft drinks, coffees, teas, beers, and ales'
+data['picture'] = ''
+report = requests.post('http://192.168.1.13:8080/update_categories', json=data)
 print(report.text)
 
 # Test insert vao bang customers

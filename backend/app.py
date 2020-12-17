@@ -51,6 +51,16 @@ def insert_categories():
     result['message'] = rs
     return jsonify(result), 200
 
+@app.route('/update_categories' , methods=['POST'])
+def update_categories():
+    cn_db = db_cate.categories(con_db)
+    data = request.json
+    cate1 = cate.categories(data['category_id'],data['category_name'], data['description'], data['picture'])
+    rs = cn_db.update(cate1)
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
 @app.route('/test_send_receive', methods=['POST'])
 def test_send_reseive():
     x = request.json['x']

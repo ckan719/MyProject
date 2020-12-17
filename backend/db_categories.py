@@ -19,7 +19,7 @@ class categories:
             cur.execute(sql, result)
             con.commit()
             con.close()
-            return 'Insert Susscess!'
+            return 'Insert Success!'
         except (Exception, psycopg2.DatabaseError) as error:
             return str(error)
         finally:
@@ -38,7 +38,28 @@ class categories:
             cur.execute(sql, id)
             con.commit()
             con.close()
-            return 'Delete Susscess!'
+            return 'Delete Success!'
+        except (Exception, psycopg2.DatabaseError) as error:
+            return str(error)
+        finally:
+            if con is not None:
+                con.close()
+
+    def update(self, category):
+        con = None
+        try:
+            con = psycopg2.connect(user=self.connect_db['user'],
+                                   password=self.connect_db['password'],
+                                   host=self.connect_db['host'],
+                                   port=self.connect_db['port'],
+                                   database=self.connect_db['database'])
+            cur = con.cursor()
+            sql = "UPDATE categories SET category_name = %s, description = %s, picture = %s WHERE category_id = %s"
+            result = (category.category_name, category.description, category.picture, category.category_id)
+            cur.execute(sql, result)
+            con.commit()
+            con.close()
+            return 'Update Success!'
         except (Exception, psycopg2.DatabaseError) as error:
             return str(error)
         finally:
