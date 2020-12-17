@@ -58,14 +58,8 @@ class categories:
             result = (category.category_name, category.description, category.picture, category.category_id)
             cur.execute(sql, result)
             con.commit()
-            rows = cur.fetchall()
-            ans = []
-            for row in rows:
-                c = cate()
-                c.fetch_data(row)
-                ans.append(c.to_json())
             con.close()
-            return ans
+            return "Update Success !"
 
         except (Exception, psycopg2.DatabaseError) as error:
             return str(error)
@@ -86,7 +80,14 @@ class categories:
             sql = "SELECT * FROM categories"
             cur.execute(sql)
             con.commit()
+            rows = cur.fetchall()
+            ans = []
+            for row in rows:
+                c = cate()
+                c.fetch_data(row)
+                ans.append(c.to_json())
             con.close()
+            return ans
         except (Exception, psycopg2.DatabaseError) as error:
             return str(error)
         finally:
