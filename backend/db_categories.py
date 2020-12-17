@@ -34,7 +34,7 @@ class categories:
                                    port=self.connect_db['port'],
                                    database=self.connect_db['database'])
             cur = con.cursor()
-            sql = "DELETE FROM categories where id = %s"
+            sql = "DELETE FROM categories where category_id = %s"
             cur.execute(sql, id)
             con.commit()
             con.close()
