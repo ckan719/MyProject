@@ -16,7 +16,7 @@ import requests
 
 # Test update bang categories
 data = {}
-data['category_id'] = '3'
+data['category_id'] = '6'
 data['category_name'] = 'Beverages'
 data['description'] = 'Soft drinks, coffees, teas, beers, and ales'
 data['picture'] = ''
