@@ -67,9 +67,11 @@ cái trường picture chuyển thành 'text' nữa nhé
  psql -U postgres
  ##
  \l    // show list db
+ ##
  \c name_db    // show this name_db
+ ##
  \dt     // show all table in name_db
- 
+ ##
  
  Something create database here ... < \l is show list database >
  ##
