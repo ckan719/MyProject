@@ -32,6 +32,15 @@ def insert_customers():
     result['message'] = rs
     return jsonify(result), 200
 
+@app.route('/delete_categories' , methods=['POST'])
+def delete_categories():
+    cn_db = db_cate.categories(con_db)
+    data = request.json
+    rs = cn_db.delete(data['category_id'])
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
 @app.route('/insert_categories' , methods=['POST'])
 def insert_categories():
     cn_db = db_cate.categories(con_db)

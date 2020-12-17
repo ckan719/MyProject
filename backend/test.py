@@ -8,21 +8,28 @@ import requests
 # report = requests.post('http://192.168.1.13:8080/insert_categories', json=data)
 # print(report.text)
 
-# Test insert vao bang customers
+# Test delete  bang categories with ID
 data = {}
-data['customer_id'] = 'ALFKI'
-data['company_name'] = 'Alfreds Futterkiste'
-data['contact_name'] = 'Maria Anders'
-data['contact_title'] = 'Sales Representative'
-data['address'] = 'Obere Str. 57'
-data['city'] = 'Berlin'
-data['region'] = 'NULL'
-data['postal_code'] = '12209'
-data['country'] = 'Germany'
-data['phone'] = '030-0074321'
-data['fax'] = '030-0076545'
-report = requests.post('http://192.168.1.13:8080/insert_customers', json=data)
+data['category_id'] = '3'
+report = requests.post('http://192.168.1.13:8080/delete_categories', json=data)
 print(report.text)
+
+# Test insert vao bang customers
+# data = {}
+# data['customer_id'] = 'ALFKI'
+# data['company_name'] = 'Alfreds Futterkiste'
+# data['contact_name'] = 'Maria Anders'
+# data['contact_title'] = 'Sales Representative'
+# data['address'] = 'Obere Str. 57'
+# data['city'] = 'Berlin'
+# data['region'] = 'NULL'
+# data['postal_code'] = '12209'
+# data['country'] = 'Germany'
+# data['phone'] = '030-0074321'
+# data['fax'] = '030-0076545'
+# report = requests.post('http://192.168.1.13:8080/insert_customers', json=data)
+# print(report.text)
+
 
 
 # Test giao tiep
