@@ -61,10 +61,27 @@ cái trường picture chuyển thành 'text' nữa nhé
  ##
  docker run -d --restart unless-stopped --name postgres-0 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=postgres -p 5432:5432 postgres:alpine
  ##
- docker exec -it postgres-0 bash
+ ## THAO TÁC TRÊN DB
+ docker exec -it postgres-0 bash 
  ##
  psql -U postgres
  ##
+ \l    // show list db
+ ##
+ \c name_db    // show this name_db
+ ##
+ \dt     // show all table in name_db
+ ##
+ - xóa bảng khi không có ràng buộc 
+ ##
+ drop table if exists table_name
+ ## 
+ - khi có ràng buộc ( xóa hẳn ràng buộc )
+ ##
+  drop table if exists table_name CASCADE
+  ## 
+  
+  
  Something create database here ... < \l is show list database >
  ##
 
