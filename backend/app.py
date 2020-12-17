@@ -20,16 +20,9 @@ def hello_world():
     c1 = cate.categories(1, 'Beverages', 'Soft drinks, coffees, teas, beers, and ales', '')
     return str(c1.category_name + " | " + c1.description)
 
-@app.route('/insert_customers' , methods=['POST'])
-def insert_customers():
-    cn_db = db_cus.customers(con_db)
-    data = request.json
-    cus1 = cus.customers(data['customer_id'],data['company_name'], data['contact_name'], data['contact_title'],
-                           data['address'], data['city'], data['region'], data['postal_code'], data['country'],
-                           data['phone'], data['fax'])
-    rs = cn_db.insert(cus1)
-    result = {}
-    result['message'] = rs
+@app.route('/user/all_categories')
+def all_categories():
+    result = db_cate.categories(con_db).get_all()
     return jsonify(result), 200
 
 @app.route('/delete_categories' , methods=['POST'])
@@ -57,6 +50,18 @@ def update_categories():
     data = request.json
     cate1 = cate.categories(data['category_id'],data['category_name'], data['description'], data['picture'])
     rs = cn_db.update(cate1)
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+@app.route('/insert_customers' , methods=['POST'])
+def insert_customers():
+    cn_db = db_cus.customers(con_db)
+    data = request.json
+    cus1 = cus.customers(data['customer_id'],data['company_name'], data['contact_name'], data['contact_title'],
+                         data['address'], data['city'], data['region'], data['postal_code'], data['country'],
+                         data['phone'], data['fax'])
+    rs = cn_db.insert(cus1)
     result = {}
     result['message'] = rs
     return jsonify(result), 200

@@ -1,5 +1,5 @@
 import psycopg2
-
+from  categories import categories as cate
 
 class categories:
     def __init__(self, connect_db):
@@ -59,7 +59,15 @@ class categories:
             cur.execute(sql, result)
             con.commit()
             con.close()
-            return 'Update Success!'
+            rows = cur.fetchall()
+            ans = []
+            for row in rows:
+                c = cate()
+                c.fetch_data(row)
+                ans.append(c.to_json())
+
+            return ans
+
         except (Exception, psycopg2.DatabaseError) as error:
             return str(error)
         finally:
