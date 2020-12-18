@@ -35,7 +35,7 @@ def one_categories(cate_id):
     rs = db_cate.categories(con_db).get_by_id(c)
     if rs[1] != 200 :
         return jsonify({'message': rs[0]}), rs[1]
-    return jsonify(rs[0]), 200
+    return jsonify(rs[0].to_json()), 200
 
 @app.route('/delete_categories' , methods=['POST'])
 def delete_categories():

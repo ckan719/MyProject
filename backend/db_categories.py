@@ -1,5 +1,6 @@
 import psycopg2
-from  categories import categories as cate
+from categories import categories as cate
+
 
 class categories:
     def __init__(self, connect_db):
@@ -25,6 +26,7 @@ class categories:
         finally:
             if con is not None:
                 con.close()
+
     def delete(self, id):
         con = None
         try:
@@ -93,6 +95,7 @@ class categories:
         finally:
             if con is not None:
                 con.close()
+
     def get_by_id(self, category):
         con = None
         try:
@@ -107,10 +110,10 @@ class categories:
             cur.execute(sql, (category.category_id))
             con.commit()
             row = cur.fetchone()
-            if row :
+            if row:
                 c = cate()
                 c.fetch_data(row)
-                return  c.to_json() , 200
+                return c, 200
             con.close()
             return "ID not found", 404
         except (Exception, psycopg2.DatabaseError) as error:
