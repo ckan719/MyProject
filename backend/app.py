@@ -4,6 +4,10 @@ import db_customers as db_cus
 import  customers as cus
 import db_categories as db_cate
 import  categories as cate
+# minh
+import db_employees as db_emp
+import employees as emp
+
 
 app = Flask(__name__)
 
@@ -19,7 +23,7 @@ con_db['database'] = 'northwind_db'
 def hello_world():
     c1 = cate.categories(1, 'Beverages', 'Soft drinks, coffees, teas, beers, and ales', '')
     return str(c1.category_name + " | " + c1.description)
-
+# categories
 @app.route('/user/all_categories')
 def all_categories():
     result = db_cate.categories(con_db).get_all()
@@ -53,7 +57,9 @@ def update_categories():
     result = {}
     result['message'] = rs
     return jsonify(result), 200
+# ----------------------------------------------------
 
+# customers
 @app.route('/insert_customers' , methods=['POST'])
 def insert_customers():
     cn_db = db_cus.customers(con_db)
@@ -65,6 +71,65 @@ def insert_customers():
     result = {}
     result['message'] = rs
     return jsonify(result), 200
+#-----------------------------------------------------
+
+
+# employees minh
+@app.route('/insert_employees' , methods=['POST'])
+def insert_employees():
+    cn_db = db_emp.employees(con_db)
+    data = request.json
+    emp1 = emp.employees(1,data['last_name'], data['first_name'], data['title'],
+                         data['title_of_courtesy'], data['birth_date'], data['hire_date'], 
+                         data['address'], data['city'],
+                         data['region'], data['postal_code'],data['country'], 
+                         data['home_phone'], data['extension'],
+                         data['photo'], data['notes'], data['reports_to'], 
+                         data['photo_path'])
+    rs = cn_db.insert(emp1)
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+@app.route('/update_employees' , methods=['POST'])
+def update_employees():
+    cn_db = db_emp.employees(con_db)
+    data = request.json
+    emp1 = emp.employees(data['employee_id'],data['last_name'], data['first_name'], data['title'],
+                         data['title_of_courtesy'], data['birth_date'], data['hire_date'], 
+                         data['address'], data['city'],
+                         data['region'], data['postal_code'],data['country'], 
+                         data['home_phone'], data['extension'],
+                         data['photo'], data['notes'], data['reports_to'], 
+                         data['photo_path'])
+    rs = cn_db.update(emp1)
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+    
+@app.route('/user/all_employees')
+def all_employees():
+    result = db_emp.employees(con_db).get_all()
+    return jsonify(result), 200
+
+@app.route('/delete_employees' , methods=['POST'])
+def delete_employees():
+    cn_db = db_emp.employees(con_db)
+    data = request.json
+    rs = cn_db.delete(data['employee_id'])
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+#----------------------------------------
+
+
+
+
+
+
+
+
+
 
 @app.route('/test_send_receive', methods=['POST'])
 def test_send_reseive():
