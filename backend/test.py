@@ -17,12 +17,12 @@ data['region'] = 'WA'
 data['postal_code'] = '98401'
 data['country'] = 'USA'
 data['home_phone'] = '(206) 555-9482'
-data['extension'] = '63457'
+data['extension'] = '457'
 data['photo'] = ''
 data['notes'] = 'Andrew received his BTS commercial in 1974'
-data['reports_to'] = ''
-data['photo_path'] = 'http://accweb/emmployees/fuller.bmp'
-report = requests.post('http://192.168.1.189:8080/insert_employees', json=data)
+data['reports_to'] = '1'
+data['photo_path'] = ''
+report = requests.post('http://192.168.1.13:8080/insert_employees', json=data)
 print(report.text)
 # test update EMPLOYEE
 # data['employee_id'] = '1'

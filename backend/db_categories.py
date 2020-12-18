@@ -93,7 +93,7 @@ class categories:
         finally:
             if con is not None:
                 con.close()
-    def get_by_id(self, categories : cate):
+    def get_by_id(self, category):
         con = None
         try:
             con = psycopg2.connect(user=self.connect_db['user'],
@@ -104,7 +104,7 @@ class categories:
 
             cur = con.cursor()
             sql = "SELECT * FROM categories WHERE category_id = %s"
-            cur.execute(sql, (categories.category_id))
+            cur.execute(sql, (category.category_id))
             con.commit()
             row = cur.fetchone()
             if row :
