@@ -112,7 +112,7 @@ class categories:
                 c.fetch_data(row)
                 return  c.to_json() , 200
             con.close()
-            return "ID not found"
+            return "ID not found", 404
         except (Exception, psycopg2.DatabaseError) as error:
             return str(error)
         finally:
