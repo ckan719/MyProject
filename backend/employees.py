@@ -41,7 +41,7 @@ class employees:
         self.photo_path = data[17]
     def to_json(self):
         return {
-            'employee_ids':self.employee_ids, 
+            'employee_id':self.employee_id, 
             'last_name':self.last_name, 
             'first_name':self.first_name , 
             'title':self.title ,
