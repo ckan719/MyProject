@@ -30,13 +30,12 @@ def all_categories():
     return jsonify(result), 200
 
 @app.route('/user/one_categories/<int:cate_id>')
-def one_categories():
-    return jsonify(cate_id) , 200
-    # c = cate.categories(category_id=cate_id)
-    # rs = db_cate.categories(con_db).get_by_id(c)
-    # if rs[1] != 200 :
-    #     return jsonify({'message': rs[0]}), rs[1]
-    # return jsonify(rs[0]), 200
+def one_categories(cate_id):
+    c = cate.categories(category_id=cate_id)
+    rs = db_cate.categories(con_db).get_by_id(c)
+    if rs[1] != 200 :
+        return jsonify({'message': rs[0]}), rs[1]
+    return jsonify(rs[0]), 200
 
 @app.route('/delete_categories' , methods=['POST'])
 def delete_categories():
