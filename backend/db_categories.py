@@ -107,7 +107,7 @@ class categories:
 
             cur = con.cursor()
             sql = "SELECT * FROM categories WHERE category_id = %s"
-            cur.execute(sql, (categories.category_id))
+            cur.execute(sql, (categories.category_id ,))
             con.commit()
             row = cur.fetchone()
             if row:
