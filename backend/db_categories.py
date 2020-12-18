@@ -93,3 +93,28 @@ class categories:
         finally:
             if con is not None:
                 con.close()
+    def get_by_id(self, categories : cate):
+        con = None
+        try:
+            con = psycopg2.connect(user=self.connect_db['user'],
+                                   password=self.connect_db['password'],
+                                   host=self.connect_db['host'],
+                                   port=self.connect_db['port'],
+                                   database=self.connect_db['database'])
+
+            cur = con.cursor()
+            sql = "SELECT * FROM categories WHERE category_id = %s"
+            cur.execute(sql, (categories.category_id))
+            con.commit()
+            row = cur.fetchone()
+            if row :
+                c = cate()
+                c.fetch_data(row)
+                return  c.to_json() , 200
+            con.close()
+            return "ID not found"
+        except (Exception, psycopg2.DatabaseError) as error:
+            return str(error)
+        finally:
+            if con is not None:
+                con.close()
