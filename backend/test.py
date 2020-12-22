@@ -57,10 +57,10 @@ import requests
 #------------------------------------------------------------------------------------
 # Test insert vao bang categories
 data = {}
-data['category_name'] = 'Beverageaaaaaaaaas'
+data['category_name'] = 'Bevera'
 data['description'] = 'Soft drinks, coffees, teas, beers, and ales'
 data['picture'] = ''
-report = requests.post('http://192.168.1.10:8080/insert_categories', json=data)
+report = requests.post('http://192.168.1.13:8080/insert_categories', json=data)
 print(report.text)
 
 # Test delete  bang categories with ID

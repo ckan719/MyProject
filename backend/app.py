@@ -1,12 +1,30 @@
 from flask import Flask, jsonify, request
 import os
+#++
 import db_customers as db_cus
 import customers as cus
+#++
 import db_categories as db_cate
 import categories as cate
-# minh
+#++
 import db_employees as db_emp
 import employees as emp
+#++
+import db_shippers as db_ship
+import shippers as ship
+#++
+import db_orders as db_od
+import orders as od
+#++
+import db_order_details as db_oddt
+import order_details as oddt
+#++
+import db_products as db_pro
+import products as pro 
+#++
+import db_region as db_reg
+import region as reg 
+
 
 app = Flask(__name__)
 
@@ -131,6 +149,13 @@ def all_employees():
     result = db_emp.employees(con_db).get_all()
     return jsonify(result), 200
 
+@app.route('/user/one_employees/<int:employee_id>')
+def one_employees(employee_id):
+    e = emp.employees(employee_id=employee_id)
+    rs = db_emp.employees(con_db).get_by_id(e)
+    if rs[1] != 200:
+        return jsonify({'message': rs[0]}), rs[1]
+    return jsonify(rs[0].to_json()), 200
 
 @app.route('/delete_employees', methods=['POST'])
 def delete_employees():
@@ -141,9 +166,261 @@ def delete_employees():
     result['message'] = rs
     return jsonify(result), 200
 
+# shippers +++++++++++++++++
+
+@app.route('/user/all_shippers')
+def all_shippers():
+    result = db_ship.shippers(con_db).get_all()
+    return jsonify(result), 200
+
+
+@app.route('/user/one_shippers/<int:shipper_id>')
+def one_shippers(shipper_id):
+    c = ship.shippers(shipper_id=shipper_id)
+    rs = db_ship.shippers(con_db).get_by_id(c)
+    if rs[1] != 200:
+        return jsonify({'message': rs[0]}), rs[1]
+    return jsonify(rs[0].to_json()), 200
+
+
+@app.route('/delete_shippers', methods=['POST'])
+def delete_shippers():
+    cn_db = db_ship.shippers(con_db)
+    data = request.json
+    rs = cn_db.delete(data['shipper_id'])
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+
+@app.route('/insert_shippers', methods=['POST'])
+def insert_shippers():
+    cn_db = db_ship.shippers(con_db)
+    data = request.json
+    ship1 = ship.shippers(1, data['company_name'], data['phone'])
+    rs = cn_db.insert(ship1)
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+
+@app.route('/update_shippers', methods=['POST'])
+def update_shippers():
+    cn_db = db_ship.shippers(con_db)
+    data = request.json
+    ship1 = ship.shippers(data['shipper_id'], data['company_name'], data['phone'])
+    rs = cn_db.update(ship1)
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+
+# ----------------------------------------
+# orders +++++++++++++++++
+
+@app.route('/user/all_orders')
+def all_orders():
+    result = db_od.orders(con_db).get_all()
+    return jsonify(result), 200
+
+
+@app.route('/user/one_orders/<int:order_id>')
+def one_orders(order_id):
+    c = od.orders(order_id=order_id)
+    rs = db_od.orders(con_db).get_by_id(c)
+    if rs[1] != 200:
+        return jsonify({'message': rs[0]}), rs[1]
+    return jsonify(rs[0].to_json()), 200
+
+
+@app.route('/delete_orders', methods=['POST'])
+def delete_orders():
+    cn_db = db_od.orders(con_db)
+    data = request.json
+    rs = cn_db.delete(data['order_id'])
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+
+@app.route('/insert_orders', methods=['POST'])
+def insert_orders():
+    cn_db = db_od.orders(con_db)
+    data = request.json
+    od1 = od.orders(1,data['customer_id'], data['employee_id'],
+                    data['order_date'], data['required_date'], data['shipped_date',
+                    data['ship_via'], data['freight'], data['ship_name',
+                    data['ship_address'], data['ship_city'], data['ship_region', 
+                    data['ship_postal_code'], data['ship_country')
+    rs = cn_db.insert(od1)
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+
+@app.route('/update_orders', methods=['POST'])
+def update_orders():
+    cn_db = db_od.orders(con_db)
+    data = request.json
+    od1 = od.orders(data['oder_id'], data['customer_id'], data['employee_id'],
+                    data['order_date'], data['required_date'], data['shipped_date',
+                    data['ship_via'], data['freight'], data['ship_name',
+                    data['ship_address'], data['ship_city'], data['ship_region', 
+                    data['ship_postal_code'], data['ship_country')
+    rs = cn_db.update(od1)
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
 
 # ----------------------------------------
 
+# order_details
+@app.route('/user/all_order_details')
+def all_order_details():
+    result = db_oddt.order_details(con_db).get_all()
+    return jsonify(result), 200
+
+
+@app.route('/user/one_order_details/<int:order_details_id>')
+def one_order_details(order_details_id):
+    c = oddt.order_details(order_details_id=order_details_id)
+    rs = db_oddt.order_details(con_db).get_by_id(c)
+    if rs[1] != 200:
+        return jsonify({'message': rs[0]}), rs[1]
+    return jsonify(rs[0].to_json()), 200
+
+
+@app.route('/delete_order_details', methods=['POST'])
+def delete_order_details():
+    cn_db = db_oddt.order_details(con_db)
+    data = request.json
+    rs = cn_db.delete(data['order_details_id'])
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+
+@app.route('/insert_order_details', methods=['POST'])
+def insert_order_details():
+    cn_db = db_oddt.order_details(con_db)
+    data = request.json
+    oddt1 = oddt.order_details(1, data['order_id'], data['product_id'], data['unit_price'], 
+                                    data['quantity'], data['discount'])
+    rs = cn_db.insert(oddt1)
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+
+@app.route('/update_order_details', methods=['POST'])
+def update_order_details():
+    cn_db = db_oddt.order_details(con_db)
+    data = request.json
+    oddt1 = oddt.order_details(data['order_details_id'],data['order_id'], data['product_id'], data['unit_price'], 
+                                    data['quantity'], data['discount'])
+    rs = cn_db.update(oddt1)
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+#--------------------------------------
+ # products vuong
+ @app.route('/insert_products', methods=['POST'])
+ def insert_products():
+       cn_db = db_pro.products(con_db)
+    data = request.json
+    pro1 = pro.products(1,data['product_name'],data['supplier_id'],data['category_id'],
+                        data['quantity_per_unit'], data['unit_price'], data['units_in_stock'],
+                        data['units_on_order'],data['reorder_level'],data['discontinued']  )
+    rs = cn_db.insert(pro1)
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+
+@app.route('/update_products', methods=['POST'])
+def update_products():
+    cn_db = db_pro.products(con_db)
+    data = request.json
+    pro1 = pro.products(1,data['product_id'], data['product_name'],data['supplier_id'],data['category_id'],
+                        data['quantity_per_unit'], data['unit_price'], data['units_in_stock'],
+                        data['units_on_order'],data['reorder_level'],data['discontinued']  )
+    rs = cn_db.insert(pro1)
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+@app.route('/user/all_products')
+def all_products():
+    result = db_pro.products(con_db).get_all()
+    return jsonify(result), 200
+
+@app.route('/user/one_products/<int:product_id>')
+def one_products(product_id):
+    e = pro.products(product_id=product_id)
+    rs = db_pro.products(con_db).get_by_id(e)
+    if rs[1] != 200:
+        return jsonify({'message': rs[0]}), rs[1]
+    return jsonify(rs[0].to_json()), 200
+
+
+@app.route('/delete_products', methods=['POST'])
+def delete_products():
+    cn_db = db_pro.products(con_db)
+    data = request.json
+    rs = cn_db.delete(data['product_id'])
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+#--------------------------------------------------------------
+
+ # region vuong
+
+@app.route('/insert_region', methods=['POST'])
+def insert_region():
+    cn_db = db_reg.region(con_db)
+    data = request.json
+    reg1 = reg.region( 1, data['region_description'])
+    rs = cn_db.insert(pro1)
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+    
+@app.route('/update_region', methods=['POST'])
+def update_region():
+    cn_db = db_reg.region(con_db)
+    data = request.json
+    reg1 = reg.region(1, data['region_description'] )
+    rs = cn_db.insert(pro1)
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+@app.route('/user/all_region')
+def all_region():
+    result = db_reg.region(con_db).get_all()
+    return jsonify(result), 200
+
+@app.route('/user/one_region/<int:region_id>')
+def one_region(region_id):
+    e = reg.region(region_id=region_id)
+    rs = db_reg.region(con_db).get_by_id(e)
+    if rs[1] != 200:
+        return jsonify({'message': rs[0]}), rs[1]
+    return jsonify(rs[0].to_json()), 200
+
+
+@app.route('/delete_region', methods=['POST'])
+def delete_region():
+    cn_db = db_reg.region(con_db)
+    data = request.json
+    rs = cn_db.delete(data['product_id'])
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+#====================================================
 
 @app.route('/test_send_receive', methods=['POST'])
 def test_send_reseive():

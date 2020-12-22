@@ -1,7 +1,3 @@
---
--- PostgreSQL database dump
---
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -16,48 +12,17 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 
----
---- drop tables
----
-
-
-DROP TABLE IF EXISTS customer_customer_demo;
-DROP TABLE IF EXISTS customer_demographics;
-DROP TABLE IF EXISTS employee_territories;
-DROP TABLE IF EXISTS order_details;
-DROP TABLE IF EXISTS orders;
-DROP TABLE IF EXISTS customers;
-DROP TABLE IF EXISTS products;
-DROP TABLE IF EXISTS shippers;
-DROP TABLE IF EXISTS suppliers;
-DROP TABLE IF EXISTS territories;
-DROP TABLE IF EXISTS us_states;
-DROP TABLE IF EXISTS categories;
-DROP TABLE IF EXISTS region;
-DROP TABLE IF EXISTS employees;
-
---
--- Name: categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
 CREATE TABLE categories (
-    category_id smallint NOT NULL PRIMARY KEY,
-    category_name character varying(15) NOT NULL,
-    description text,
-    picture bytea
+	category_id SERIAL PRIMARY KEY,
+	category_name character varying(15) NOT NULL,
+	description text, 
+	picture text
 );
 
 
 --
 -- Name: customer_demographics; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
-
-CREATE TABLE customer_demographics (
-    customer_type_id bpchar NOT NULL PRIMARY KEY,
-    customer_desc text
-);
-
-
 --
 -- Name: customers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
@@ -81,9 +46,9 @@ CREATE TABLE customers (
 --
 
 CREATE TABLE customer_customer_demo (
+	customer_customer_demo_id SERIAL PRIMARY KEY,
     customer_id bpchar NOT NULL,
     customer_type_id bpchar NOT NULL,
-    PRIMARY KEY (customer_id, customer_type_id),
     FOREIGN KEY (customer_type_id) REFERENCES customer_demographics,
     FOREIGN KEY (customer_id) REFERENCES customers
 );
@@ -93,7 +58,7 @@ CREATE TABLE customer_customer_demo (
 --
 
 CREATE TABLE employees (
-    employee_id smallint NOT NULL PRIMARY KEY,
+    employee_id SERIAL PRIMARY KEY,
     last_name character varying(20) NOT NULL,
     first_name character varying(10) NOT NULL,
     title character varying(30),
@@ -120,7 +85,7 @@ CREATE TABLE employees (
 --
 
 CREATE TABLE suppliers (
-    supplier_id smallint NOT NULL PRIMARY KEY,
+    supplier_id SERIAL PRIMARY KEY,
     company_name character varying(40) NOT NULL,
     contact_name character varying(30),
     contact_title character varying(30),
@@ -140,7 +105,7 @@ CREATE TABLE suppliers (
 --
 
 CREATE TABLE products (
-    product_id smallint NOT NULL PRIMARY KEY,
+    product_id SERIAL PRIMARY KEY,
     product_name character varying(40) NOT NULL,
     supplier_id smallint,
     category_id smallint,
@@ -160,7 +125,7 @@ CREATE TABLE products (
 --
 
 CREATE TABLE region (
-    region_id smallint NOT NULL PRIMARY KEY,
+    region_id SERIAL PRIMARY KEY,
     region_description bpchar NOT NULL
 );
 
@@ -170,7 +135,7 @@ CREATE TABLE region (
 --
 
 CREATE TABLE shippers (
-    shipper_id smallint NOT NULL PRIMARY KEY,
+    shipper_id SERIAL PRIMARY KEY,
     company_name character varying(40) NOT NULL,
     phone character varying(24)
 );
@@ -181,7 +146,7 @@ CREATE TABLE shippers (
 --
 
 CREATE TABLE orders (
-    order_id smallint NOT NULL PRIMARY KEY,
+    order_id SERIAL PRIMARY KEY,
     customer_id bpchar,
     employee_id smallint,
     order_date date,
@@ -218,9 +183,9 @@ CREATE TABLE territories (
 --
 
 CREATE TABLE employee_territories (
+	employee_territories_id SERIAL PRIMARY KEY,
     employee_id smallint NOT NULL,
     territory_id character varying(20) NOT NULL,
-    PRIMARY KEY (employee_id, territory_id),
     FOREIGN KEY (territory_id) REFERENCES territories,
     FOREIGN KEY (employee_id) REFERENCES employees
 );
@@ -231,12 +196,12 @@ CREATE TABLE employee_territories (
 --
 
 CREATE TABLE order_details (
+	order_details_id SERIAL PRIMARY KEY,
     order_id smallint NOT NULL,
     product_id smallint NOT NULL,
     unit_price real NOT NULL,
     quantity smallint NOT NULL,
     discount real NOT NULL,
-    PRIMARY KEY (order_id, product_id),
     FOREIGN KEY (product_id) REFERENCES products,
     FOREIGN KEY (order_id) REFERENCES orders
 );
@@ -246,9 +211,10 @@ CREATE TABLE order_details (
 -- Name: us_states; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE us_states (
-    state_id smallint NOT NULL PRIMARY KEY,
-    state_name character varying(100),
-    state_abbr character varying(2),
-    state_region character varying(50)
-);
+	CREATE TABLE us_states (
+		state_id SERIAL PRIMARY KEY,
+		state_name character varying(100),
+		state_abbr character varying(2),
+		state_region character varying(50)
+	);
+	
