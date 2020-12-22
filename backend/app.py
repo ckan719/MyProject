@@ -325,6 +325,62 @@ def update_order_details():
     return jsonify(result), 200
 
 #--------------------------------------
+# suppliers
+@app.route('/user/all_suppliers')
+def all_suppliers():
+    result = db_sup.suppliers(con_db).get_all()
+    return jsonify(result), 200
+
+
+@app.route('/user/one_suppliers/<int:supplier_id>')
+def one_suppliers(supplier_id):
+    c = sup.suppliers(supplier_id=supplier_id)
+    rs = db_sup.suppliers(con_db).get_by_id(c)
+    if rs[1] != 200:
+        return jsonify({'message': rs[0]}), rs[1]
+    return jsonify(rs[0].to_json()), 200
+
+
+@app.route('/delete_suppliers', methods=['POST'])
+def delete_suppliers():
+    cn_db = db_sup.suppliers(con_db)
+    data = request.json
+    rs = cn_db.delete(data['supplier_id'])
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+
+@app.route('/insert_suppliers', methods=['POST'])
+def insert_suppliers():
+    cn_db = db_sup.suppliers(con_db)
+    data = request.json
+    sup1 = sup.suppliers(1,data['company_name'], data['contact_name'], data['contact_title'],
+                            data['address'], data['city'], 
+                            data['region'],data['postal_code'], 
+                            data['country'], data['phone'], 
+                            data['fax'], data['homepage'])
+    rs = cn_db.insert(sup1)
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+
+@app.route('/update_suppliers', methods=['POST'])
+def update_suppliers():
+    cn_db = db_sup.suppliers(con_db)
+    data = request.json
+    sup1 = sup.suppliers(data['supplier_id'],data['company_name'], data['contact_name'], data['contact_title'],
+                            data['address'], data['city'], 
+                            data['region'],data['postal_code'], 
+                            data['country'], data['phone'], 
+                            data['fax'], data['homepage'])
+    rs = cn_db.update(sup1)
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+#------------------------------------------------
  # products vuong
  @app.route('/insert_products', methods=['POST'])
  def insert_products():
