@@ -108,6 +108,44 @@ def insert_customers():
     return jsonify(result), 200
 
 
+@app.route('/update_customers', methods=['POST'])
+def update_customers():
+    cn_db = db_cus.customers(con_db)
+    data = request.json
+    cus1 = cus.customers(data['customer_id'], data['company_name'], data['contact_name'], data['contact_title'],
+                         data['address'], data['city'], data['region'], data['postal_code'], data['country'],
+                         data['phone'], data['fax'])
+    rs = cn_db.update(cus1)
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+
+@app.route('/delete_customers', methods=['POST'])
+def delete_customers():
+    cn_db = db_cus.customers(con_db)
+    data = request.json
+    rs = cn_db.delete(data['customer_id'])
+    result = {}
+    result['message'] = rs
+    return jsonify(result), 200
+
+
+@app.route('/user/all_customers')
+def all_customers():
+    result = db_cus.customers(con_db).get_all()
+    return jsonify(result), 200
+
+
+@app.route('/user/one_customers/<int:cus_id>')
+def one_customers(cus_id):
+    c = cus.customers(customer_id=cus_id)
+    rs = db_cus.customers(con_db).get_by_id(c)
+    if rs[1] != 200:
+        return jsonify({'message': rs[0]}), rs[1]
+    return jsonify(rs[0].to_json()), 200
+
+
 # -----------------------------------------------------
 
 

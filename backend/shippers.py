@@ -1,8 +1,8 @@
-class shippers :
-    def __init__(self, shipper_id , company_name , phone ):
-        self.company_name  = company_name
+class shippers:
+    def __init__(self, shipper_id=None, company_name=None, phone=None):
+        self.company_name = company_name
         self.shipper_id = shipper_id
-        self.phone  = phone
+        self.phone = phone
 
     def fetch_data(self, data):
         self.shipper_id = data[0]

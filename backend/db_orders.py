@@ -20,8 +20,8 @@ class orders:
                                         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
 
             result = (orders.customer_id, orders.employee_id, orders.order_date, orders.required_date,
-                        orders.shipped_date,orders.ship_via,orders.freight,orders.ship_name,orders.ship_address,
-                        orders.ship_city,orders.ship_region,orders,ship_postal_code,orders.ship_country)
+                      orders.shipped_date, orders.ship_via, orders.freight, orders.ship_name, orders.ship_address,
+                      orders.ship_city, orders.ship_region, orders, ship_postal_code, orders.ship_country)
             cur.execute(sql, result)
             con.commit()
             con.close()
@@ -64,10 +64,10 @@ class orders:
             sql = """UPDATE orders SET customer_id = %s, employee_id= %s order_date= %s,required_date= %s, shipped_date= %s,ship_via= %s,
                                         freight= %s,ship_name= %s,ship_address= %s,ship_city= %s,ship_region= %s,ship_postal_code= %s,ship_country= %s
                                         WHERE order_id = %s"""
-            result = (orders.customer_id, orders.employee_id, orders.order_date, orders.required_date, 
-                         orders.shipped_date, orders.ship_via, orders.freight,
-                         orders.ship_name, orders.ship_address, orders.ship_city, orders.ship_region,
-                         orders.ship_postal_code, orders.ship_country)
+            result = (orders.customer_id, orders.employee_id, orders.order_date, orders.required_date,
+                      orders.shipped_date, orders.ship_via, orders.freight,
+                      orders.ship_name, orders.ship_address, orders.ship_city, orders.ship_region,
+                      orders.ship_postal_code, orders.ship_country)
             cur.execute(sql, result)
             con.commit()
             con.close()

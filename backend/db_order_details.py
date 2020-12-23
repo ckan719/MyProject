@@ -16,7 +16,9 @@ class order_details:
                                    database=self.connect_db['database'])
             cur = con.cursor()
             sql = "INSERT INTO order_details (order_id, product_id, unit_price, quantity , discount) VALUES (%s,%s,%s,%s,%s)"
-            result = (order_details.order_id, order_details.product_id, order_details.unit_price, order_details.quantity,order_details.discount)
+            result = (
+            order_details.order_id, order_details.product_id, order_details.unit_price, order_details.quantity,
+            order_details.discount)
             cur.execute(sql, result)
             con.commit()
             con.close()
@@ -57,7 +59,9 @@ class order_details:
                                    database=self.connect_db['database'])
             cur = con.cursor()
             sql = "UPDATE order_details SET order_id = %s, product_id = %s, quantity = %s,discount = %s WHERE order_details_id = %s"
-            result = (order_details.order_id, order_details.product_id,order_details.unit_price, order_details.quantity,order_details.discount , order_details.order_detail_id)
+            result = (
+            order_details.order_id, order_details.product_id, order_details.unit_price, order_details.quantity,
+            order_details.discount, order_details.order_detail_id)
             cur.execute(sql, result)
             con.commit()
             con.close()

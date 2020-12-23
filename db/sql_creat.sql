@@ -11,6 +11,20 @@ SET default_tablespace = '';
 
 SET default_with_oids = false;
 
+DROP TABLE IF EXISTS customer_customer_demo;
+DROP TABLE IF EXISTS customer_demographics;
+DROP TABLE IF EXISTS employee_territories;
+DROP TABLE IF EXISTS order_details;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS customers;
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS shippers;
+DROP TABLE IF EXISTS suppliers;
+DROP TABLE IF EXISTS territories;
+DROP TABLE IF EXISTS us_states;
+DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS region;
+DROP TABLE IF EXISTS employees;
 
 CREATE TABLE categories (
 	category_id SERIAL PRIMARY KEY,
@@ -20,12 +34,6 @@ CREATE TABLE categories (
 );
 
 
---
--- Name: customer_demographics; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
---
--- Name: customers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
 
 CREATE TABLE customers (
     customer_id bpchar NOT NULL PRIMARY KEY,
@@ -41,9 +49,7 @@ CREATE TABLE customers (
     fax character varying(24)
 );
 
---
--- Name: customer_customer_demo; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+
 
 CREATE TABLE customer_customer_demo (
 	customer_customer_demo_id SERIAL PRIMARY KEY,
@@ -53,9 +59,7 @@ CREATE TABLE customer_customer_demo (
     FOREIGN KEY (customer_id) REFERENCES customers
 );
 
---
--- Name: employees; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+
 
 CREATE TABLE employees (
     employee_id SERIAL PRIMARY KEY,
@@ -80,9 +84,7 @@ CREATE TABLE employees (
 );
 
 
---
--- Name: suppliers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+
 
 CREATE TABLE suppliers (
     supplier_id SERIAL PRIMARY KEY,
@@ -100,9 +102,7 @@ CREATE TABLE suppliers (
 );
 
 
---
--- Name: products; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+
 
 CREATE TABLE products (
     product_id SERIAL PRIMARY KEY,
@@ -120,9 +120,7 @@ CREATE TABLE products (
 );
 
 
---
--- Name: region; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+
 
 CREATE TABLE region (
     region_id SERIAL PRIMARY KEY,
@@ -130,9 +128,7 @@ CREATE TABLE region (
 );
 
 
---
--- Name: shippers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+
 
 CREATE TABLE shippers (
     shipper_id SERIAL PRIMARY KEY,
@@ -141,9 +137,7 @@ CREATE TABLE shippers (
 );
 
 
---
--- Name: orders; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+
 
 CREATE TABLE orders (
     order_id SERIAL PRIMARY KEY,
@@ -166,9 +160,7 @@ CREATE TABLE orders (
 );
 
 
---
--- Name: territories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+
 
 CREATE TABLE territories (
     territory_id character varying(20) NOT NULL PRIMARY KEY,
@@ -178,9 +170,6 @@ CREATE TABLE territories (
 );
 
 
---
--- Name: employee_territories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
 
 CREATE TABLE employee_territories (
 	employee_territories_id SERIAL PRIMARY KEY,
@@ -191,9 +180,7 @@ CREATE TABLE employee_territories (
 );
 
 
---
--- Name: order_details; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+
 
 CREATE TABLE order_details (
 	order_details_id SERIAL PRIMARY KEY,
@@ -207,9 +194,7 @@ CREATE TABLE order_details (
 );
 
 
---
--- Name: us_states; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+
 
 	CREATE TABLE us_states (
 		state_id SERIAL PRIMARY KEY,

@@ -1,6 +1,7 @@
 class suppliers:
-    def __init__(self, supplier_id , company_name , contact_name , contact_title ,
-                 address, city , region , postal_code , country , phone , fax , homepage):
+    def __init__(self, supplier_id=None, company_name=None, contact_name=None, contact_title=None,
+                 address=None, city=None, region=None, postal_code=None, country=None, phone=None, fax=None,
+                 homepage=None):
         self.supplier_id = supplier_id
         self.company_name = company_name
         self.contact_name = contact_name

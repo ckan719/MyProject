@@ -1,11 +1,12 @@
-class order_details :
-    def __init__(self,order_details_id, order_id , product_id, unit_price , quantity, discount ):
+class order_details:
+    def __init__(self, order_details_id=None, order_id=None, product_id=None, unit_price=None, quantity=None,
+                 discount=None):
         self.order_details_id = order_details_id
-        self.order_id  = order_id
-        self.product_id  = product_id
+        self.order_id = order_id
+        self.product_id = product_id
         self.unit_price = unit_price
         self.quantity = quantity
-        self.discount  = discount
+        self.discount = discount
 
     def fetch_data(self, data):
         self.order_details_id = data[0]
@@ -24,5 +25,3 @@ class order_details :
             'quantity': self.quantity,
             'discount': self.discount
         }
-
-        

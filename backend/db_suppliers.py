@@ -19,9 +19,9 @@ class suppliers:
                                             city,region,postal_code,country,phone,fax,homepage) 
                                             VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
             result = (supplier.company_name, supplier.contact_name, supplier.contact_title,
-                       supplier.address, supplier.city, supplier.region,
-                       supplier.postal_code, supplier.country, supplier.phone,
-                       supplier.fax, supplier.homepage )
+                      supplier.address, supplier.city, supplier.region,
+                      supplier.postal_code, supplier.country, supplier.phone,
+                      supplier.fax, supplier.homepage)
             cur.execute(sql, result)
             con.commit()
             con.close()
@@ -66,9 +66,9 @@ class suppliers:
                                             fax = %s,homepage = %s
                                             WHERE supplier_id = %s"""
             result = (supplier.company_name, supplier.contact_name, supplier.contact_title,
-                       supplier.address, supplier.city, supplier.region,
-                       supplier.postal_code, supplier.country, supplier.phone,
-                       supplier.fax, supplier.homepage,supplier.supplier_id)
+                      supplier.address, supplier.city, supplier.region,
+                      supplier.postal_code, supplier.country, supplier.phone,
+                      supplier.fax, supplier.homepage, supplier.supplier_id)
             cur.execute(sql, result)
             con.commit()
             con.close()

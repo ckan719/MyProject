@@ -6,7 +6,7 @@ class shippers:
     def __init__(self, connect_db):
         self.connect_db = connect_db
 
-    def insert(self, shipgory):
+    def insert(self, shippers):
         con = None
         try:
             con = psycopg2.connect(user=self.connect_db['user'],
@@ -16,7 +16,7 @@ class shippers:
                                    database=self.connect_db['database'])
             cur = con.cursor()
             sql = "INSERT INTO shippers (company_name, phone ) VALUES (%s,%s)"
-            result = (shippers.company_name, ship.phone)
+            result = (shippers.company_name, shippers.phone)
             cur.execute(sql, result)
             con.commit()
             con.close()
@@ -57,7 +57,7 @@ class shippers:
                                    database=self.connect_db['database'])
             cur = con.cursor()
             sql = "UPDATE shippers SET company_name = %s, phone = %s WHERE shipper_id = %s"
-            result = (shippers.company_name,shippers.phone,shippers.shipper_id)
+            result = (shippers.company_name, shippers.phone, shippers.shipper_id)
             cur.execute(sql, result)
             con.commit()
             con.close()

@@ -1,8 +1,8 @@
 import requests
 
-#------------------------------------------------------------------------------------
-#-----------------------------EMPLOYEES------------------------------------
-#------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------
+# -----------------------------EMPLOYEES------------------------------------
+# ------------------------------------------------------------------------------------
 # Test insert vao bang employees
 # data = {}
 # data['last_name'] = 'Fuller'
@@ -51,23 +51,23 @@ import requests
 # report = requests.post('http://192.168.1.189:8080/delete_employees', json=data)
 # print(report.text)
 
-#test get EMPLOYEE
-#------------------------------------------------------------------------------------
-#----------------------------CATEGORIES-------------------------------------------
-#------------------------------------------------------------------------------------
+# test get EMPLOYEE
+# ------------------------------------------------------------------------------------
+# ----------------------------CATEGORIES-------------------------------------------
+# ------------------------------------------------------------------------------------
 # Test insert vao bang categories
-data = {}
-data['category_name'] = 'Bevera'
-data['description'] = 'Soft drinks, coffees, teas, beers, and ales'
-data['picture'] = ''
-report = requests.post('http://192.168.1.13:8080/insert_categories', json=data)
-print(report.text)
+# data = {}
+# data['category_name'] = 'Bevera'
+# data['description'] = 'Soft drinks, coffees, teas, beers, and ales'
+# data['picture'] = ''
+# report = requests.post('http://192.168.1.13:8080/insert_categories', json=data)
+# print(report.text)
 
 # Test delete  bang categories with ID
 # data = {}
-#data['category_id'] = '3'
-#report = requests.post('http://192.168.1.13:8080/delete_categories', json=data)
-#print(report.text)
+# data['category_id'] = '3'
+# report = requests.post('http://192.168.1.13:8080/delete_categories', json=data)
+# print(report.text)
 
 # Test update bang categories
 # data = {}
@@ -78,6 +78,10 @@ print(report.text)
 # report = requests.post('http://192.168.1.13:8080/update_categories', json=data)
 # print(report.text)
 
+
+# ------------------------------------------------------------------------------------
+# ----------------------------CUSTOMERS-------------------------------------------
+# ------------------------------------------------------------------------------------
 # Test insert vao bang customers
 # data = {}
 # data['customer_id'] = 'ALFKI'
@@ -93,7 +97,6 @@ print(report.text)
 # data['fax'] = '030-0076545'
 # report = requests.post('http://192.168.1.13:8080/insert_customers', json=data)
 # print(report.text)
-
 
 
 # Test giao tiep
