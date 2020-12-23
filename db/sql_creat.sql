@@ -49,6 +49,10 @@ CREATE TABLE customers (
     fax character varying(24)
 );
 
+CREATE TABLE customer_demographics (
+    customer_type_id bpchar NOT NULL PRIMARY KEY,
+    customer_desc text
+);
 
 
 CREATE TABLE customer_customer_demo (
@@ -196,10 +200,10 @@ CREATE TABLE order_details (
 
 
 
-	CREATE TABLE us_states (
-		state_id SERIAL PRIMARY KEY,
-		state_name character varying(100),
-		state_abbr character varying(2),
-		state_region character varying(50)
-	);
+CREATE TABLE us_states (
+    state_id SERIAL PRIMARY KEY,
+    state_name character varying(100),
+    state_abbr character varying(2),
+    state_region character varying(50)
+);
 	
