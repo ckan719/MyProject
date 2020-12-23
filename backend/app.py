@@ -1,30 +1,32 @@
 from flask import Flask, jsonify, request
 import os
-#++
+# ++
 import db_customers as db_cus
 import customers as cus
-#++
+# ++
 import db_categories as db_cate
 import categories as cate
-#++
+# ++
 import db_employees as db_emp
 import employees as emp
-#++
+# ++
 import db_shippers as db_ship
 import shippers as ship
-#++
+# ++
 import db_orders as db_od
 import orders as od
-#++
+# ++
 import db_order_details as db_oddt
 import order_details as oddt
-#++
+# ++
 import db_products as db_pro
-import products as pro 
-#++
+import products as pro
+# ++
 import db_region as db_reg
-import region as reg 
+import region as reg
 
+import db_suppliers as db_sup
+import suppliers as sup
 
 app = Flask(__name__)
 
@@ -149,6 +151,7 @@ def all_employees():
     result = db_emp.employees(con_db).get_all()
     return jsonify(result), 200
 
+
 @app.route('/user/one_employees/<int:employee_id>')
 def one_employees(employee_id):
     e = emp.employees(employee_id=employee_id)
@@ -156,6 +159,7 @@ def one_employees(employee_id):
     if rs[1] != 200:
         return jsonify({'message': rs[0]}), rs[1]
     return jsonify(rs[0].to_json()), 200
+
 
 @app.route('/delete_employees', methods=['POST'])
 def delete_employees():
@@ -165,6 +169,7 @@ def delete_employees():
     result = {}
     result['message'] = rs
     return jsonify(result), 200
+
 
 # shippers +++++++++++++++++
 
@@ -247,11 +252,11 @@ def delete_orders():
 def insert_orders():
     cn_db = db_od.orders(con_db)
     data = request.json
-    od1 = od.orders(1,data['customer_id'], data['employee_id'],
-                    data['order_date'], data['required_date'], data['shipped_date',
-                    data['ship_via'], data['freight'], data['ship_name',
-                    data['ship_address'], data['ship_city'], data['ship_region', 
-                    data['ship_postal_code'], data['ship_country')
+    od1 = od.orders(1, data['customer_id'], data['employee_id'],
+                    data['order_date'], data['required_date'], data['shipped_date'],
+                    data['ship_via'], data['freight'], data['ship_name'],
+                    data['ship_address'], data['ship_city'], data['ship_region'],
+                    data['ship_postal_code'], data['ship_country'])
     rs = cn_db.insert(od1)
     result = {}
     result['message'] = rs
@@ -263,10 +268,10 @@ def update_orders():
     cn_db = db_od.orders(con_db)
     data = request.json
     od1 = od.orders(data['oder_id'], data['customer_id'], data['employee_id'],
-                    data['order_date'], data['required_date'], data['shipped_date',
-                    data['ship_via'], data['freight'], data['ship_name',
-                    data['ship_address'], data['ship_city'], data['ship_region', 
-                    data['ship_postal_code'], data['ship_country')
+                    data['order_date'], data['required_date'], data['shipped_date'],
+                    data['ship_via'], data['freight'], data['ship_name'],
+                    data['ship_address'], data['ship_city'], data['ship_region'],
+                    data['ship_postal_code'], data['ship_country'])
     rs = cn_db.update(od1)
     result = {}
     result['message'] = rs
@@ -305,8 +310,8 @@ def delete_order_details():
 def insert_order_details():
     cn_db = db_oddt.order_details(con_db)
     data = request.json
-    oddt1 = oddt.order_details(1, data['order_id'], data['product_id'], data['unit_price'], 
-                                    data['quantity'], data['discount'])
+    oddt1 = oddt.order_details(1, data['order_id'], data['product_id'], data['unit_price'],
+                               data['quantity'], data['discount'])
     rs = cn_db.insert(oddt1)
     result = {}
     result['message'] = rs
@@ -317,14 +322,15 @@ def insert_order_details():
 def update_order_details():
     cn_db = db_oddt.order_details(con_db)
     data = request.json
-    oddt1 = oddt.order_details(data['order_details_id'],data['order_id'], data['product_id'], data['unit_price'], 
-                                    data['quantity'], data['discount'])
+    oddt1 = oddt.order_details(data['order_details_id'], data['order_id'], data['product_id'], data['unit_price'],
+                               data['quantity'], data['discount'])
     rs = cn_db.update(oddt1)
     result = {}
     result['message'] = rs
     return jsonify(result), 200
 
-#--------------------------------------
+
+# --------------------------------------
 # suppliers
 @app.route('/user/all_suppliers')
 def all_suppliers():
@@ -355,11 +361,11 @@ def delete_suppliers():
 def insert_suppliers():
     cn_db = db_sup.suppliers(con_db)
     data = request.json
-    sup1 = sup.suppliers(1,data['company_name'], data['contact_name'], data['contact_title'],
-                            data['address'], data['city'], 
-                            data['region'],data['postal_code'], 
-                            data['country'], data['phone'], 
-                            data['fax'], data['homepage'])
+    sup1 = sup.suppliers(1, data['company_name'], data['contact_name'], data['contact_title'],
+                         data['address'], data['city'],
+                         data['region'], data['postal_code'],
+                         data['country'], data['phone'],
+                         data['fax'], data['homepage'])
     rs = cn_db.insert(sup1)
     result = {}
     result['message'] = rs
@@ -370,25 +376,27 @@ def insert_suppliers():
 def update_suppliers():
     cn_db = db_sup.suppliers(con_db)
     data = request.json
-    sup1 = sup.suppliers(data['supplier_id'],data['company_name'], data['contact_name'], data['contact_title'],
-                            data['address'], data['city'], 
-                            data['region'],data['postal_code'], 
-                            data['country'], data['phone'], 
-                            data['fax'], data['homepage'])
+    sup1 = sup.suppliers(data['supplier_id'], data['company_name'], data['contact_name'], data['contact_title'],
+                         data['address'], data['city'],
+                         data['region'], data['postal_code'],
+                         data['country'], data['phone'],
+                         data['fax'], data['homepage'])
     rs = cn_db.update(sup1)
     result = {}
     result['message'] = rs
     return jsonify(result), 200
 
-#------------------------------------------------
- # products vuong
- @app.route('/insert_products', methods=['POST'])
- def insert_products():
-       cn_db = db_pro.products(con_db)
+    # ------------------------------------------------
+    # products vuong
+
+
+@app.route('/insert_products', methods=['POST'])
+def insert_products():
+    cn_db = db_pro.products(con_db)
     data = request.json
-    pro1 = pro.products(1,data['product_name'],data['supplier_id'],data['category_id'],
+    pro1 = pro.products(1, data['product_name'], data['supplier_id'], data['category_id'],
                         data['quantity_per_unit'], data['unit_price'], data['units_in_stock'],
-                        data['units_on_order'],data['reorder_level'],data['discontinued']  )
+                        data['units_on_order'], data['reorder_level'], data['discontinued'])
     rs = cn_db.insert(pro1)
     result = {}
     result['message'] = rs
@@ -399,18 +407,20 @@ def update_suppliers():
 def update_products():
     cn_db = db_pro.products(con_db)
     data = request.json
-    pro1 = pro.products(1,data['product_id'], data['product_name'],data['supplier_id'],data['category_id'],
+    pro1 = pro.products(1, data['product_id'], data['product_name'], data['supplier_id'], data['category_id'],
                         data['quantity_per_unit'], data['unit_price'], data['units_in_stock'],
-                        data['units_on_order'],data['reorder_level'],data['discontinued']  )
+                        data['units_on_order'], data['reorder_level'], data['discontinued'])
     rs = cn_db.insert(pro1)
     result = {}
     result['message'] = rs
     return jsonify(result), 200
 
+
 @app.route('/user/all_products')
 def all_products():
     result = db_pro.products(con_db).get_all()
     return jsonify(result), 200
+
 
 @app.route('/user/one_products/<int:product_id>')
 def one_products(product_id):
@@ -429,34 +439,39 @@ def delete_products():
     result = {}
     result['message'] = rs
     return jsonify(result), 200
-#--------------------------------------------------------------
 
- # region vuong
+
+# --------------------------------------------------------------
+
+# region vuong
 
 @app.route('/insert_region', methods=['POST'])
 def insert_region():
     cn_db = db_reg.region(con_db)
     data = request.json
-    reg1 = reg.region( 1, data['region_description'])
-    rs = cn_db.insert(pro1)
+    reg1 = reg.region(1, data['region_description'])
+    rs = cn_db.insert(reg1)
     result = {}
     result['message'] = rs
     return jsonify(result), 200
-    
+
+
 @app.route('/update_region', methods=['POST'])
 def update_region():
     cn_db = db_reg.region(con_db)
     data = request.json
-    reg1 = reg.region(1, data['region_description'] )
-    rs = cn_db.insert(pro1)
+    reg1 = reg.region(1, data['region_description'])
+    rs = cn_db.insert(reg1)
     result = {}
     result['message'] = rs
     return jsonify(result), 200
+
 
 @app.route('/user/all_region')
 def all_region():
     result = db_reg.region(con_db).get_all()
     return jsonify(result), 200
+
 
 @app.route('/user/one_region/<int:region_id>')
 def one_region(region_id):
@@ -476,7 +491,8 @@ def delete_region():
     result['message'] = rs
     return jsonify(result), 200
 
-#====================================================
+
+# ====================================================
 
 @app.route('/test_send_receive', methods=['POST'])
 def test_send_reseive():
