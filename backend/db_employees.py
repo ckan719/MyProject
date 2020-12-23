@@ -107,7 +107,7 @@ class employees:
             if con is not None:
                 con.close()
 
-    def get_by_id(self, employee: empl):
+    def get_by_id(self, employees: emp):
         con = None
         try:
             con = psycopg2.connect(user=self.connect_db['user'],
@@ -122,7 +122,7 @@ class employees:
             con.commit()
             row = cur.fetchone()
             if row:
-                c = empl()
+                c = emp()
                 c.fetch_data(row)
                 return c, 200
             con.close()
