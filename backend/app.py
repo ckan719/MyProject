@@ -137,7 +137,7 @@ def all_customers():
     return jsonify(result), 200
 
 
-@app.route('/user/one_customers/<int:cus_id>')
+@app.route('/user/one_customers/<cus_id>')
 def one_customers(cus_id):
     c = cus.customers(customer_id=cus_id)
     rs = db_cus.customers(con_db).get_by_id(c)
