@@ -113,10 +113,10 @@ import requests
 # report = requests.post('http://192.168.1.13:8080/update_customers', json=data)
 # print(report.text)
 #Test Delete
-data = {}
-data['customer_id'] = 'ALFKI'
-report = requests.post('http://192.168.1.13:8080/delete_customers', json=data)
-print(report.text)
+# data = {}
+# data['customer_id'] = 'ALFKI'
+# report = requests.post('http://192.168.1.13:8080/delete_customers', json=data)
+# print(report.text)
 
 
 # Test giao tiep
