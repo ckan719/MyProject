@@ -61,7 +61,7 @@ class orders:
                                    port=self.connect_db['port'],
                                    database=self.connect_db['database'])
             cur = con.cursor()
-            sql = """UPDATE orders SET customer_id = %s, employee_id= %s order_date= %s,required_date= %s, shipped_date= %s,ship_via= %s,
+            sql = """UPDATE orders SET customer_id = %s, employee_id= %s, order_date= %s,required_date= %s, shipped_date= %s,ship_via= %s,
                                         freight= %s,ship_name= %s,ship_address= %s,ship_city= %s,ship_region= %s,ship_postal_code= %s,ship_country= %s
                                         WHERE order_id = %s"""
             result = (orders.customer_id, orders.employee_id, orders.order_date, orders.required_date,
