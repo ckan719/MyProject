@@ -39,7 +39,7 @@ class customers:
                                    database=self.connect_db['database'])
             cur = con.cursor()
             sql = "DELETE FROM customers where customer_id = %s"
-            cur.execute(sql, (id,))
+            cur.execute(sql, id)
             con.commit()
             con.close()
             return 'Delete Success!'
@@ -111,7 +111,7 @@ class customers:
                                    database=self.connect_db['database'])
 
             cur = con.cursor()
-            sql = "SELECT * FROM customers WHERE customer_id = %s"
+            sql = "SELECT * FROM categories WHERE category_id = %s"
             cur.execute(sql, (customers.customer_id,))
             con.commit()
             row = cur.fetchone()

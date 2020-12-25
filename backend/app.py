@@ -137,7 +137,7 @@ def all_customers():
     return jsonify(result), 200
 
 
-@app.route('/user/one_customers/<cus_id>')
+@app.route('/user/one_customers/<int:cus_id>')
 def one_customers(cus_id):
     c = cus.customers(customer_id=cus_id)
     rs = db_cus.customers(con_db).get_by_id(c)
@@ -432,7 +432,7 @@ def update_suppliers():
 def insert_products():
     cn_db = db_pro.products(con_db)
     data = request.json
-    pro1 = pro.products(1, data['product_name'], data['supplier_id'], data['category_id'],
+    pro1 = pro.products(1,data['product_name'], data['supplier_id'], data['category_id'],
                         data['quantity_per_unit'], data['unit_price'], data['units_in_stock'],
                         data['units_on_order'], data['reorder_level'], data['discontinued'])
     rs = cn_db.insert(pro1)

@@ -17,11 +17,11 @@ class orders:
             cur = con.cursor()
             sql = """INSERT INTO orders (customer_id, employee_id, order_date,required_date, shipped_date,ship_via,
                                         freight,ship_name,ship_address,ship_city,ship_region,ship_postal_code,ship_country)
-                                        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+                                        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
 
             result = (orders.customer_id, orders.employee_id, orders.order_date, orders.required_date,
                       orders.shipped_date, orders.ship_via, orders.freight, orders.ship_name, orders.ship_address,
-                      orders.ship_city, orders.ship_region, orders, ship_postal_code, orders.ship_country)
+                      orders.ship_city, orders.ship_region, orders.ship_postal_code, orders.ship_country)
             cur.execute(sql, result)
             con.commit()
             con.close()

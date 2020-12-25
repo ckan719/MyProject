@@ -15,7 +15,9 @@ class products:
                                    port=self.connect_db['port'],
                                    database=self.connect_db['database'])
             cur = con.cursor()
-            sql = "INSERT INTO products VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            sql = """INSERT INTO products (product_name, supplier_id, category_id,quantity_per_unit, unit_price ,
+                                            units_in_stock, units_on_order, reorder_level, discontinued)
+                                             VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
             result = (products.product_name, products.supplier_id, products.category_id,
                       products.quantity_per_unit, products.unit_price, products.units_in_stock,
                       products.units_on_order, products.reorder_level, products.discontinued)

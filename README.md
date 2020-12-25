@@ -55,7 +55,7 @@ cái trường picture chuyển thành 'text' nữa nhé
  ##
  docker build -t backend .
  ##
- docker run -d --name backend --env db_ip=10.0.2.15 -p 8080:8080 backend
+ docker run -d --name backend --env dp_ip=10.0.2.15 -p 8080:8080 backend
  ##
  docker pull postgres:alpine
  ##
