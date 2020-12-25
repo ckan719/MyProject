@@ -159,7 +159,7 @@ def insert_employees():
                          data['address'], data['city'],
                          data['region'], data['postal_code'], data['country'],
                          data['home_phone'], data['extension'],
-                         data['photo'], data['notes'], data['reports_to'],
+                         data['photo'], data['notes'], 
                          data['photo_path'])
     rs = cn_db.insert(emp1)
     result = {}
@@ -176,7 +176,7 @@ def update_employees():
                          data['address'], data['city'],
                          data['region'], data['postal_code'], data['country'],
                          data['home_phone'], data['extension'],
-                         data['photo'], data['notes'], data['reports_to'],
+                         data['photo'], data['notes'],
                          data['photo_path'])
     rs = cn_db.update(emp1)
     result = {}

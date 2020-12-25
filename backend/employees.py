@@ -1,7 +1,7 @@
 class employees:
     def __init__(self, employee_id=None, last_name=None, first_name=None, title=None, title_of_courtesy=None,
                  birth_date=None, hire_date=None, address=None, city=None, region=None, postal_code=None,
-                 country=None, home_phone=None, extension=None, photo=None, notes=None, reports_to=None,
+                 country=None, home_phone=None, extension=None, photo=None, notes=None,
                  photo_path=None):
         self.employee_id = employee_id
         self.last_name = last_name
@@ -19,7 +19,6 @@ class employees:
         self.extension = extension
         self.photo = photo
         self.notes = notes
-        self.reports_to = reports_to
         self.photo_path = photo_path
 
     def fetch_data(self, data):
@@ -39,8 +38,7 @@ class employees:
         self.extension = data[13]
         self.photo = data[14]
         self.notes = data[15]
-        self.reports_to = data[16]
-        self.photo_path = data[17]
+        self.photo_path = data[16]
 
     def to_json(self):
         return {
@@ -60,6 +58,5 @@ class employees:
             'extension': self.extension,
             'photo': self.photo,
             'notes': self.notes,
-            'reports_to': self.reports_to,
             'photo_path': self.photo_path
         }
