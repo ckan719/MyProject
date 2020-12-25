@@ -59,8 +59,8 @@ CREATE TABLE customer_customer_demo (
 	customer_customer_demo_id SERIAL PRIMARY KEY,
     customer_id bpchar NOT NULL,
     customer_type_id bpchar NOT NULL,
-    FOREIGN KEY (customer_type_id) REFERENCES customer_demographics,
-    FOREIGN KEY (customer_id) REFERENCES customers
+    FOREIGN KEY (customer_type_id) REFERENCES customer_demographics ON DELETE CASCADE ,
+    FOREIGN KEY (customer_id) REFERENCES customers ON DELETE CASCADE
 );
 
 
@@ -82,9 +82,7 @@ CREATE TABLE employees (
     extension character varying(4),
     photo bytea,
     notes text,
-    reports_to smallint,
     photo_path character varying(255),
-	FOREIGN KEY (reports_to) REFERENCES employees
 );
 
 
@@ -119,8 +117,8 @@ CREATE TABLE products (
     units_on_order smallint,
     reorder_level smallint,
     discontinued integer NOT NULL,
-	FOREIGN KEY (category_id) REFERENCES categories,
-	FOREIGN KEY (supplier_id) REFERENCES suppliers
+	FOREIGN KEY (category_id) REFERENCES categories ON DELETE CASCADE,
+	FOREIGN KEY (supplier_id) REFERENCES suppliers ON DELETE CASCADE
 );
 
 
@@ -146,7 +144,7 @@ CREATE TABLE shippers (
 CREATE TABLE orders (
     order_id SERIAL PRIMARY KEY,
     customer_id bpchar,
-    employee_id smallint,
+    employee_id integer,
     order_date date,
     required_date date,
     shipped_date date,
@@ -158,9 +156,9 @@ CREATE TABLE orders (
     ship_region character varying(15),
     ship_postal_code character varying(10),
     ship_country character varying(15),
-    FOREIGN KEY (customer_id) REFERENCES customers,
-    FOREIGN KEY (employee_id) REFERENCES employees,
-    FOREIGN KEY (ship_via) REFERENCES shippers
+    FOREIGN KEY (customer_id) REFERENCES customers ON DELETE CASCADE,
+    FOREIGN KEY (employee_id) REFERENCES employees ON DELETE CASCADE,
+    FOREIGN KEY (ship_via) REFERENCES shippers ON DELETE CASCADE
 );
 
 
@@ -169,18 +167,18 @@ CREATE TABLE orders (
 CREATE TABLE territories (
     territory_id character varying(20) NOT NULL PRIMARY KEY,
     territory_description bpchar NOT NULL,
-    region_id smallint NOT NULL,
-	FOREIGN KEY (region_id) REFERENCES region
+    region_id integer NOT NULL,
+	FOREIGN KEY (region_id) REFERENCES region ON DELETE CASCADE
 );
 
 
 
 CREATE TABLE employee_territories (
 	employee_territories_id SERIAL PRIMARY KEY,
-    employee_id smallint NOT NULL,
+    employee_id integer NOT NULL,
     territory_id character varying(20) NOT NULL,
-    FOREIGN KEY (territory_id) REFERENCES territories,
-    FOREIGN KEY (employee_id) REFERENCES employees
+    FOREIGN KEY (territory_id) REFERENCES territories ON DELETE CASCADE,
+    FOREIGN KEY (employee_id) REFERENCES employees ON DELETE CASCADE
 );
 
 
@@ -188,13 +186,13 @@ CREATE TABLE employee_territories (
 
 CREATE TABLE order_details (
 	order_details_id SERIAL PRIMARY KEY,
-    order_id smallint NOT NULL,
-    product_id smallint NOT NULL,
+    order_id integer NOT NULL,
+    product_id integer NOT NULL,
     unit_price real NOT NULL,
     quantity smallint NOT NULL,
     discount real NOT NULL,
-    FOREIGN KEY (product_id) REFERENCES products,
-    FOREIGN KEY (order_id) REFERENCES orders
+    FOREIGN KEY (product_id) REFERENCES products ON DELETE CASCADE,
+    FOREIGN KEY (order_id) REFERENCES orders ON DELETE CASCADE
 );
 
 

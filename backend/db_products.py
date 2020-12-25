@@ -63,7 +63,9 @@ class products:
                                    port=self.connect_db['port'],
                                    database=self.connect_db['database'])
             cur = con.cursor()
-            sql = "UPDATE products SET product_name = %s, supplier_id = %s, category_id = %s,quantity_per_unit = %s, unit_price = %s,  units_in_stock = %s, units_on_order = %s, reorder_level = %s, discontinued = %s WHERE product_id = %s"
+            sql = """UPDATE products SET product_name = %s, supplier_id = %s, category_id = %s,quantity_per_unit = %s, 
+                    unit_price = %s,  units_in_stock = %s, units_on_order = %s, reorder_level = %s, 
+                    discontinued = %s WHERE product_id = %s"""
             result = (products.product_name, products.supplier_id, products.category_id,
                       products.quantity_per_unit, products.unit_price, products.units_in_stock,
                       products.units_on_order, products.reorder_level, products.discontinued, products.product_id)

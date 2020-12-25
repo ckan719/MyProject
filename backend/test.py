@@ -32,11 +32,11 @@ import requests
 # ------------------------------------------------------------------------------------
 # Test insert vao bang customers
 # data = {}
-# data['customer_id'] = 'ALFKI'
-# data['company_name'] = 'Alfreds Futterkiste'
-# data['contact_name'] = 'Maria Anders'
+# data['customer_id'] = 'ALFKJ'
+# data['company_name'] = 'Alfreds'
+# data['contact_name'] = 'Anders'
 # data['contact_title'] = 'Sales Representative'
-# data['address'] = 'Obere Str. 57'
+# data['address'] = 'Obere Str. 99'
 # data['city'] = 'Berlin'
 # data['region'] = 'NULL'
 # data['postal_code'] = '12209'
@@ -51,7 +51,7 @@ import requests
 # ------------------------------------------------------------------------------------
 # Test insert vao bang employees
 # data = {}
-# data['last_name'] = 'Fuller'
+# data['last_name'] = 'Minh'
 # data['first_name'] = 'Andrew'
 # data['title'] = 'Vice President, Sales'
 # data['title_of_courtesy'] = 'Dr.'
@@ -72,30 +72,32 @@ import requests
 # print(report.text)
 
 # test update EMPLOYEE
+# data ={}
 # data['employee_id'] = '1'
-# data['last_name'] = 'Fuller-Fuller-Fuller'
+# data['last_name'] = 'Alsaef'
 # data['first_name'] = 'Andrew'
-# data['title'] = 'Vice President, Sales'
+# data['title'] = 'Sales'
 # data['title_of_courtesy'] = 'Dr.'
 # data['birth_date'] = '1952-02-19'
 # data['hire_date'] = '1992-08-14'
-# data['address'] = '908 W. Capital Way'
+# data['address'] = '888 W. Capital Way'
 # data['city'] = 'Tacoma'
 # data['region'] = 'WA'
-# data['postal_code'] = '98401'
+# data['postal_code'] = '98491'
 # data['country'] = 'USA'
-# data['home_phone'] = '(206) 555-9482'
-# data['extension'] = '63457'
-# data['photo'] = '\x'
+# data['home_phone'] = '(206) 555-9333'
+# data['extension'] = '457'
+# data['photo'] = ''
 # data['notes'] = 'Andrew received his BTS commercial in 1974'
-# data['reports_to'] = ''
-# data['photo_path'] = 'http://accweb/emmployees/fuller.bmp'
-# report = requests.post('http://192.168.1.189:8080/update_employees', json=data)
+# data['reports_to'] = '1'
+# data['photo_path'] = ''
+# report = requests.post('http://localhost:8080/update_employees', json=data)
 # print(report.text)
 
 # test delete EMPLOYEE
+# data ={}
 # data['employee_id'] = '1'
-# report = requests.post('http://192.168.1.189:8080/delete_employees', json=data)
+# report = requests.post('http://localhost:8080/delete_employees', json=data)
 # print(report.text)
 
 # test get EMPLOYEE
@@ -121,6 +123,30 @@ import requests
 # report = requests.post('http://localhost:8080/insert_suppliers', json=data)
 # print(report.text)
 
+### test update
+# data = {}
+# data['supplier_id'] = '1'
+# data['company_name'] = 'Exotic'
+# data['contact_name'] = 'Charlotte Cooper'
+# data['contact_title'] = 'Purchasing Manager'
+# data['address'] = '49 Gilbert St.'
+# data['city'] = 'London'
+# data['region'] = ''
+# data['postal_code'] = 'EC1 4SD'
+# data['country'] = 'UK'
+# data['phone'] = '(171) 555-2222'
+# data['fax'] = ''
+# data['homepage'] = ''
+# report = requests.post('http://localhost:8080/update_suppliers', json=data)
+# print(report.text)
+
+# test delete 
+# data ={}
+# data['supplier_id'] = '1'
+# report = requests.post('http://localhost:8080/delete_suppliers', json=data)
+# print(report.text)
+
+
 # ------------------------------------------------------------------------------------
 # -----------------------------Product------------------------------------
 # ------------------------------------------------------------------------------------
@@ -138,6 +164,26 @@ import requests
 # report = requests.post('http://localhost:8080/insert_products', json=data)
 # print(report.text)
 
+# # Test update vao bang product
+# data = {}
+# data['product_id'] = '1'
+# data['product_name'] = "Chaizo"
+# data['supplier_id'] = '1'
+# data['category_id'] = '1'
+# data['quantity_per_unit'] = '10 boxes x 70 bags'
+# data['unit_price'] = '18'
+# data['units_in_stock'] = '39'
+# data['units_on_order'] = '0'
+# data['reorder_level'] = '10'
+# data['discontinued'] = '1'
+# report = requests.post('http://localhost:8080/update_products', json=data)
+# print(report.text)
+
+# test delete 
+# data ={}
+# data['product_id'] = '1'
+# report = requests.post('http://localhost:8080/delete_products', json=data)
+# print(report.text)
 # ------------------------------------------------------------------------------------
 # -----------------------------Shipers------------------------------------
 # ------------------------------------------------------------------------------------
@@ -153,13 +199,23 @@ import requests
 # report = requests.post('http://localhost:8080/insert_shippers', json=data1)
 # print(report.text)
 
+
+# Test update vao bang shipers
+# data = {}
+# data['shipper_id'] = "1"
+# data['company_name'] = "Speedy"
+# data['phone'] = '(503) 555-9831'
+# report = requests.post('http://localhost:8080/update_shippers', json=data)
+# print(report.text)
+
+
 # ------------------------------------------------------------------------------------
 # -----------------------------Order------------------------------------
 # ------------------------------------------------------------------------------------
-# Test insert vao bang Order
+# # Test insert vao bang Order
 # data = {}
 # data['customer_id'] = "ALFKI"
-# data['employee_id'] = '1'
+# data['employee_id'] = '4'
 # data['order_date'] = '1996-07-04'
 # data['required_date'] = '1996-08-01'
 # data['shipped_date'] = '1996-07-16'
@@ -174,15 +230,32 @@ import requests
 # report = requests.post('http://localhost:8080/insert_orders', json=data)
 # print(report.text)
 
-
+# Test update vao bang Order
+# data = {}
+# data['order_id'] = "1"
+# data['customer_id'] = "ALFKI"
+# data['employee_id'] = '4'
+# data['order_date'] = '1996-07-04'
+# data['required_date'] = '1996-08-01'
+# data['shipped_date'] = '1996-07-16'
+# data['ship_via'] = '1'
+# data['freight'] = '32.3800011'
+# data['ship_name'] = 'Vins et alcools Chevalier'
+# data['ship_address'] = '59 rue de l'
+# data['ship_city'] = 'Reimsss'
+# data['ship_region'] = ''
+# data['ship_postal_code'] = '51100'
+# data['ship_country'] = 'Frances'
+# report = requests.post('http://localhost:8080/update_orders', json=data)
+# print(report.text)
 
 # ------------------------------------------------------------------------------------
 # -----------------------------Orders_detail------------------------------------
 # ------------------------------------------------------------------------------------
 # Test insert vao bang Orders_detail
 # data = {}
-# data['order_id'] = "1"
-# data['product_id'] = '1'
+# data['order_id'] = "3"
+# data['product_id'] = '4'
 # data['unit_price'] = '14'
 # data['quantity'] = '12'
 # data['discount'] = '0'

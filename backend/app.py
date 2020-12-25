@@ -445,7 +445,7 @@ def insert_products():
 def update_products():
     cn_db = db_pro.products(con_db)
     data = request.json
-    pro1 = pro.products(1, data['product_id'], data['product_name'], data['supplier_id'], data['category_id'],
+    pro1 = pro.products(data['product_id'], data['product_name'], data['supplier_id'], data['category_id'],
                         data['quantity_per_unit'], data['unit_price'], data['units_in_stock'],
                         data['units_on_order'], data['reorder_level'], data['discontinued'])
     rs = cn_db.insert(pro1)
@@ -498,7 +498,7 @@ def insert_region():
 def update_region():
     cn_db = db_reg.region(con_db)
     data = request.json
-    reg1 = reg.region(1, data['region_description'])
+    reg1 = reg.region(data['region_description'])
     rs = cn_db.insert(reg1)
     result = {}
     result['message'] = rs

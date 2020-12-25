@@ -58,10 +58,9 @@ class order_details:
                                    port=self.connect_db['port'],
                                    database=self.connect_db['database'])
             cur = con.cursor()
-            sql = "UPDATE order_details SET order_id = %s, product_id = %s, quantity = %s,discount = %s WHERE order_details_id = %s"
-            result = (
-            order_details.order_id, order_details.product_id, order_details.unit_price, order_details.quantity,
-            order_details.discount, order_details.order_detail_id)
+            sql = "UPDATE order_details SET order_id = %s, product_id = %s,unit_price = %s, quantity = %s,discount = %s WHERE order_details_id = %s"
+            result = ( order_details.order_id, order_details.product_id, order_details.unit_price, order_details.quantity,
+            order_details.discount, order_details.order_details_id)
             cur.execute(sql, result)
             con.commit()
             con.close()
@@ -110,7 +109,7 @@ class order_details:
                                    database=self.connect_db['database'])
 
             cur = con.cursor()
-            sql = "SELECT * FROM order_details WHERE order_detail_id = %s"
+            sql = "SELECT * FROM order_details WHERE order_details_id = %s"
             cur.execute(sql, (order_details.order_detail_id,))
             con.commit()
             row = cur.fetchone()
