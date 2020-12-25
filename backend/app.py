@@ -448,7 +448,7 @@ def update_products():
     pro1 = pro.products(data['product_id'], data['product_name'], data['supplier_id'], data['category_id'],
                         data['quantity_per_unit'], data['unit_price'], data['units_in_stock'],
                         data['units_on_order'], data['reorder_level'], data['discontinued'])
-    rs = cn_db.insert(pro1)
+    rs = cn_db.update(pro1)
     result = {}
     result['message'] = rs
     return jsonify(result), 200
