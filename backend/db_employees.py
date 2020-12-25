@@ -22,7 +22,7 @@ class employees:
                 employee.birth_date,
                 employee.hire_date, employee.address, employee.city, employee.region, employee.postal_code,
                 employee.country, employee.home_phone, employee.extension, employee.photo, employee.notes,
-                employee.reports_to, employee.photo_path)
+                employee.photo_path)
             cur.execute(sql, result)
             con.commit()
             con.close()
