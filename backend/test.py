@@ -6,9 +6,15 @@ import requests
 # ------------------------------------------------------------------------------------
 # Test insert vao bang categories
 # data = {}
-# data['category_name'] = 'Bevera'
+# data['category_name'] = 'Lissa'
 # data['description'] = 'Soft drinks, coffees, teas, beers, and ales'
 # data['picture'] = ''
+# report = requests.post('http://192.168.1.3:8080/insert_categories', json=data)
+# print(report.text)
+# data1 = {}
+# data1['category_name'] = 'Rose'
+# data1['description'] = 'Soft drinks, coffees, teas, beers, and ales'
+# data1['picture'] = ''
 # report = requests.post('http://192.168.1.3:8080/insert_categories', json=data)
 # print(report.text)
 
@@ -66,7 +72,6 @@ import requests
 # data['extension'] = '457'
 # data['photo'] = ''
 # data['notes'] = 'Andrew received his BTS commercial in 1974'
-# data['reports_to'] = '1'
 # data['photo_path'] = ''
 # report = requests.post('http://localhost:8080/insert_employees', json=data)
 # print(report.text)
@@ -74,7 +79,7 @@ import requests
 # test update EMPLOYEE
 # data ={}
 # data['employee_id'] = '1'
-# data['last_name'] = 'Alsaef'
+# data['last_name'] = 'Alex'
 # data['first_name'] = 'Andrew'
 # data['title'] = 'Sales'
 # data['title_of_courtesy'] = 'Dr.'
@@ -89,7 +94,6 @@ import requests
 # data['extension'] = '457'
 # data['photo'] = ''
 # data['notes'] = 'Andrew received his BTS commercial in 1974'
-# data['reports_to'] = '1'
 # data['photo_path'] = ''
 # report = requests.post('http://localhost:8080/update_employees', json=data)
 # print(report.text)
@@ -129,7 +133,7 @@ import requests
 # data['company_name'] = 'Exotic'
 # data['contact_name'] = 'Charlotte Cooper'
 # data['contact_title'] = 'Purchasing Manager'
-# data['address'] = '49 Gilbert St.'
+# data['address'] = '50 Gilbert St.'
 # data['city'] = 'London'
 # data['region'] = ''
 # data['postal_code'] = 'EC1 4SD'
@@ -163,11 +167,23 @@ import requests
 # data['discontinued'] = '1'
 # report = requests.post('http://localhost:8080/insert_products', json=data)
 # print(report.text)
+# data1 = {}
+# data1['product_name'] = "Chaizo"
+# data1['supplier_id'] = '1'
+# data1['category_id'] = '2'
+# data1['quantity_per_unit'] = '10 boxes x 30 bags'
+# data1['unit_price'] = '18'
+# data1['units_in_stock'] = '39'
+# data1['units_on_order'] = '0'
+# data1['reorder_level'] = '10'
+# data1['discontinued'] = '1'
+# report = requests.post('http://localhost:8080/insert_products', json=data1)
+# print(report.text)
 
 # # Test update vao bang product
 # data = {}
 # data['product_id'] = '1'
-# data['product_name'] = "Chaizo"
+# data['product_name'] = "Chailon"
 # data['supplier_id'] = '1'
 # data['category_id'] = '1'
 # data['quantity_per_unit'] = '10 boxes x 70 bags'
@@ -214,8 +230,8 @@ import requests
 # ------------------------------------------------------------------------------------
 # # Test insert vao bang Order
 # data = {}
-# data['customer_id'] = "ALFKI"
-# data['employee_id'] = '4'
+# data['customer_id'] = "ALFKJ"
+# data['employee_id'] = '1'
 # data['order_date'] = '1996-07-04'
 # data['required_date'] = '1996-08-01'
 # data['shipped_date'] = '1996-07-16'
@@ -232,9 +248,9 @@ import requests
 
 # Test update vao bang Order
 # data = {}
-# data['order_id'] = "1"
-# data['customer_id'] = "ALFKI"
-# data['employee_id'] = '4'
+# data['order_id'] = '2'
+# data['customer_id'] = 'ALFKJ'
+# data['employee_id'] = '1'
 # data['order_date'] = '1996-07-04'
 # data['required_date'] = '1996-08-01'
 # data['shipped_date'] = '1996-07-16'
@@ -245,7 +261,7 @@ import requests
 # data['ship_city'] = 'Reimsss'
 # data['ship_region'] = ''
 # data['ship_postal_code'] = '51100'
-# data['ship_country'] = 'Frances'
+# data['ship_country'] = 'Franceee'
 # report = requests.post('http://localhost:8080/update_orders', json=data)
 # print(report.text)
 
@@ -254,7 +270,7 @@ import requests
 # ------------------------------------------------------------------------------------
 # Test insert vao bang Orders_detail
 # data = {}
-# data['order_id'] = "3"
+# data['order_id'] = "2"
 # data['product_id'] = '4'
 # data['unit_price'] = '14'
 # data['quantity'] = '12'
@@ -262,7 +278,16 @@ import requests
 # report = requests.post('http://localhost:8080/insert_order_details', json=data)
 # print(report.text)
 
-
+# Test update vao bang Orders_detail
+# data = {}
+# data['order_details_id'] = '1'
+# data['order_id'] = "2"
+# data['product_id'] = '4'
+# data['unit_price'] = '17'
+# data['quantity'] = '12'
+# data['discount'] = '0'
+# report = requests.post('http://localhost:8080/update_order_details', json=data)
+# print(report.text)
 
 
 # Test giao tiep
