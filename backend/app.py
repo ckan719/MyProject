@@ -305,7 +305,7 @@ def insert_orders():
 def update_orders():
     cn_db = db_od.orders(con_db)
     data = request.json
-    od1 = od.orders(data['oder_id'], data['customer_id'], data['employee_id'],
+    od1 = od.orders(data['order_id'], data['customer_id'], data['employee_id'],
                     data['order_date'], data['required_date'], data['shipped_date'],
                     data['ship_via'], data['freight'], data['ship_name'],
                     data['ship_address'], data['ship_city'], data['ship_region'],
