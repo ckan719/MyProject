@@ -82,7 +82,7 @@ CREATE TABLE employees (
     extension character varying(4),
     photo bytea,
     notes text,
-    photo_path character varying(255),
+    photo_path character varying(255)
 );
 
 
