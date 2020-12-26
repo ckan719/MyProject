@@ -79,7 +79,8 @@ def delete_categories():
 def insert_categories():
     cn_db = db_cate.categories(con_db)
     data = request.json
-    cate1 = cate.categories(1, data['category_name'], data['description'], data['picture'])
+    cate1 = cate.categories(
+        1, data['category_name'], data['description'], data['picture'])
     rs = cn_db.insert(cate1)
     return jsonify({
         'message': rs
@@ -90,7 +91,8 @@ def insert_categories():
 def update_categories():
     cn_db = db_cate.categories(con_db)
     data = request.json
-    cate1 = cate.categories(data['category_id'], data['category_name'], data['description'], data['picture'])
+    cate1 = cate.categories(
+        data['category_id'], data['category_name'], data['description'], data['picture'])
     rs = cn_db.update(cate1)
     return jsonify({
         'message': rs
@@ -121,7 +123,7 @@ def update_customers():
                          data['address'], data['city'], data['region'], data['postal_code'], data['country'],
                          data['phone'], data['fax'])
     rs = cn_db.update(cus1)
-   return jsonify({
+    return jsonify({
         'message': rs
     }), 200
 
@@ -169,7 +171,7 @@ def insert_employees():
                          data['photo'], data['notes'],
                          data['photo_path'])
     rs = cn_db.insert(emp1)
-   return jsonify({
+    return jsonify({
         'message': rs
     }), 200
 
@@ -213,7 +215,7 @@ def delete_employees():
     cn_db = db_emp.employees(con_db)
     data = request.json
     rs = cn_db.delete(data['employee_id'])
-   return jsonify({
+    return jsonify({
         'message': rs
     }), 200
 
