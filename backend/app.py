@@ -81,7 +81,7 @@ def insert_categories():
     data = request.json
     cate1 = cate.categories(1, data['category_name'], data['description'], data['picture'])
     rs = cn_db.insert(cate1)
-   return jsonify({
+    return jsonify({
         'message': rs
     }), 200
 
@@ -108,7 +108,7 @@ def insert_customers():
                          data['address'], data['city'], data['region'], data['postal_code'], data['country'],
                          data['phone'], data['fax'])
     rs = cn_db.insert(cus1)
-   return jsonify({
+    return jsonify({
         'message': rs
     }), 200
 
