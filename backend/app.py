@@ -28,7 +28,10 @@ import region as reg
 import db_suppliers as db_sup
 import suppliers as sup
 
+from flask_cors import CORS
+
 app = Flask(__name__)
+CORS(app)
 
 dp_ip = os.getenv('dp_ip')
 con_db = {}
