@@ -44,7 +44,7 @@ con_db['database'] = 'northwind_db'
 
 @app.route('/')
 def hello_world():
-    return " <button> hello </button>"
+    return "Hello World ! :D"
 
 
 # categories
@@ -62,7 +62,7 @@ def one_categories(cate_id):
     rs = db_cate.categories(con_db).get_by_id(c)
     if rs[1] != 200:
         return jsonify({'message': rs[0]}), rs[1]
-    return jsonify(rs[0].to_json()), 200
+    return jsonify({'message': rs[0].to_json()}), 200
 
 
 @app.route('/delete_categories', methods=['POST'])
@@ -152,7 +152,7 @@ def one_customers(cus_id):
     rs = db_cus.customers(con_db).get_by_id(c)
     if rs[1] != 200:
         return jsonify({'message': rs[0]}), rs[1]
-    return jsonify(rs[0].to_json()), 200
+    return jsonify({'message': rs[0].to_json()}), 200
 
 
 # -----------------------------------------------------
@@ -207,7 +207,7 @@ def one_employees(employee_id):
     rs = db_emp.employees(con_db).get_by_id(e)
     if rs[1] != 200:
         return jsonify({'message': rs[0]}), rs[1]
-    return jsonify(rs[0].to_json()), 200
+    return jsonify({'message': rs[0].to_json()}), 200
 
 
 @app.route('/delete_employees', methods=['POST'])
@@ -220,6 +220,7 @@ def delete_employees():
     }), 200
 
 # shippers +++++++++++++++++
+
 
 @app.route('/user/all_shippers')
 def all_shippers():
@@ -235,7 +236,7 @@ def one_shippers(shipper_id):
     rs = db_ship.shippers(con_db).get_by_id(c)
     if rs[1] != 200:
         return jsonify({'message': rs[0]}), rs[1]
-    return jsonify(rs[0].to_json()), 200
+    return jsonify({'message': rs[0].to_json()}), 200
 
 
 @app.route('/delete_shippers', methods=['POST'])
@@ -263,7 +264,8 @@ def insert_shippers():
 def update_shippers():
     cn_db = db_ship.shippers(con_db)
     data = request.json
-    ship1 = ship.shippers(data['shipper_id'], data['company_name'], data['phone'])
+    ship1 = ship.shippers(data['shipper_id'],
+                          data['company_name'], data['phone'])
     rs = cn_db.update(ship1)
     return jsonify({
         'message': rs
@@ -271,6 +273,7 @@ def update_shippers():
 
 # ----------------------------------------
 # orders +++++++++++++++++
+
 
 @app.route('/user/all_orders')
 def all_orders():
@@ -286,7 +289,7 @@ def one_orders(order_id):
     rs = db_od.orders(con_db).get_by_id(c)
     if rs[1] != 200:
         return jsonify({'message': rs[0]}), rs[1]
-    return jsonify(rs[0].to_json()), 200
+    return jsonify({'message': rs[0].to_json()}), 200
 
 
 @app.route('/delete_orders', methods=['POST'])
@@ -346,7 +349,7 @@ def one_order_details(order_details_id):
     rs = db_oddt.order_details(con_db).get_by_id(c)
     if rs[1] != 200:
         return jsonify({'message': rs[0]}), rs[1]
-    return jsonify(rs[0].to_json()), 200
+    return jsonify({'message': rs[0].to_json()}), 200
 
 
 @app.route('/delete_order_details', methods=['POST'])
@@ -357,6 +360,7 @@ def delete_order_details():
     return jsonify({
         'message': rs
     }), 200
+
 
 @app.route('/insert_order_details', methods=['POST'])
 def insert_order_details():
@@ -391,13 +395,14 @@ def all_suppliers():
         'data': result
     }), 200
 
+
 @app.route('/user/one_suppliers/<int:supplier_id>')
 def one_suppliers(supplier_id):
     c = sup.suppliers(supplier_id=supplier_id)
     rs = db_sup.suppliers(con_db).get_by_id(c)
     if rs[1] != 200:
         return jsonify({'message': rs[0]}), rs[1]
-    return jsonify(rs[0].to_json()), 200
+    return jsonify({'message': rs[0].to_json()}), 200
 
 
 @app.route('/delete_suppliers', methods=['POST'])
@@ -455,6 +460,7 @@ def insert_products():
         'message': rs
     }), 200
 
+
 @app.route('/update_products', methods=['POST'])
 def update_products():
     cn_db = db_pro.products(con_db)
@@ -482,7 +488,7 @@ def one_products(product_id):
     rs = db_pro.products(con_db).get_by_id(e)
     if rs[1] != 200:
         return jsonify({'message': rs[0]}), rs[1]
-    return jsonify(rs[0].to_json()), 200
+    return jsonify({'message': rs[0].to_json()}), 200
 
 
 @app.route('/delete_products', methods=['POST'])
@@ -509,6 +515,7 @@ def insert_region():
         'message': rs
     }), 200
 
+
 @app.route('/update_region', methods=['POST'])
 def update_region():
     cn_db = db_reg.region(con_db)
@@ -534,7 +541,7 @@ def one_region(region_id):
     rs = db_reg.region(con_db).get_by_id(e)
     if rs[1] != 200:
         return jsonify({'message': rs[0]}), rs[1]
-    return jsonify(rs[0].to_json()), 200
+    return jsonify({'message': rs[0].to_json()}), 200
 
 
 @app.route('/delete_region', methods=['POST'])
@@ -545,6 +552,7 @@ def delete_region():
     return jsonify({
         'message': rs
     }), 200
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
