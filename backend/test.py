@@ -9,8 +9,9 @@ import requests
 # data['category_name'] = 'Lissa'
 # data['description'] = 'Soft drinks, coffees, teas, beers, and ales'
 # data['picture'] = ''
-# report = requests.post('http://192.168.1.3:8080/insert_categories', json=data)
+# report = requests.post('http://localhost:8080/insert_categories', json=data)
 # print(report.text)
+
 # data1 = {}
 # data1['category_name'] = 'Rose'
 # data1['description'] = 'Soft drinks, coffees, teas, beers, and ales'
@@ -21,7 +22,7 @@ import requests
 # Test delete  bang categories with ID
 # data = {}
 # data['category_id'] = '3'
-# report = requests.post('http://192.168.1.13:8080/delete_categories', json=data)
+# report = requests.post('http://localhost:8080/delete_categories', json=data)
 # print(report.text)
 
 # Test update bang categories

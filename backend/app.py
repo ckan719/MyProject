@@ -69,7 +69,8 @@ def one_categories(cate_id):
 def delete_categories():
     cn_db = db_cate.categories(con_db)
     data = request.json
-    result = cn_db.delete(data['category_id'])
+    cate1 = cate.categories(data['category_id'], data['category_name'], data['description'], data['picture'])
+    result = cn_db.delete(cate1)
     return jsonify({
         'message': result
     }), 200
