@@ -28,7 +28,7 @@ import region as reg
 import db_suppliers as db_sup
 import suppliers as sup
 
-from flask-cors import CORS
+from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
