@@ -79,7 +79,7 @@ class categories:
                                    database=self.connect_db['database'])
 
             cur = con.cursor()
-            sql = "SELECT * FROM categories ODER BY category_id ASC"
+            sql = "SELECT * FROM categories ORDER BY category_id ASC"
             cur.execute(sql)
             con.commit()
             rows = cur.fetchall()
