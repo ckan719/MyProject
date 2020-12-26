@@ -28,7 +28,7 @@ import region as reg
 import db_suppliers as db_sup
 import suppliers as sup
 
-from flask_cors import CORS
+from flask-cors import CORS
 
 app = Flask(__name__)
 CORS(app)
@@ -162,7 +162,7 @@ def insert_employees():
                          data['address'], data['city'],
                          data['region'], data['postal_code'], data['country'],
                          data['home_phone'], data['extension'],
-                         data['photo'], data['notes'], 
+                         data['photo'], data['notes'],
                          data['photo_path'])
     rs = cn_db.insert(emp1)
     result = {}
@@ -435,7 +435,7 @@ def update_suppliers():
 def insert_products():
     cn_db = db_pro.products(con_db)
     data = request.json
-    pro1 = pro.products(1,data['product_name'], data['supplier_id'], data['category_id'],
+    pro1 = pro.products(1, data['product_name'], data['supplier_id'], data['category_id'],
                         data['quantity_per_unit'], data['unit_price'], data['units_in_stock'],
                         data['units_on_order'], data['reorder_level'], data['discontinued'])
     rs = cn_db.insert(pro1)
