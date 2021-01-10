@@ -27,7 +27,7 @@ class region:
             if con is not None:
                 con.close()
 
-    def delete(self, id):
+    def delete(self, region):
         con = None
         try:
             con = psycopg2.connect(user=self.connect_db['user'],
@@ -37,7 +37,7 @@ class region:
                                    database=self.connect_db['database'])
             cur = con.cursor()
             sql = "DELETE FROM region WHERE region_id = %s"
-            cur.execute(sql, id)
+            cur.execute(sql, (region.region_id ,))
             con.commit()
             con.close()
             return 'Delete Success! '
