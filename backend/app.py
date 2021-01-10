@@ -133,9 +133,12 @@ def update_customers():
 def delete_customers():
     cn_db = db_cus.customers(con_db)
     data = request.json
-    rs = cn_db.delete(data['customer_id'])
+    cus1 = cus.customers(data['customer_id'], data['company_name'], data['contact_name'], data['contact_title'],
+                         data['address'], data['city'], data['region'], data['postal_code'], data['country'],
+                         data['phone'], data['fax'])
+    result = cn_db.delete(cus1)
     return jsonify({
-        'message': rs
+        'message': result
     }), 200
 
 
