@@ -6,7 +6,7 @@ class region:
     def __init__(self, connect_db):
         self.connect_db = connect_db
 
-    def insert(self, employee):
+    def insert(self, region):
         con = None
         try:
             con = psycopg2.connect(user=self.connect_db['user'],
@@ -16,7 +16,7 @@ class region:
                                    database=self.connect_db['database'])
             cur = con.cursor()
             sql = "INSERT INTO region (region_description) VALUES (%s) "
-            result = (region.region_description)
+            result = (region.region_description,)
             cur.execute(sql, result)
             con.commit()
             con.close()
