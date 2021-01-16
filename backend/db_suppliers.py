@@ -45,7 +45,7 @@ class suppliers:
             cur.execute(sql, (id,))
             con.commit()
             con.close()
-            return 'Delete Success!'
+            return "Insert Success!"
         except (Exception, psycopg2.DatabaseError) as error:
             return str(error)
         finally:

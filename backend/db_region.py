@@ -20,7 +20,7 @@ class region:
             cur.execute(sql, result)
             con.commit()
             con.close()
-            return 'Insert Susscess!'
+            return "Insert Success!"
         except (Exception, psycopg2.DatabaseError) as error:
             return str(error)
         finally:

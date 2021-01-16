@@ -291,9 +291,7 @@ import requests
 # print(report.text)
 
 
-data = {}
-data['region_id'] = '2'
-data['region_description'] = 'adsa'
-report = requests.delete('http://localhost:8080/delete_region', json=data)
+
+report = requests.delete('http://localhost:8080/delete_categories/125')
 print(report.text)
 
