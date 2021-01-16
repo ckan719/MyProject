@@ -1,16 +1,11 @@
-### MyProject
+# MyProject
  ## Nguyễn Công Nhật
  ## Phạm Văn Minh
  ## Phạm Hùng Vương
 
-## Clone project
+# Clone project
  Clone git project : git clone https://github.com/ckan719/MyProject.git
-## Requirement
-- name database : northwind_db (create table in file db/sql_create.sql)
-- --env db_ip=<"your ip server">
-- port host :8080
-
-## Build & Run
+# Build & Run
 
 
  1.Stop and remove old container: docker stop backend && docker rm backend
@@ -18,7 +13,7 @@
     - cd MyProject/backend
     - docker build -t backend .
  3.Run the container:  docker run -d --name backend --env db_ip=10.0.2.128 -p 8080:8080 backend
-## DB
+# DB
  1. Pull images :  docker pull postgres:alpine
  2. Run db :  docker run -d --restart unless-stopped --name postgres-0 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=postgres -p 5432:5432 postgres:alpine
  3. Go to DB :
@@ -27,13 +22,13 @@
     - \c northwind_db
  * DB name : northwind_db
  * Các bảng ở file : db/sql_creat.sql
-## Entity
-# categories
+# Entity
+## categories
     - category_id
     - category_name
     - description
     - picture
-# customers
+## customers
     - customer_id
     - company_name
     - contact_name
@@ -45,7 +40,7 @@
     - country
     - phone
     - fax
-# employees
+## employees
     - employee_id
     - last_name
     - first_name
@@ -63,7 +58,7 @@
     - photo
     - notes
     - photo_path
-# suppliers
+## suppliers
     - supplier_id
     - company_name
     - contact_name
@@ -76,7 +71,7 @@
     - phone
     - fax
     - homepage
-# products
+## products
     - product_id
     - product_name
     - supplier_id
@@ -87,14 +82,14 @@
     - units_on_order
     - reorder_level
     - discontinued
-# region
+## region
     - region_id
     - region_description
-# shippers
+## shippers
     - shipper_id
     - company_name
     - phone
-# orders
+## orders
     - order_id
     - customer_id
     - employee_id
@@ -109,31 +104,31 @@
     - ship_region
     - ship_postal_code
     - ship_country
-# territories
+## territories
     - territory_id
     - territory_description
     - region_id
-# employee_territories
+## employee_territories
     - employee_territories_id
     - employee_id
     - territory_id
-# order_details
+## order_details
     - order_details_id
     - order_id
     - product_id
     - unit_price
     - quantity
     - discount
-# us_states
+## us_states
     - state_id
     - state_name
     - state_abbr
     - state_region
-# customer_customer_demo
+## customer_customer_demo
     - customer_customer_demo_id
     - customer_id
     - customer_type_id
-# customer_demographics
+## customer_demographics
     - customer_type_id
     - customer_desc
 
