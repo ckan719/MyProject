@@ -20,8 +20,8 @@
         - docker exec -it postgres-0 bash
         - psql -U postgres
         - \c northwind_db
-    * DB name : northwind_db
-    * Các bảng ở file : db/sql_creat.sql
+        - DB name : northwind_db
+        - Các bảng ở file : db/sql_creat.sql
 # Entity
 ## categories
     - category_id
