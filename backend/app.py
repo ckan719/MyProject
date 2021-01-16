@@ -127,7 +127,7 @@ def update_customers():
     }), 200
 
 
-@app.route('/delete_customers/<int:cus_id>', methods=['DELETE'])
+@app.route('/delete_customers/<cus_id>', methods=['DELETE'])
 def delete_customers(cus_id):
     cn_db = db_cus.customers(con_db)
     result = cn_db.delete(cus_id)
