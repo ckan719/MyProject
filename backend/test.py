@@ -290,3 +290,10 @@ import requests
 # report = requests.put('http://localhost:8080/update_order_details', json=data)
 # print(report.text)
 
+
+data = {}
+data['region_id'] = '2'
+data['region_description'] = 'adsa'
+report = requests.delete('http://localhost:8080/delete_region', json=data)
+print(report.text)
+
