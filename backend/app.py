@@ -65,7 +65,7 @@ def one_categories(cate_id):
     return jsonify({'message': rs[0].to_json()}), 200
 
 
-@app.route('/delete_categories', methods=['POST'])
+@app.route('/delete_categories', methods=['DELETE'])
 def delete_categories():
     cn_db = db_cate.categories(con_db)
     data = request.json
@@ -88,7 +88,7 @@ def insert_categories():
     }), 200
 
 
-@app.route('/update_categories', methods=['POST'])
+@app.route('/update_categories', methods=['PUT'])
 def update_categories():
     cn_db = db_cate.categories(con_db)
     data = request.json
@@ -116,7 +116,7 @@ def insert_customers():
     }), 200
 
 
-@app.route('/update_customers', methods=['POST'])
+@app.route('/update_customers', methods=['PUT'])
 def update_customers():
     cn_db = db_cus.customers(con_db)
     data = request.json
@@ -129,7 +129,7 @@ def update_customers():
     }), 200
 
 
-@app.route('/delete_customers', methods=['POST'])
+@app.route('/delete_customers', methods=['DELETE'])
 def delete_customers():
     cn_db = db_cus.customers(con_db)
     data = request.json
@@ -180,7 +180,7 @@ def insert_employees():
     }), 200
 
 
-@app.route('/update_employees', methods=['POST'])
+@app.route('/update_employees', methods=['PUT'])
 def update_employees():
     cn_db = db_emp.employees(con_db)
     data = request.json
@@ -214,7 +214,7 @@ def one_employees(employee_id):
     return jsonify({'message': rs[0].to_json()}), 200
 
 
-@app.route('/delete_employees', methods=['POST'])
+@app.route('/delete_employees', methods=['DELETE'])
 def delete_employees():
     cn_db = db_emp.employees(con_db)
     data = request.json
@@ -243,7 +243,7 @@ def one_shippers(shipper_id):
     return jsonify({'message': rs[0].to_json()}), 200
 
 
-@app.route('/delete_shippers', methods=['POST'])
+@app.route('/delete_shippers', methods=['DELETE'])
 def delete_shippers():
     cn_db = db_ship.shippers(con_db)
     data = request.json
@@ -264,7 +264,7 @@ def insert_shippers():
     }), 200
 
 
-@app.route('/update_shippers', methods=['POST'])
+@app.route('/update_shippers', methods=['PUT'])
 def update_shippers():
     cn_db = db_ship.shippers(con_db)
     data = request.json
@@ -296,7 +296,7 @@ def one_orders(order_id):
     return jsonify({'message': rs[0].to_json()}), 200
 
 
-@app.route('/delete_orders', methods=['POST'])
+@app.route('/delete_orders', methods=['DELETE'])
 def delete_orders():
     cn_db = db_od.orders(con_db)
     data = request.json
@@ -321,7 +321,7 @@ def insert_orders():
     }), 200
 
 
-@app.route('/update_orders', methods=['POST'])
+@app.route('/update_orders', methods=['PUT'])
 def update_orders():
     cn_db = db_od.orders(con_db)
     data = request.json
@@ -356,7 +356,7 @@ def one_order_details(order_details_id):
     return jsonify({'message': rs[0].to_json()}), 200
 
 
-@app.route('/delete_order_details', methods=['POST'])
+@app.route('/delete_order_details', methods=['DELETE'])
 def delete_order_details():
     cn_db = db_oddt.order_details(con_db)
     data = request.json
@@ -378,7 +378,7 @@ def insert_order_details():
     }), 200
 
 
-@app.route('/update_order_details', methods=['POST'])
+@app.route('/update_order_details', methods=['PUT'])
 def update_order_details():
     cn_db = db_oddt.order_details(con_db)
     data = request.json
@@ -409,7 +409,7 @@ def one_suppliers(supplier_id):
     return jsonify({'message': rs[0].to_json()}), 200
 
 
-@app.route('/delete_suppliers', methods=['POST'])
+@app.route('/delete_suppliers', methods=['DELETE'])
 def delete_suppliers():
     cn_db = db_sup.suppliers(con_db)
     data = request.json
@@ -434,7 +434,7 @@ def insert_suppliers():
     }), 200
 
 
-@app.route('/update_suppliers', methods=['POST'])
+@app.route('/update_suppliers', methods=['PUT'])
 def update_suppliers():
     cn_db = db_sup.suppliers(con_db)
     data = request.json
@@ -465,7 +465,7 @@ def insert_products():
     }), 200
 
 
-@app.route('/update_products', methods=['POST'])
+@app.route('/update_products', methods=['PUT'])
 def update_products():
     cn_db = db_pro.products(con_db)
     data = request.json
@@ -495,7 +495,7 @@ def one_products(product_id):
     return jsonify({'message': rs[0].to_json()}), 200
 
 
-@app.route('/delete_products', methods=['POST'])
+@app.route('/delete_products', methods=['DELETE'])
 def delete_products():
     cn_db = db_pro.products(con_db)
     data = request.json
@@ -520,7 +520,7 @@ def insert_region():
     }), 200
 
 
-@app.route('/update_region', methods=['POST'])
+@app.route('/update_region', methods=['PUT'])
 def update_region():
     cn_db = db_reg.region(con_db)
     data = request.json
@@ -548,7 +548,7 @@ def one_region(region_id):
     return jsonify({'message': rs[0].to_json()}), 200
 
 
-@app.route('/delete_region', methods=['POST'])
+@app.route('/delete_region', methods=['DELETE'])
 def delete_region():
     cn_db = db_reg.region(con_db)
     data = request.json

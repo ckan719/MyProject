@@ -22,7 +22,7 @@ import requests
 # Test delete  bang categories with ID
 # data = {}
 # data['category_id'] = '3'
-# report = requests.post('http://localhost:8080/delete_categories', json=data)
+# report = requests.delete('http://localhost:8080/delete_categories', json=data)
 # print(report.text)
 
 # Test update bang categories
@@ -31,7 +31,7 @@ import requests
 # data['category_name'] = 'Beverages'
 # data['description'] = 'Soft drinks, coffees, teas, beers, and ales'
 # data['picture'] = ''
-# report = requests.post('http://192.168.1.13:8080/update_categories', json=data)
+# report = requests.put('http://192.168.1.13:8080/update_categories', json=data)
 # print(report.text)
 
  #------------------------------------------------------------------------------------
@@ -96,13 +96,13 @@ import requests
 # data['photo'] = ''
 # data['notes'] = 'Andrew received his BTS commercial in 1974'
 # data['photo_path'] = ''
-# report = requests.post('http://localhost:8080/update_employees', json=data)
+# report = requests.put('http://localhost:8080/update_employees', json=data)
 # print(report.text)
 
 # test delete EMPLOYEE
 # data ={}
 # data['employee_id'] = '1'
-# report = requests.post('http://localhost:8080/delete_employees', json=data)
+# report = requests.delete('http://localhost:8080/delete_employees', json=data)
 # print(report.text)
 
 # test get EMPLOYEE
@@ -142,13 +142,13 @@ import requests
 # data['phone'] = '(171) 555-2222'
 # data['fax'] = ''
 # data['homepage'] = ''
-# report = requests.post('http://localhost:8080/update_suppliers', json=data)
+# report = requests.put('http://localhost:8080/update_suppliers', json=data)
 # print(report.text)
 
 # test delete 
 # data ={}
 # data['supplier_id'] = '1'
-# report = requests.post('http://localhost:8080/delete_suppliers', json=data)
+# report = requests.delete('http://localhost:8080/delete_suppliers', json=data)
 # print(report.text)
 
 
@@ -193,13 +193,13 @@ import requests
 # data['units_on_order'] = '0'
 # data['reorder_level'] = '10'
 # data['discontinued'] = '1'
-# report = requests.post('http://localhost:8080/update_products', json=data)
+# report = requests.put('http://localhost:8080/update_products', json=data)
 # print(report.text)
 
 # test delete 
 # data ={}
 # data['product_id'] = '1'
-# report = requests.post('http://localhost:8080/delete_products', json=data)
+# report = requests.delete('http://localhost:8080/delete_products', json=data)
 # print(report.text)
 # ------------------------------------------------------------------------------------
 # -----------------------------Shipers------------------------------------
@@ -222,7 +222,7 @@ import requests
 # data['shipper_id'] = "1"
 # data['company_name'] = "Speedy"
 # data['phone'] = '(503) 555-9831'
-# report = requests.post('http://localhost:8080/update_shippers', json=data)
+# report = requests.put('http://localhost:8080/update_shippers', json=data)
 # print(report.text)
 
 
@@ -263,7 +263,7 @@ import requests
 # data['ship_region'] = ''
 # data['ship_postal_code'] = '51100'
 # data['ship_country'] = 'Franceee'
-# report = requests.post('http://localhost:8080/update_orders', json=data)
+# report = requests.put('http://localhost:8080/update_orders', json=data)
 # print(report.text)
 
 # ------------------------------------------------------------------------------------
@@ -287,6 +287,6 @@ import requests
 # data['unit_price'] = '17'
 # data['quantity'] = '12'
 # data['discount'] = '0'
-# report = requests.post('http://localhost:8080/update_order_details', json=data)
+# report = requests.put('http://localhost:8080/update_order_details', json=data)
 # print(report.text)
 
