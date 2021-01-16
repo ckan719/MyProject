@@ -14,14 +14,14 @@
     - docker build -t backend .
     3.Run the container:  docker run -d --name backend --env db_ip=10.0.2.128 -p 8080:8080 backend
 # DB
- 1. Pull images :  docker pull postgres:alpine
- 2. Run db :  docker run -d --restart unless-stopped --name postgres-0 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=postgres -p 5432:5432 postgres:alpine
- 3. Go to DB :
-    - docker exec -it postgres-0 bash
-    - psql -U postgres
-    - \c northwind_db
- * DB name : northwind_db
- * Các bảng ở file : db/sql_creat.sql
+    1. Pull images :  docker pull postgres:alpine
+    2. Run db :  docker run -d --restart unless-stopped --name postgres-0 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=postgres -p 5432:5432 postgres:alpine
+    3. Go to DB :
+        - docker exec -it postgres-0 bash
+        - psql -U postgres
+        - \c northwind_db
+    * DB name : northwind_db
+    * Các bảng ở file : db/sql_creat.sql
 # Entity
 ## categories
     - category_id
