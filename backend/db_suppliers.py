@@ -61,10 +61,7 @@ class suppliers:
                                    port=self.connect_db['port'],
                                    database=self.connect_db['database'])
             cur = con.cursor()
-            sql = """UPDATE suppliers SET  company_name  = %s,contact_name = %s,contact_title = %s,address = %s,
-                                            city = %s,region = %s,postal_code = %s,country = %s,phone = %s,
-                                            fax = %s,homepage = %s
-                                            WHERE supplier_id = %s"""
+            sql = "UPDATE suppliers SET  company_name  = %s,contact_name = %s,contact_title = %s,address = %s,city = %s,region = %s,postal_code = %s,country = %s,phone = %s,fax = %s,homepage = %s WHERE supplier_id = %s"
             result = (supplier.company_name, supplier.contact_name, supplier.contact_title,
                       supplier.address, supplier.city, supplier.region,
                       supplier.postal_code, supplier.country, supplier.phone,
