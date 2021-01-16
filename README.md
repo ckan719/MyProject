@@ -7,7 +7,7 @@
  Clone git project : git clone https://github.com/ckan719/MyProject.git
 # Requirement
 - name database : northwind_db (create table in file db/sql_create.sql)
-- --env dp_ip=<your ip server>
+- --env dp_ip=<"your ip server">
 - port host :8080
 
 # Build & Run
