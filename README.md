@@ -11,11 +11,18 @@
 - port host :8080
 
 # Build & Run
+ cd MyProject/backend
  docker build -t backend .
-##
- docker run -d --name backend --env dp_ip=? -p 8080:8080 backend
-## NOTE :
- Các hàm xóa dữ liệu trên DB là phương thức POST
+ docker run -d --name backend --env db_ip=10.0.2.128 -p 8080:8080 backend
+# DB
+ docker pull postgres:alpine
+ docker run -d --restart unless-stopped --name postgres-0 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=postgres -p 5432:5432 postgres:alpine
+ docker exec -it postgres-0 bash
+ psql -U postgres
+ 
+ * DB name : northwind_db
+ * Các bảng ở file : db/sql_creat.sql
+
 
 
 
