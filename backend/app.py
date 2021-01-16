@@ -513,7 +513,7 @@ def update_region():
     cn_db = db_reg.region(con_db)
     data = request.json
     reg1 = reg.region(data['region_id'],data['region_description'])
-    rs = cn_db.insert(reg1)
+    rs = cn_db.update(reg1)
     return jsonify({
         'message': rs
     }), 200
