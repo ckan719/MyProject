@@ -33,7 +33,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-dp_ip = os.getenv('dp_ip')
+db_ip = os.getenv('db_ip')
 con_db = {}
 con_db['user'] = 'postgres'
 con_db['password'] = 'postgres'
