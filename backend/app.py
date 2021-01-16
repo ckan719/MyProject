@@ -37,7 +37,7 @@ db_ip = os.getenv('db_ip')
 con_db = {}
 con_db['user'] = 'postgres'
 con_db['password'] = 'postgres'
-con_db['host'] = str(dp_ip)
+con_db['host'] = str(db_ip)
 con_db['port'] = '5432'
 con_db['database'] = 'northwind_db'
 
