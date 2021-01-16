@@ -14,6 +14,8 @@
  docker build -t backend .
 ##
  docker run -d --name backend --env dp_ip=? -p 8080:8080 backend
+## NOTE :
+ Các hàm xóa dữ liệu trên DB là phương thức POST
 
 
 
