@@ -39,7 +39,7 @@ class order_details:
                                    database=self.connect_db['database'])
             cur = con.cursor()
             sql = "DELETE FROM order_details where order_details_id = %s"
-            cur.execute(sql, id)
+            cur.execute(sql, (id,))
             con.commit()
             con.close()
             return 'Delete Success!'

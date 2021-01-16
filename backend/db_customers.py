@@ -29,7 +29,7 @@ class customers:
             if con is not None:
                 con.close()
 
-    def delete(self, customer):
+    def delete(self, id):
         con = None
         try:
             con = psycopg2.connect(user=self.connect_db['user'],
@@ -39,7 +39,7 @@ class customers:
                                    database=self.connect_db['database'])
             cur = con.cursor()
             sql = "DELETE FROM customers where customer_id = %s"
-            cur.execute(sql, (customer.customer_id,))
+            cur.execute(sql, (id,))
             con.commit()
             con.close()
             return 'Delete Success!'

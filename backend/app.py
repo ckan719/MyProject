@@ -65,12 +65,10 @@ def one_categories(cate_id):
     return jsonify({'message': rs[0].to_json()}), 200
 
 
-@app.route('/delete_categories', methods=['POST'])
-def delete_categories():
+@app.route('/delete_categories/<int:cate_id>', methods=['DELETE'])
+def delete_categories(cate_id):
     cn_db = db_cate.categories(con_db)
-    data = request.json
-    cate1 = cate.categories(data['category_id'], data['category_name'], data['description'], data['picture'])
-    result = cn_db.delete(cate1)
+    result = cn_db.delete(cate_id)
     return jsonify({
         'message': result
     }), 200
@@ -129,14 +127,10 @@ def update_customers():
     }), 200
 
 
-@app.route('/delete_customers', methods=['POST'])
-def delete_customers():
+@app.route('/delete_customers/<int:cus_id>', methods=['DELETE'])
+def delete_customers(cus_id):
     cn_db = db_cus.customers(con_db)
-    data = request.json
-    cus1 = cus.customers(data['customer_id'], data['company_name'], data['contact_name'], data['contact_title'],
-                         data['address'], data['city'], data['region'], data['postal_code'], data['country'],
-                         data['phone'], data['fax'])
-    result = cn_db.delete(cus1)
+    result = cn_db.delete(cus_id)
     return jsonify({
         'message': result
     }), 200
@@ -214,11 +208,10 @@ def one_employees(employee_id):
     return jsonify({'message': rs[0].to_json()}), 200
 
 
-@app.route('/delete_employees', methods=['POST'])
-def delete_employees():
+@app.route('/delete_employees/<int:employee_id>', methods=['DELETE'])
+def delete_employees(employee_id):
     cn_db = db_emp.employees(con_db)
-    data = request.json
-    rs = cn_db.delete(data['employee_id'])
+    rs = cn_db.delete(employee_id)
     return jsonify({
         'message': rs
     }), 200
@@ -243,11 +236,10 @@ def one_shippers(shipper_id):
     return jsonify({'message': rs[0].to_json()}), 200
 
 
-@app.route('/delete_shippers', methods=['POST'])
-def delete_shippers():
+@app.route('/delete_shippers/<int:shipper_id>', methods=['DELETE'])
+def delete_shippers(shipper_id):
     cn_db = db_ship.shippers(con_db)
-    data = request.json
-    rs = cn_db.delete(data['shipper_id'])
+    rs = cn_db.delete(shipper_id)
     return jsonify({
         'message': rs
     }), 200
@@ -296,11 +288,10 @@ def one_orders(order_id):
     return jsonify({'message': rs[0].to_json()}), 200
 
 
-@app.route('/delete_orders', methods=['POST'])
-def delete_orders():
+@app.route('/delete_orders/<int:order_id>', methods=['DELETE'])
+def delete_orders(order_id):
     cn_db = db_od.orders(con_db)
-    data = request.json
-    rs = cn_db.delete(data['order_id'])
+    rs = cn_db.delete(order_id)
     return jsonify({
         'message': rs
     }), 200
@@ -356,11 +347,10 @@ def one_order_details(order_details_id):
     return jsonify({'message': rs[0].to_json()}), 200
 
 
-@app.route('/delete_order_details', methods=['POST'])
-def delete_order_details():
+@app.route('/delete_order_details/<int:order_details_id>', methods=['DELETE'])
+def delete_order_details(order_details_id):
     cn_db = db_oddt.order_details(con_db)
-    data = request.json
-    rs = cn_db.delete(data['order_details_id'])
+    rs = cn_db.delete(order_details_id)
     return jsonify({
         'message': rs
     }), 200
@@ -409,11 +399,10 @@ def one_suppliers(supplier_id):
     return jsonify({'message': rs[0].to_json()}), 200
 
 
-@app.route('/delete_suppliers', methods=['POST'])
-def delete_suppliers():
+@app.route('/delete_suppliers/<int:supplier_id>', methods=['DELETE'])
+def delete_suppliers(supplier_id):
     cn_db = db_sup.suppliers(con_db)
-    data = request.json
-    rs = cn_db.delete(data['supplier_id'])
+    rs = cn_db.delete(supplier_id)
     return jsonify({
         'message': rs
     }), 200
@@ -495,11 +484,10 @@ def one_products(product_id):
     return jsonify({'message': rs[0].to_json()}), 200
 
 
-@app.route('/delete_products', methods=['POST'])
-def delete_products():
+@app.route('/delete_products/<int:product_id>', methods=['DELETE'])
+def delete_products(product_id):
     cn_db = db_pro.products(con_db)
-    data = request.json
-    rs = cn_db.delete(data['product_id'])
+    rs = cn_db.delete(product_id)
     return jsonify({
         'message': rs
     }), 200
@@ -548,12 +536,10 @@ def one_region(region_id):
     return jsonify({'message': rs[0].to_json()}), 200
 
 
-@app.route('/delete_region', methods=['POST'])
-def delete_region():
+@app.route('/delete_region/<int:region_id>', methods=['DELETE'])
+def delete_region(region_id):
     cn_db = db_reg.region(con_db)
-    data = request.json
-    reg1 = reg.region(data['region_id'], data['region_description'])
-    rs = cn_db.delete(reg1)
+    rs = cn_db.delete(region_id)
     return jsonify({
         'message': rs
     }), 200

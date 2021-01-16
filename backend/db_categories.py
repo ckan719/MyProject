@@ -27,7 +27,7 @@ class categories:
             if con is not None:
                 con.close()
 
-    def delete(self, category):
+    def delete(self, id):
         con = None
         try:
             con = psycopg2.connect(user=self.connect_db['user'],
@@ -37,7 +37,7 @@ class categories:
                                    database=self.connect_db['database'])
             cur = con.cursor()
             sql = "DELETE FROM categories where category_id = %s"
-            cur.execute(sql, (category.category_id,))
+            cur.execute(sql, (id,))
             con.commit()
             con.close()
             return 'Delete Success!'
