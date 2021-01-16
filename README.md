@@ -131,8 +131,190 @@
 ## customer_demographics
     - customer_type_id
     - customer_desc
-
-
+# API
+## categories
+###     Get all categories
+            * Request :
+                - Method : GET
+                - Endpoint : /user/all_categories
+                - Body : None
+            * Response : [category]
+###     Add categories
+            * Request :
+                - Method : POST
+                - Endpoint : /insert_categories
+                - Body : {
+                    'category_name': string',
+                    'description': string,
+                    'picture': string
+                }
+            * Response : message
+###     Update categories
+            * Request :
+                - Method : PUT
+                - Endpoint : /update_categories
+                - Body : {
+                    'category_id' : string,
+                    'category_name': string,
+                    'description': string,
+                    'picture': string
+                }
+            * Response : message
+###     Delete categories
+            * Request :
+                - Method : PUT
+                - Endpoint : /delete_categories/<int:cate_id>
+                - Body : {
+                    'cate_id' : int
+                }
+            * Response : message
+## customers
+###     Get all customers
+            * Request :
+                - Method : GET
+                - Endpoint : /user/all_customers
+                - Body : None
+            * Response : [customer]
+###     Add customers
+            * Request :
+                - Method : POST
+                - Endpoint : /insert_customers
+                - Body : {
+                    'customer_id': string,
+                    'company_name': string,
+                    'contact_name': string,
+                    'contact_title': string,
+                    'address': string,
+                    'city': string,
+                    'region': string,
+                    'postal_code': int,
+                    'country': int,
+                    'phone': string,
+                    'fax': string
+                }
+            * Response : message
+###     Update customers
+            * Request :
+                - Method : PUT
+                - Endpoint : /update_customers
+                - Body : {
+                    'customer_id': string,
+                    'company_name': string,
+                    'contact_name': string,
+                    'contact_title': string,
+                    'address': string,
+                    'city': string,
+                    'region': string,
+                    'postal_code': int,
+                    'country': int,
+                    'phone': string,
+                    'fax': string
+                }
+            * Response : message
+###     Delete customers
+            * Request :
+                - Method : PUT
+                - Endpoint : /delete_customers/<cus_id>
+                - Body : {
+                    'cus_id' : string
+                }
+            * Response : message
+## employees
+###     Get all employees
+            * Request :
+                - Method : GET
+                - Endpoint : /user/all_employees
+                - Body : None
+            * Response : [employee]
+###     Add employees
+            * Request :
+                - Method : POST
+                - Endpoint : /insert_employees
+                - Body : {
+                    'last_name': string,
+                    'first_name': string,
+                    'title': string,
+                    'title_of_courtesy': string,
+                    'birth_date': string,
+                    'hire_date': string,
+                    'address': string,
+                    'city': string,
+                    'region': string,
+                    'postal_code': string,
+                    'country': string,
+                    'home_phone': string,
+                    'extension': string,
+                    'photo': string,
+                    'notes': string,
+                    'photo_path': string
+                }
+            * Response : message
+###     Update employees
+            * Request :
+                - Method : PUT
+                - Endpoint : /update_employees
+                - Body : {
+                    'employee_id': string,
+                    'last_name': string,
+                    'first_name': string,
+                    'title': string,
+                    'title_of_courtesy': string,
+                    'birth_date': string,
+                    'hire_date': string,
+                    'address': string,
+                    'city': string,
+                    'region': string,
+                    'postal_code': string,
+                    'country': string,
+                    'home_phone': string,
+                    'extension': string,
+                    'photo': string,
+                    'notes': string,
+                    'photo_path': string
+                }
+            * Response : message
+###     Delete employees
+            * Request :
+                - Method : PUT
+                - Endpoint : /delete_employees/<int:employee_id>
+                - Body : {
+                    'employee_id' : int
+                }
+            * Response : message
+## shippers
+###     Get all shippers
+            * Request :
+                - Method : GET
+                - Endpoint : /user/all_shippers
+                - Body : None
+            * Response : [shipper]
+###     Add shippers
+            * Request :
+                - Method : POST
+                - Endpoint : /insert_shippers
+                - Body : {
+                    'company_name': string,
+                    'phone': string
+                }
+            * Response : message
+###     Update shippers
+            * Request :
+                - Method : PUT
+                - Endpoint : /update_shippers
+                - Body : {
+                    'shipper_id': string,
+                    'company_name': string,
+                    'phone': string
+                }
+            * Response : message
+###     Delete shippers
+            * Request :
+                - Method : PUT
+                - Endpoint : /delete_shippers/<int:shipper_id>
+                - Body : {
+                    'shipper_id' : int
+                }
+            * Response : message
 
 
 
