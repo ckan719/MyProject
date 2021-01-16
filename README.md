@@ -254,7 +254,7 @@
                 - Method : PUT
                 - Endpoint : /update_employees
                 - Body : {
-                    'employee_id': string,
+                    'employee_id': int,
                     'last_name': string,
                     'first_name': string,
                     'title': string,
@@ -315,6 +315,233 @@
                     'shipper_id' : int
                 }
             * Response : message
-
+## orders
+###     Get all orders
+            * Request :
+                - Method : GET
+                - Endpoint : /user/all_orders
+                - Body : None
+            * Response : [order]
+###     Add orders
+            * Request :
+                - Method : POST
+                - Endpoint : /insert_orders
+                - Body : {
+                    'customer_id': string,
+                    'employee_id': string,
+                    'order_date': string,
+                    'required_date': string,
+                    'shipped_date': string,
+                    'ship_via': string,
+                    'freight': string,
+                    'ship_name': string,
+                    'ship_address': string,
+                    'ship_city': string,
+                    'ship_region': string,
+                    'ship_postal_code': string,
+                    'ship_country': string
+                }
+            * Response : message
+###     Update orders
+            * Request :
+                - Method : PUT
+                - Endpoint : /update_orders
+                - Body : {
+                    'order_id': int,
+                    'customer_id': string,
+                    'employee_id': string,
+                    'order_date': string,
+                    'required_date': string,
+                    'shipped_date': string,
+                    'ship_via': string,
+                    'freight': string,
+                    'ship_name': string,
+                    'ship_address': string,
+                    'ship_city': string,
+                    'ship_region': string,
+                    'ship_postal_code': string,
+                    'ship_country': string
+                }
+            * Response : message
+###     Delete orders
+            * Request :
+                - Method : PUT
+                - Endpoint : /delete_orders/<int:order_id>
+                - Body : {
+                    'order_id' : int
+                }
+            * Response : message
+## order_details
+###     Get all order_details
+            * Request :
+                - Method : GET
+                - Endpoint : /user/all_order_details
+                - Body : None
+            * Response : [order_detail]
+###     Add order_details
+            * Request :
+                - Method : POST
+                - Endpoint : /insert_order_details
+                - Body : {
+                    'order_id': string,
+                    'product_id': string,
+                    'unit_price': string,
+                    'quantity': string,
+                    'discount': string
+                }
+            * Response : message
+###     Update order_details
+            * Request :
+                - Method : PUT
+                - Endpoint : /update_order_details
+                - Body : {
+                    'order_details_id': int,
+                    'order_id': string,
+                    'product_id': string,
+                    'unit_price': string,
+                    'quantity': string,
+                    'discount': string
+                }
+            * Response : message
+###     Delete order_details
+            * Request :
+                - Method : PUT
+                - Endpoint : /delete_order_details/<int:order_details_id>
+                - Body : {
+                    'order_details_id' : int
+                }
+            * Response : message
+## suppliers
+###     Get all suppliers
+            * Request :
+                - Method : GET
+                - Endpoint : /user/all_suppliers
+                - Body : None
+            * Response : [supplier]
+###     Add suppliers
+            * Request :
+                - Method : POST
+                - Endpoint : /insert_suppliers
+                - Body : {
+                    'company_name': string,
+                    'contact_name': string,
+                    'contact_title': string,
+                    'address': string,
+                    'city': string,
+                    'region': string,
+                    'postal_code': string,
+                    'country': string,
+                    'phone': string,
+                    'fax': string,
+                    'homepage': string
+                }
+            * Response : message
+###     Update suppliers
+            * Request :
+                - Method : PUT
+                - Endpoint : /update_suppliers
+                - Body : {
+                    'supplier_id': int,
+                    'company_name': string,
+                    'contact_name': string,
+                    'contact_title': string,
+                    'address': string,
+                    'city': string,
+                    'region': string,
+                    'postal_code': string,
+                    'country': string,
+                    'phone': string,
+                    'fax': string,
+                    'homepage': string
+                }
+            * Response : message
+###     Delete suppliers
+            * Request :
+                - Method : PUT
+                - Endpoint : /delete_suppliers/<int:supplier_id>
+                - Body : {
+                    'supplier_id' : int
+                }
+            * Response : message
+## products
+###     Get all products
+            * Request :
+                - Method : GET
+                - Endpoint : /user/all_products
+                - Body : None
+            * Response : [product]
+###     Add products
+            * Request :
+                - Method : POST
+                - Endpoint : /insert_products
+                - Body : {
+                    'product_name': string,
+                    'supplier_id': string,
+                    'category_id': string,
+                    'quantity_per_unit': string,
+                    'unit_price': string,
+                    'units_in_stock': string,
+                    'units_on_order': string,
+                    'reorder_level': string,
+                    'discontinued': string
+                }
+            * Response : message
+###     Update products
+            * Request :
+                - Method : PUT
+                - Endpoint : /update_products
+                - Body : {
+                    'product_id': int,
+                    'product_name': string,
+                    'supplier_id': string,
+                    'category_id': string,
+                    'quantity_per_unit': string,
+                    'unit_price': string,
+                    'units_in_stock': string,
+                    'units_on_order': string,
+                    'reorder_level': string,
+                    'discontinued': string
+                }
+            * Response : message
+###     Delete products
+            * Request :
+                - Method : PUT
+                - Endpoint : /delete_products/<int:product_id>
+                - Body : {
+                    'product_id' : int
+                }
+            * Response : message
+## region
+###     Get all region
+            * Request :
+                - Method : GET
+                - Endpoint : /user/all_region
+                - Body : None
+            * Response : [region]
+###     Add region
+            * Request :
+                - Method : POST
+                - Endpoint : /insert_region
+                - Body : {
+                    'region_description': string
+                }
+            * Response : message
+###     Update region
+            * Request :
+                - Method : PUT
+                - Endpoint : /update_region
+                - Body : {
+                    'region_id': int,
+                    'region_description': string
+                }
+            * Response : message
+###     Delete region
+            * Request :
+                - Method : PUT
+                - Endpoint : /delete_region/<int:region_id>
+                - Body : {
+                    'region_id' : int
+                }
+            * Response : message
 
 
