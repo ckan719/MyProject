@@ -8,11 +8,11 @@
 # Build & Run
 
 
- 1.Stop and remove old container: docker stop backend && docker rm backend
- 2.Build image:
+    1.Stop and remove old container: docker stop backend && docker rm backend
+    2.Build image:
     - cd MyProject/backend
     - docker build -t backend .
- 3.Run the container:  docker run -d --name backend --env db_ip=10.0.2.128 -p 8080:8080 backend
+    3.Run the container:  docker run -d --name backend --env db_ip=10.0.2.128 -p 8080:8080 backend
 # DB
  1. Pull images :  docker pull postgres:alpine
  2. Run db :  docker run -d --restart unless-stopped --name postgres-0 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=postgres -p 5432:5432 postgres:alpine
