@@ -1,7 +1,7 @@
 # MyProject
- ## Nguyễn Công Nhật
- ## Phạm Văn Minh
- ## Phạm Hùng Vương
+ ### Nguyễn Công Nhật
+ ### Phạm Văn Minh
+ ### Phạm Hùng Vương
 
 # Clone project
  Clone git project : git clone https://github.com/ckan719/MyProject.git
@@ -23,12 +23,12 @@
         - DB name : northwind_db
         - Các bảng ở file : db/sql_creat.sql
 # Entity
-## categories
+### categories
     - category_id
     - category_name
     - description
     - picture
-## customers
+### customers
     - customer_id
     - company_name
     - contact_name
@@ -40,7 +40,7 @@
     - country
     - phone
     - fax
-## employees
+### employees
     - employee_id
     - last_name
     - first_name
@@ -58,7 +58,7 @@
     - photo
     - notes
     - photo_path
-## suppliers
+### suppliers
     - supplier_id
     - company_name
     - contact_name
@@ -71,7 +71,7 @@
     - phone
     - fax
     - homepage
-## products
+### products
     - product_id
     - product_name
     - supplier_id
@@ -82,14 +82,14 @@
     - units_on_order
     - reorder_level
     - discontinued
-## region
+### region
     - region_id
     - region_description
-## shippers
+### shippers
     - shipper_id
     - company_name
     - phone
-## orders
+### orders
     - order_id
     - customer_id
     - employee_id
@@ -104,42 +104,42 @@
     - ship_region
     - ship_postal_code
     - ship_country
-## territories
+### territories
     - territory_id
     - territory_description
     - region_id
-## employee_territories
+### employee_territories
     - employee_territories_id
     - employee_id
     - territory_id
-## order_details
+### order_details
     - order_details_id
     - order_id
     - product_id
     - unit_price
     - quantity
     - discount
-## us_states
+### us_states
     - state_id
     - state_name
     - state_abbr
     - state_region
-## customer_customer_demo
+### customer_customer_demo
     - customer_customer_demo_id
     - customer_id
     - customer_type_id
-## customer_demographics
+### customer_demographics
     - customer_type_id
     - customer_desc
 # API
-## categories
-###     Get all categories
+### categories
+#####     Get all categories
             * Request :
                 - Method : GET
                 - Endpoint : /user/all_categories
                 - Body : None
             * Response : [category]
-###     Add categories
+#####     Add categories
             * Request :
                 - Method : POST
                 - Endpoint : /insert_categories
@@ -149,7 +149,7 @@
                     'picture': string
                 }
             * Response : message
-###     Update categories
+#####     Update categories
             * Request :
                 - Method : PUT
                 - Endpoint : /update_categories
@@ -160,7 +160,7 @@
                     'picture': string
                 }
             * Response : message
-###     Delete categories
+#####     Delete categories
             * Request :
                 - Method : PUT
                 - Endpoint : /delete_categories/<int:cate_id>
@@ -168,14 +168,14 @@
                     'cate_id' : int
                 }
             * Response : message
-## customers
-###     Get all customers
+### customers
+#####     Get all customers
             * Request :
                 - Method : GET
                 - Endpoint : /user/all_customers
                 - Body : None
             * Response : [customer]
-###     Add customers
+#####     Add customers
             * Request :
                 - Method : POST
                 - Endpoint : /insert_customers
@@ -193,7 +193,7 @@
                     'fax': string
                 }
             * Response : message
-###     Update customers
+#####     Update customers
             * Request :
                 - Method : PUT
                 - Endpoint : /update_customers
@@ -211,7 +211,7 @@
                     'fax': string
                 }
             * Response : message
-###     Delete customers
+#####     Delete customers
             * Request :
                 - Method : PUT
                 - Endpoint : /delete_customers/<cus_id>
@@ -219,14 +219,14 @@
                     'cus_id' : string
                 }
             * Response : message
-## employees
-###     Get all employees
+### employees
+#####     Get all employees
             * Request :
                 - Method : GET
                 - Endpoint : /user/all_employees
                 - Body : None
             * Response : [employee]
-###     Add employees
+#####     Add employees
             * Request :
                 - Method : POST
                 - Endpoint : /insert_employees
@@ -249,7 +249,7 @@
                     'photo_path': string
                 }
             * Response : message
-###     Update employees
+#####     Update employees
             * Request :
                 - Method : PUT
                 - Endpoint : /update_employees
@@ -273,7 +273,7 @@
                     'photo_path': string
                 }
             * Response : message
-###     Delete employees
+#####     Delete employees
             * Request :
                 - Method : PUT
                 - Endpoint : /delete_employees/<int:employee_id>
@@ -281,14 +281,14 @@
                     'employee_id' : int
                 }
             * Response : message
-## shippers
-###     Get all shippers
+### shippers
+#####     Get all shippers
             * Request :
                 - Method : GET
                 - Endpoint : /user/all_shippers
                 - Body : None
             * Response : [shipper]
-###     Add shippers
+#####     Add shippers
             * Request :
                 - Method : POST
                 - Endpoint : /insert_shippers
@@ -297,7 +297,7 @@
                     'phone': string
                 }
             * Response : message
-###     Update shippers
+#####     Update shippers
             * Request :
                 - Method : PUT
                 - Endpoint : /update_shippers
@@ -307,7 +307,7 @@
                     'phone': string
                 }
             * Response : message
-###     Delete shippers
+#####     Delete shippers
             * Request :
                 - Method : PUT
                 - Endpoint : /delete_shippers/<int:shipper_id>
@@ -315,14 +315,14 @@
                     'shipper_id' : int
                 }
             * Response : message
-## orders
-###     Get all orders
+### orders
+#####     Get all orders
             * Request :
                 - Method : GET
                 - Endpoint : /user/all_orders
                 - Body : None
             * Response : [order]
-###     Add orders
+#####     Add orders
             * Request :
                 - Method : POST
                 - Endpoint : /insert_orders
@@ -342,7 +342,7 @@
                     'ship_country': string
                 }
             * Response : message
-###     Update orders
+#####     Update orders
             * Request :
                 - Method : PUT
                 - Endpoint : /update_orders
@@ -363,7 +363,7 @@
                     'ship_country': string
                 }
             * Response : message
-###     Delete orders
+#####     Delete orders
             * Request :
                 - Method : PUT
                 - Endpoint : /delete_orders/<int:order_id>
@@ -371,14 +371,14 @@
                     'order_id' : int
                 }
             * Response : message
-## order_details
-###     Get all order_details
+### order_details
+#####     Get all order_details
             * Request :
                 - Method : GET
                 - Endpoint : /user/all_order_details
                 - Body : None
             * Response : [order_detail]
-###     Add order_details
+#####     Add order_details
             * Request :
                 - Method : POST
                 - Endpoint : /insert_order_details
@@ -390,7 +390,7 @@
                     'discount': string
                 }
             * Response : message
-###     Update order_details
+#####     Update order_details
             * Request :
                 - Method : PUT
                 - Endpoint : /update_order_details
@@ -403,7 +403,7 @@
                     'discount': string
                 }
             * Response : message
-###     Delete order_details
+#####     Delete order_details
             * Request :
                 - Method : PUT
                 - Endpoint : /delete_order_details/<int:order_details_id>
@@ -411,14 +411,14 @@
                     'order_details_id' : int
                 }
             * Response : message
-## suppliers
-###     Get all suppliers
+### suppliers
+#####     Get all suppliers
             * Request :
                 - Method : GET
                 - Endpoint : /user/all_suppliers
                 - Body : None
             * Response : [supplier]
-###     Add suppliers
+#####     Add suppliers
             * Request :
                 - Method : POST
                 - Endpoint : /insert_suppliers
@@ -436,7 +436,7 @@
                     'homepage': string
                 }
             * Response : message
-###     Update suppliers
+#####     Update suppliers
             * Request :
                 - Method : PUT
                 - Endpoint : /update_suppliers
@@ -455,7 +455,7 @@
                     'homepage': string
                 }
             * Response : message
-###     Delete suppliers
+#####     Delete suppliers
             * Request :
                 - Method : PUT
                 - Endpoint : /delete_suppliers/<int:supplier_id>
@@ -463,14 +463,14 @@
                     'supplier_id' : int
                 }
             * Response : message
-## products
-###     Get all products
+### products
+#####     Get all products
             * Request :
                 - Method : GET
                 - Endpoint : /user/all_products
                 - Body : None
             * Response : [product]
-###     Add products
+#####     Add products
             * Request :
                 - Method : POST
                 - Endpoint : /insert_products
@@ -486,7 +486,7 @@
                     'discontinued': string
                 }
             * Response : message
-###     Update products
+#####     Update products
             * Request :
                 - Method : PUT
                 - Endpoint : /update_products
@@ -503,7 +503,7 @@
                     'discontinued': string
                 }
             * Response : message
-###     Delete products
+#####     Delete products
             * Request :
                 - Method : PUT
                 - Endpoint : /delete_products/<int:product_id>
@@ -511,14 +511,14 @@
                     'product_id' : int
                 }
             * Response : message
-## region
-###     Get all region
+### region
+#####     Get all region
             * Request :
                 - Method : GET
                 - Endpoint : /user/all_region
                 - Body : None
             * Response : [region]
-###     Add region
+#####     Add region
             * Request :
                 - Method : POST
                 - Endpoint : /insert_region
@@ -526,7 +526,7 @@
                     'region_description': string
                 }
             * Response : message
-###     Update region
+#####     Update region
             * Request :
                 - Method : PUT
                 - Endpoint : /update_region
@@ -535,7 +535,7 @@
                     'region_description': string
                 }
             * Response : message
-###     Delete region
+#####     Delete region
             * Request :
                 - Method : PUT
                 - Endpoint : /delete_region/<int:region_id>
