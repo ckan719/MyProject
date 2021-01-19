@@ -15,8 +15,10 @@ class employees:
                                    port=self.connect_db['port'],
                                    database=self.connect_db['database'])
             cur = con.cursor()
-            sql = "INSERT INTO employees (last_name, first_name, title, title_of_courtesy, birth_date, hire_date,address, city, region, postal_code, country, home_phone, extension, photo, notes, photo_path)" \
-                  " VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            sql = """INSERT INTO employees (last_name, first_name, title, title_of_courtesy, birth_date, 
+                                            hire_date,address, city, region, postal_code, country, home_phone, 
+                                            extension, photo, notes, photo_path)"
+                  " VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
             result = (
                 employee.last_name, employee.first_name, employee.title, employee.title_of_courtesy,
                 employee.birth_date,
@@ -46,7 +48,7 @@ class employees:
             cur.execute(sql, (id,))
             con.commit()
             con.close()
-            return 'Delete Success! '
+            return 'Delete Success!'
         except (Exception, psycopg2.DatabaseError) as error:
             return str(error)
         finally:
@@ -91,15 +93,15 @@ class employees:
                                    database=self.connect_db['database'])
 
             cur = con.cursor()
-            sql = "SELECT * FROM employees"
+            sql = "SELECT * FROM employees ORDER BY employee_id ASC"
             cur.execute(sql)
             con.commit()
             rows = cur.fetchall()
             ans = []
             for row in rows:
-                e = emp()
-                e.fetch_data(row)
-                ans.append(e.to_json())
+                c = emp()
+                c.fetch_data(row)
+                ans.append(c.to_json())
             con.close()
             return ans
         except (Exception, psycopg2.DatabaseError) as error:
