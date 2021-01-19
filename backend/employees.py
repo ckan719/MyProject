@@ -58,5 +58,5 @@ class employees:
             'extension': self.extension,
             'photo': self.photo,
             'notes': self.notes,
-            'photo_path': self.photo_path
+            'photo_path': self.photo_path,
         }
