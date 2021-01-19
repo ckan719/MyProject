@@ -80,7 +80,7 @@ CREATE TABLE employees (
     country character varying(15),
     home_phone character varying(24),
     extension character varying(4),
-    photo bytea,
+    photo text,
     notes text,
     photo_path character varying(255)
 );
@@ -145,9 +145,9 @@ CREATE TABLE orders (
     order_id SERIAL PRIMARY KEY,
     customer_id bpchar,
     employee_id integer,
-    order_date date,
-    required_date date,
-    shipped_date date,
+    order_date character varying(40),
+    required_date character varying(40),
+    shipped_date character varying(40),
     ship_via smallint,
     freight real,
     ship_name character varying(40),
