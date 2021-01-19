@@ -15,10 +15,7 @@ class employees:
                                    port=self.connect_db['port'],
                                    database=self.connect_db['database'])
             cur = con.cursor()
-            sql = """INSERT INTO employees (last_name, first_name, title, title_of_courtesy, birth_date, 
-                                            hire_date,address, city, region, postal_code, country, home_phone, 
-                                            extension, photo, notes, photo_path)"
-                  " VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+            sql = "INSERT INTO employees (last_name, first_name, title, title_of_courtesy, birth_date, hire_date,address, city, region, postal_code, country, home_phone, extension, photo, notes, photo_path) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
             result = (
                 employee.last_name, employee.first_name, employee.title, employee.title_of_courtesy,
                 employee.birth_date,
