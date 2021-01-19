@@ -90,7 +90,7 @@ class employees:
                                    database=self.connect_db['database'])
 
             cur = con.cursor()
-            sql = "SELECT * FROM employees ORDER BY employee_id ASC"
+            sql = "SELECT * FROM employees"
             cur.execute(sql)
             con.commit()
             rows = cur.fetchall()
