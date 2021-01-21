@@ -15,14 +15,10 @@ class employees:
                                    port=self.connect_db['port'],
                                    database=self.connect_db['database'])
             cur = con.cursor()
-<<<<<<< HEAD
             sql = """INSERT INTO employees (last_name, first_name, title, title_of_courtesy, birth_date, 
-                                            hire_date,address, city, region, postal_code, country, home_phone, 
-                                            extension, photo, notes, photo_path)"
-                  " VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
-=======
-            sql = "INSERT INTO employees (last_name, first_name, title, title_of_courtesy, birth_date, hire_date,address, city, region, postal_code, country, home_phone, extension, photo, notes, photo_path) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
->>>>>>> af0fcd80ec6d80f2b7ae29ca4fdcb8261835fe48
+                    hire_date,address, city, region, postal_code, country, home_phone, 
+                    extension, photo, notes, photo_path) 
+                    VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
             result = (
                 employee.last_name, employee.first_name, employee.title, employee.title_of_courtesy,
                 employee.birth_date,
@@ -94,7 +90,7 @@ class employees:
                                    database=self.connect_db['database'])
 
             cur = con.cursor()
-            sql = "SELECT * FROM employees ORDER BY employee_id ASC"
+            sql = "SELECT * FROM employees"
             cur.execute(sql)
             con.commit()
             rows = cur.fetchall()

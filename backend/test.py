@@ -57,25 +57,25 @@ import requests
 # -----------------------------EMPLOYEES------------------------------------
 # ------------------------------------------------------------------------------------
 # Test insert vao bang employees
-data = {}
-data['last_name'] = 'Minh'
-data['first_name'] = 'Andrew'
-data['title'] = 'Vice President, Sales'
-data['title_of_courtesy'] = 'Dr.'
-data['birth_date'] = '1952-02-19'
-data['hire_date'] = '1992-08-14'
-data['address'] = '908 W. Capital Way'
-data['city'] = 'Tacoma'
-data['region'] = 'WA'
-data['postal_code'] = '98401'
-data['country'] = 'USA'
-data['home_phone'] = '(206) 555-9482'
-data['extension'] = '457'
-data['photo'] = ''
-data['notes'] = 'Andrew received his BTS commercial in 1974'
-data['photo_path'] = ''
-report = requests.post('http://localhost:8080/insert_employees', json=data)
-print(report.text)
+# data = {}
+# data['last_name'] = 'Minh'
+# data['first_name'] = 'Andrew'
+# data['title'] = 'Vice President, Sales'
+# data['title_of_courtesy'] = 'Dr.'
+# data['birth_date'] = '1952-02-19'
+# data['hire_date'] = '1992-08-14'
+# data['address'] = '908 W. Capital Way'
+# data['city'] = 'Tacoma'
+# data['region'] = 'WA'
+# data['postal_code'] = '98401'
+# data['country'] = 'USA'
+# data['home_phone'] = '(206) 555-9482'
+# data['extension'] = '457'
+# data['photo'] = ''
+# data['notes'] = 'Andrew received his BTS commercial in 1974'
+# data['photo_path'] = ''
+# report = requests.post('http://localhost:8080/insert_employees', json=data)
+# print(report.text)
 
 # test update EMPLOYEE
 # data ={}
