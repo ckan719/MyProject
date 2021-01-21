@@ -89,7 +89,7 @@ class orders:
                                    database=self.connect_db['database'])
 
             cur = con.cursor()
-            sql = "SELECT * FROM orders"
+            sql = "SELECT * FROM orders ORDER BY order_id ASC"
             cur.execute(sql)
             con.commit()
             rows = cur.fetchall()

@@ -15,10 +15,14 @@ class employees:
                                    port=self.connect_db['port'],
                                    database=self.connect_db['database'])
             cur = con.cursor()
+<<<<<<< HEAD
             sql = """INSERT INTO employees (last_name, first_name, title, title_of_courtesy, birth_date, 
                                             hire_date,address, city, region, postal_code, country, home_phone, 
                                             extension, photo, notes, photo_path)"
                   " VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+=======
+            sql = "INSERT INTO employees (last_name, first_name, title, title_of_courtesy, birth_date, hire_date,address, city, region, postal_code, country, home_phone, extension, photo, notes, photo_path) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+>>>>>>> af0fcd80ec6d80f2b7ae29ca4fdcb8261835fe48
             result = (
                 employee.last_name, employee.first_name, employee.title, employee.title_of_courtesy,
                 employee.birth_date,
@@ -64,14 +68,11 @@ class employees:
                                    port=self.connect_db['port'],
                                    database=self.connect_db['database'])
             cur = con.cursor()
-            sql = """UPDATE employees SET last_name = %s, first_name = %s, title = %s , title_of_courtesy = %s , 
-                        birth_date = %s , hire_date = %s , address = %s , city = %s , region = %s , postal_code = %s ,
-                        country = %s , home_phone = %s , extension = %s , photo = %s , notes = %s ,
-                        photo_path = %s WHERE employee_id = %s"""
-            result = (employee.last_name, employee.first_name, employee.title, employee.title_of_courtesy, 
-                    employee.birth_date,employee.hire_date, employee.address, employee.city, employee.region, 
-                    employee.postal_code, employee.country, employee.home_phone, employee.extension, employee.photo,
-                    employee.notes, employee.photo_path, employee.employee_id)
+            sql = "UPDATE employees SET last_name = %s, first_name = %s, title = %s , title_of_courtesy = %s , birth_date = %s , hire_date = %s , address = %s , city = %s , region = %s , postal_code = %s , country = %s , home_phone = %s , extension = %s , photo = %s , notes = %s , photo_path = %s WHERE employee_id = %s"
+            result = (employee.last_name, employee.first_name, employee.title, employee.title_of_courtesy,
+                      employee.birth_date, employee.hire_date, employee.address, employee.city, employee.region,
+                      employee.postal_code, employee.country, employee.home_phone, employee.extension, employee.photo,
+                      employee.notes, employee.photo_path, employee.employee_id)
             cur.execute(sql, result)
             con.commit()
             con.close()

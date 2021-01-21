@@ -157,6 +157,14 @@ def one_customers(cus_id):
 
 
 # employees minh
+@app.route('/user/all_employees')
+def all_employees():
+    result = db_emp.employees(con_db).get_all()
+    return jsonify({
+        'data': result
+    }), 200
+
+
 @app.route('/insert_employees', methods=['POST'])
 def insert_employees():
     cn_db = db_emp.employees(con_db)
@@ -191,21 +199,7 @@ def update_employees():
     }), 200
 
 
-@app.route('/user/all_employees')
-def all_employees():
-    result = db_emp.employees(con_db).get_all()
-    return jsonify({
-        'data': result
-    }), 200
 
-
-@app.route('/user/one_employees/<int:employee_id>')
-def one_employees(employee_id):
-    e = emp.employees(employee_id=employee_id)
-    rs = db_emp.employees(con_db).get_by_id(e)
-    if rs[1] != 200:
-        return jsonify({'message': rs[0]}), rs[1]
-    return jsonify({'message': rs[0].to_json()}), 200
 
 
 @app.route('/delete_employees/<int:employee_id>', methods=['DELETE'])
@@ -215,6 +209,14 @@ def delete_employees(employee_id):
     return jsonify({
         'message': rs
     }), 200
+
+@app.route('/user/one_employees/<int:employee_id>')
+def one_employees(employee_id):
+    e = emp.employees(employee_id=employee_id)
+    rs = db_emp.employees(con_db).get_by_id(e)
+    if rs[1] != 200:
+        return jsonify({'message': rs[0]}), rs[1]
+    return jsonify({'message': rs[0].to_json()}), 200
 
 # shippers +++++++++++++++++
 
