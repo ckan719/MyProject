@@ -34,10 +34,10 @@ function TBContent(props) {
                         <td>{item.company_name}</td>
                         <td>{item.phone}</td>
                         <td>
-                            <Button onClick={() => handleClickDeleteShip(item.shipper_id)}>♻</Button>
+                            <Button onClick={() => handleClickDeleteShip(item.shipper_id)}>Del</Button>
                         </td>
                         <td>
-                            <Button onClick={() => handleClickEditShip(item)}>📃</Button>
+                            <Button onClick={() => handleClickEditShip(item)}>Edit</Button>
                         </td>
                     </tr>
                 ))}

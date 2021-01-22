@@ -40,8 +40,8 @@ function TBContent(props) {
                         <td>{item.quantity}</td>
                         <td>{item.discount}</td>
                         <td>
-                            <Button onClick={() => handleClickDeleteOde(item.order_details_id)}>♻</Button> {'  '}
-                            <Button onClick={() => handleClickEditOde(item)}>📃</Button>
+                            <Button onClick={() => handleClickDeleteOde(item.order_details_id)}>Del</Button> {'  '}
+                            <Button onClick={() => handleClickEditOde(item)}>Edit</Button>
                         </td>
                     </tr>
                 ))}

@@ -32,8 +32,8 @@ function TBContent(props) {
                         <td>{item.region_description}</td>
 
                         <td>
-                            <Button onClick={() => handleClickDeleteReg(item.region_id)}>♻</Button>{'  '}
-                            <Button onClick={() => handleClickEditReg(item)}>📃</Button>
+                            <Button onClick={() => handleClickDeleteReg(item.region_id)}>Del</Button>{'  '}
+                            <Button onClick={() => handleClickEditReg(item)}>Edit</Button>
                         </td>
                     </tr>
                 ))}

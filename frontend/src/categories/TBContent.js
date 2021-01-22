@@ -36,10 +36,10 @@ function TBContent(props) {
                         <td>{item.description}</td>
                         <td>{item.picture}</td>
                         <td>
-                            <Button onClick={() => handleClickDeleteCate(item.category_id)}>♻</Button>
+                            <Button onClick={() => handleClickDeleteCate(item.category_id)}>Del</Button>
                         </td>
                         <td>
-                            <Button onClick={() => handleClickEditCate(item)}>📃</Button>
+                            <Button onClick={() => handleClickEditCate(item)}>Edit</Button>
                         </td>
                     </tr>
                 ))}

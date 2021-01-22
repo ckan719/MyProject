@@ -48,10 +48,10 @@ function TBContent(props) {
                         <td>{item.reorder_level}</td>
                         <td>{item.discontinued}</td>
                         <td>
-                            <Button onClick={() => handleClickDeletePro(item.product_id)}>♻</Button> {'  '}
+                            <Button onClick={() => handleClickDeletePro(item.product_id)}>Del</Button> {'  '}
                         </td>
                         <td>
-                            <Button onClick={() => handleClickEditPro(item)}>📃</Button>
+                            <Button onClick={() => handleClickEditPro(item)}>Edit</Button>
                         </td>
                     </tr>
                 ))}

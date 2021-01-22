@@ -56,10 +56,10 @@ function TBContent(props) {
                         <td>{item.ship_postal_code}</td>
                         <td>{item.ship_country}</td>
                         <td>
-                            <Button onClick={() => handleClickDeleteOrder(item.order_id)}>♻</Button>
+                            <Button onClick={() => handleClickDeleteOrder(item.order_id)}>Del</Button>
                         </td>
                         <td>
-                            <Button onClick={() => handleClickEditOrder(item)}>📃</Button>
+                            <Button onClick={() => handleClickEditOrder(item)}>Edit</Button>
                         </td>
                     </tr>
                 ))}

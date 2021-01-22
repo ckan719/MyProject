@@ -63,10 +63,10 @@ function TBContent(props) {
                         <td>{item.notes}</td>
                         <td>{item.photo_path}</td>
                         <td>
-                            <Button onClick={() => handleClickDeleteEmp(item.employee_id)}>♻</Button> 
+                            <Button onClick={() => handleClickDeleteEmp(item.employee_id)}>Del</Button> 
                         </td>
                         <td>
-                            <Button onClick={() => handleClickEditEmp(item)}>📃</Button>
+                            <Button onClick={() => handleClickEditEmp(item)}>Edit</Button>
                         </td>
                     </tr>
                 ))}

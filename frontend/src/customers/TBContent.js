@@ -50,10 +50,10 @@ function TBContent(props) {
                         <td>{item.phone}</td>
                         <td>{item.fax}</td>
                         <td>
-                            <Button onClick={() => handleClickDeleteCust(item.customer_id)}>♻</Button>
+                            <Button onClick={() => handleClickDeleteCust(item.customer_id)}>Del</Button>
                         </td>
                         <td>
-                        <Button onClick={() => handleClickEditCust(item)}>📃</Button>
+                        <Button onClick={() => handleClickEditCust(item)}>Edit</Button>
                         </td>
                     </tr>
                 ))}
