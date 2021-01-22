@@ -385,9 +385,9 @@
                 - Body : {
                     'order_id': string,
                     'product_id': string,
-                    'unit_price': string,
-                    'quantity': string,
-                    'discount': string
+                    'unit_price': float,
+                    'quantity': int,
+                    'discount': float
                 }
             * Response : message
 #####     Update order_details
@@ -398,9 +398,9 @@
                     'order_details_id': int,
                     'order_id': string,
                     'product_id': string,
-                    'unit_price': string,
-                    'quantity': string,
-                    'discount': string
+                    'unit_price': float,
+                    'quantity': int,
+                    'discount': float
                 }
             * Response : message
 #####     Delete order_details
@@ -476,14 +476,14 @@
                 - Endpoint : /insert_products
                 - Body : {
                     'product_name': string,
-                    'supplier_id': string,
-                    'category_id': string,
+                    'supplier_id': int,
+                    'category_id': int,
                     'quantity_per_unit': string,
                     'unit_price': string,
-                    'units_in_stock': string,
-                    'units_on_order': string,
-                    'reorder_level': string,
-                    'discontinued': string
+                    'units_in_stock': int,
+                    'units_on_order': int,
+                    'reorder_level': int,
+                    'discontinued': int
                 }
             * Response : message
 #####     Update products
@@ -493,14 +493,14 @@
                 - Body : {
                     'product_id': int,
                     'product_name': string,
-                    'supplier_id': string,
-                    'category_id': string,
+                    'supplier_id': int,
+                    'category_id': int,
                     'quantity_per_unit': string,
                     'unit_price': string,
-                    'units_in_stock': string,
-                    'units_on_order': string,
-                    'reorder_level': string,
-                    'discontinued': string
+                    'units_in_stock': int,
+                    'units_on_order': int,
+                    'reorder_level': int,
+                    'discontinued': int
                 }
             * Response : message
 #####     Delete products
