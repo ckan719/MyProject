@@ -28,10 +28,10 @@ function Shippers() {
     return (
         <Container fluid={true}>
             <Row>
-                <Col xs="7">
+                <Col xs="8">
                     <TBContent onSelectItem = {onSelectItem} items={listItems} onChangeStatus={onChangeStatus} />
                 </Col>
-                <Col xs="5">
+                <Col xs="4">
                     <FormInput onSelectItem = {onSelectItem} selectItem = {selectItem} onChangeStatus={onChangeStatus} />
                 </Col>
             </Row>

@@ -18,7 +18,7 @@ function TBContent(props) {
     }
 
     return (
-        <Table hover>
+        <Table hover style={{fontSize:12}}>
             <thead>
                 <tr>
                     <th>ID</th>
