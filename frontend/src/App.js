@@ -96,10 +96,9 @@ function App() {
         </Route>
         <Route path="/">
           <div>
-            <br></br>
-            <h1>Nguyễn Công Nhật</h1>
-            <h1>Phạm Văn Minh</h1>
-            <h1>Phạm Hùng Vương</h1>
+            <h2>Nguyễn Công Nhật</h2>
+            <h2>Phạm Văn Minh</h2>
+            <h2>Phạm Hùng Vương</h2>
           </div>
         </Route>
 

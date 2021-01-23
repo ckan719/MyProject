@@ -52,7 +52,7 @@ function TBContent(props) {
             <tbody>
                 {items.map((item, index) => (
                     <tr key={index} >
-                        <td >{item.customer_id}</td>
+                        <th scope = 'row' >{item.customer_id}</th>
                         <td>{item.company_name}</td>
                         <td>{item.contact_name}</td>
                         <td>{item.contact_title}</td>
