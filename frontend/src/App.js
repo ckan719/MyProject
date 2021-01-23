@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -27,7 +26,7 @@ function App() {
 
   return (
     <Router>
-      <div style={{'height':'40px'}}>
+      <div style={{'height':'40px', 'margin': 'auto', 'width': '90%'}}>
         <ul>
           <li style={styleli} >
             <Link to="/">Home</Link>
@@ -63,37 +62,39 @@ function App() {
       </div>
       <br></br>
       <Switch>
-        <Route path="/user/customers">
+        <Route path="/user/customers" exact>
           <Customers />
         </Route>
-        <Route path="/user/categories">
+        <Route path="/user/categories" exact>
           <Categories />
         </Route>
-        <Route path="/user/region">
+        <Route path="/user/region" exact>
           <Region />
         </Route>
-        <Route path="/user/employee">
+        <Route path="/user/employee" exact>
           <Employees />
         </Route>
-        <Route path="/user/shippers">
+        <Route path="/user/shippers" exact>
           <Shippers />
         </Route>
-        <Route path="/user/orders">
+        <Route path="/user/orders" exact>
           <Orders />
         </Route>
-        <Route path="/user/products">
+        <Route path="/user/products" exact>
           <Product />
         </Route>
-        <Route path="/user/orderDetails">
+        <Route path="/user/orderDetails" exact>
           <OrderDetails />
         </Route>
-        <Route path="/user/supplier">
+        <Route path="/user/supplier" exact>
           <Supplier />
         </Route>
         <Route path="/">
           <div>
             <br></br>
-            <h1>Hello World !</h1>
+            <h1>Nguyễn Công Nhật</h1>
+            <h1>Phạm Văn Minh</h1>
+            <h1>Phạm Hùng Vương</h1>
           </div>
         </Route>
 
