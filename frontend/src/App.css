@@ -51,10 +51,11 @@ h2{
   width : 50px;
   height : 50px;
   color: white;
+  text-align: center;
   border-radius: 50%;
   border: none;
-  background-color: #5a6268;
-  border-color: #545b62;
+  background-color: #ffae35;
+  border-color: #ffae35;
 }
 .carousel-item > img { 
   height: 400px ; 

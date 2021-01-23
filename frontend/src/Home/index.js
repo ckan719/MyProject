@@ -9,7 +9,7 @@ import {
 
 const items = [
     {
-        src: 'https://res.cloudinary.com/ckan719/image/upload/v1611377066/122121518_1700239773472669_8897760385241586872_o_vj78qb.jpg',
+        src: 'https://res.cloudinary.com/ckan719/image/upload/v1611378218/Kawai_mpbzpx.jpg',
         altText: 'Nguyễn Công Nhật',
         caption: 'Nguyễn Công Nhật'
     },

@@ -116,7 +116,7 @@ function FormInput(props) {
 
     return (
         <div style={{ 'position': 'relative' }}>
-            <button className='btnADD' onClick={toggle} >ADD</button>
+            <button className='btnADD' onClick={toggle} >📝</button>
             <Modal isOpen={modal} toggle={toggle} >
                 <ModalHeader toggle={toggle}>Form</ModalHeader>
                 <ModalBody>
