@@ -5,6 +5,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import React from "react";
 import Categories from './categories'
 import Customers from "./customers";
 import Region from "./region";
@@ -14,6 +15,7 @@ import Orders from "./orders";
 import Product from "./products";
 import OrderDetails from "./orderDetails";
 import Supplier from "./supplier";
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
 function App() {
   const styleli = {
@@ -22,45 +24,48 @@ function App() {
     listStyleType: 'none',
     padding: '10px'
   }
+  const [collapsed, setCollapsed] = React.useState(true);
+
+  const toggleNavbar = () => setCollapsed(!collapsed);
 
 
   return (
     <Router>
-      <div style={{'height':'40px', 'margin': 'auto', 'width': '90%'}}>
-        <ul>
-          <li style={styleli} >
-            <Link to="/">Home</Link>
-          </li>
-          <li style={styleli}>
-            <Link to="/user/categories">Catagries</Link>
-          </li>
-          <li style={styleli}>
-            <Link to="/user/customers">Customers</Link>
-          </li>
-          <li style={styleli}>
-            <Link to="/user/region">Region</Link>
-          </li>
-          <li style={styleli}>
-            <Link to="/user/employee">Employees</Link>
-          </li>
-          <li style={styleli}>
-            <Link to="/user/shippers">Shippers</Link>
-          </li>
-          <li style={styleli}>
-            <Link to="/user/orders">Orders</Link>
-          </li>
-          <li style={styleli}>
-            <Link to="/user/products">Products</Link>
-          </li>
-          <li style={styleli}>
-            <Link to="/user/orderDetails">OrderDetails</Link>
-          </li>
-          <li style={styleli}>
-            <Link to="/user/supplier">Supplier</Link>
-          </li>
-        </ul>
-      </div>
-      <br></br>
+      <Navbar color="faded" light>
+        <NavbarBrand className="mr-auto"><Link to="/">Trang chủ</Link></NavbarBrand>
+        <NavbarToggler onClick={toggleNavbar} className="mr-2" />
+        <Collapse isOpen={!collapsed} navbar>
+          <Nav className="mr-auto" navbar>
+            <NavItem onClick={toggleNavbar}>
+              <NavLink><Link to="/user/categories">Catagries</Link></NavLink>
+            </NavItem>
+            <NavItem onClick={toggleNavbar}>
+              <NavLink><Link to="/user/customers">Customers</Link></NavLink>
+            </NavItem>
+            <NavItem onClick={toggleNavbar}>
+              <NavLink><Link to="/user/region">Region</Link></NavLink>
+            </NavItem>
+            <NavItem onClick={toggleNavbar}>
+              <NavLink><Link to="/user/employee">Employees</Link></NavLink>
+            </NavItem>
+            <NavItem onClick={toggleNavbar}>
+              <NavLink><Link to="/user/shippers">Shippers</Link></NavLink>
+            </NavItem>
+            <NavItem onClick={toggleNavbar}>
+              <NavLink><Link to="/user/orders">Orders</Link></NavLink>
+            </NavItem>
+            <NavItem onClick={toggleNavbar}>
+              <NavLink><Link to="/user/products">Products</Link></NavLink>
+            </NavItem>
+            <NavItem onClick={toggleNavbar}>
+              <NavLink><Link to="/user/orderDetails">OrderDetails</Link></NavLink>
+            </NavItem>
+            <NavItem onClick={toggleNavbar}>
+              <NavLink><Link to="/user/supplier">Supplier</Link></NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
       <Switch>
         <Route path="/user/customers" exact>
           <Customers />
