@@ -15,6 +15,7 @@ import Orders from "./orders";
 import Product from "./products";
 import OrderDetails from "./orderDetails";
 import Supplier from "./supplier";
+import Home from "./Home";
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
 function App() {
@@ -95,11 +96,7 @@ function App() {
           <Supplier />
         </Route>
         <Route path="/">
-          <div>
-            <h2>Nguyễn Công Nhật</h2>
-            <h2>Phạm Văn Minh</h2>
-            <h2>Phạm Hùng Vương</h2>
-          </div>
+          <Home />
         </Route>
 
       </Switch>
