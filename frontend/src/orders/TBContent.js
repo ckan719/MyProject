@@ -1,20 +1,34 @@
 import React from 'react';
 import CRUD from '../service/crud';
-import {Button, Table } from "reactstrap";
+import { Button, Table, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
+
 function TBContent(props) {
     var { onChangeStatus } = props;
     const { items } = props;
     var { onSelectItem } = props;
+
+    const { setModal } = props;
+    const [md, setMd] = React.useState(false);
+    const togglee = () => {
+        setMd(!md);
+    }
+
     function handleClickDeleteOrder(id) {
         console.log(id);
         CRUD.delete_Order_by_id(id).then((res) => {
-            alert(res.data.message);
+            toast("Xóa thành công !");
+            setMd(false);
             onChangeStatus(true);
         }).catch(err => {
             console.log(err);
+            setMd(false);
         });
     }
     function handleClickEditOrder(item) {
+        setModal(true);
         onSelectItem(item);
     }
 
@@ -36,6 +50,7 @@ function TBContent(props) {
                     <th>Ship Region</th>
                     <th>Postal Code</th>
                     <th>Ship Country</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody style={{fontSize:12}}>
@@ -55,12 +70,20 @@ function TBContent(props) {
                         <td>{item.ship_region}</td>
                         <td>{item.ship_postal_code}</td>
                         <td>{item.ship_country}</td>
-                        <td>
-                            <Button onClick={() => handleClickDeleteOrder(item.order_id)}>Del</Button>
-                        </td>
-                        <td>
+                        <td style={{ 'width': '10%' }}>
+                            <Button onClick={togglee}>Del</Button>{'  '}
                             <Button onClick={() => handleClickEditOrder(item)}>Edit</Button>
                         </td>
+                        <Modal isOpen={md} toggle={togglee}>
+                            <ModalHeader toggle={togglee}>Modal title</ModalHeader>
+                            <ModalBody>
+                                Bạn có chắc chắn muốn xóa ?
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" onClick={() => handleClickDeleteOrder(item.order_id)}>Xóa</Button>{' '}
+                                <Button color="secondary" onClick={togglee}>Thoát</Button>
+                            </ModalFooter>
+                        </Modal>
                     </tr>
                 ))}
             </tbody>

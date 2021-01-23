@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import CRUD from '../service/crud';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 function FormInput(props) {
     var { onChangeStatus } = props;
     const { onSelectItem } = props;
@@ -12,6 +15,11 @@ function FormInput(props) {
         description: "",
         picture: ""
     });
+
+    const { modal } = props;
+    const { setModal } = props;
+    const toggle = () => setModal(!modal);
+
     const df = {
         category_id: "",
         category_name: "",
@@ -32,29 +40,32 @@ function FormInput(props) {
         if (selectItem === null) {
             CRUD.insertCate(postData).then((res) => {
                 if (res.data.message === "Insert Success!") {
-                    alert(res.data.message);
+                    toast('Thêm thành công !');
+                    setModal(false);
                     onChangeStatus(true);
                     setPostData(df);
                     setStatus(true);
                 } else {
-                    alert("Insert Fail !");
+                    toast('Thêm thất bại !');
+                    setModal(false);
                 }
-                
+
             }).catch((err) => {
-                alert(err);
+                toast(err);
+                setModal(false);
             });
         } else {
             CRUD.updateCate(postData).then(res => {
                 if (res.data.message === "Update Success !") {
-                    alert(res.data.message);
+                    toast('Cập nhập thành công !');
+                    setModal(false);
                     onChangeStatus(true);
-                    document.getElementById('btnADD').textContent = 'Submit';
-                    document.getElementById('id').readOnly = false;
                     onSelectItem(null);
                     setPostData(df);
                     setStatus(true);
                 } else {
-                    alert("Update Fail !");
+                    toast('Cập nhập thất bại !');
+                    setModal(false);
                 }
 
             });
@@ -68,8 +79,6 @@ function FormInput(props) {
 
         } else {
             setPostData(selectItem);
-            document.getElementById('btnADD').textContent = 'Edit';
-            document.getElementById('id').readOnly = true;
         }
     }
 
@@ -79,23 +88,32 @@ function FormInput(props) {
     }, [status, selectItem])
 
     return (
-        <div style = {{'background-color' : '#ededed', 'padding': '5px', 'border-radius' : '5px'}}>
-            <Form>
-                <FormGroup>
-                    <Input id="id" type="text" value={postData?.category_id} placeholder="ID" name="category_id" />
-                </FormGroup>
-                <FormGroup>
-                    <Input type="text" onChange={onChangeData} name="category_name" value={postData?.category_name} placeholder="Category Name" />
-                </FormGroup>
-                <FormGroup>
-                    <Input type="text" onChange={onChangeData} value={postData?.description} name="description" placeholder="Description" />
-                </FormGroup>
-                <FormGroup>
-                    <Input type="text" onChange={onChangeData} value={postData?.picture} name="picture" placeholder="Picture" />
-                </FormGroup>
-                <Button id="btnADD" name="btSubmit" value="Submit" onClick={handleOnClickOK} >Submit{""}</Button>
+        <div style={{ 'position': 'relative' }}>
+            <button className='btnADD' onClick={toggle} >ADD</button>
+            <Modal isOpen={modal} toggle={toggle} >
+                <ModalHeader toggle={toggle}>Form</ModalHeader>
+                <ModalBody>
+                    <Form>
+                        <FormGroup>
+                            <Input id="id" type="text" value={postData?.category_id} placeholder="ID" name="category_id" />
+                        </FormGroup>
+                        <FormGroup>
+                            <Input type="text" onChange={onChangeData} name="category_name" value={postData?.category_name} placeholder="Category Name" />
+                        </FormGroup>
+                        <FormGroup>
+                            <Input type="text" onChange={onChangeData} value={postData?.description} name="description" placeholder="Description" />
+                        </FormGroup>
+                        <FormGroup>
+                            <Input type="text" onChange={onChangeData} value={postData?.picture} name="picture" placeholder="Picture" />
+                        </FormGroup>
+                    </Form>
+                </ModalBody>
+                <ModalFooter>
+                    <Button color="primary" onClick={handleOnClickOK}>OK</Button>{' '}
+                    <Button color="secondary" onClick={toggle}>Cancel</Button>
+                </ModalFooter>
+            </Modal>
 
-            </Form>
         </div>
     );
 }

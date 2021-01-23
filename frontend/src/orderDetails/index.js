@@ -25,14 +25,16 @@ function OrderDetails() {
         setStatus(status);
     }
 
+    const [modal, setModal] = React.useState(false);
+
     return (
         <Container fluid={true}>
             <Row>
-                <Col xs="9">
-                    <TBContent onSelectItem = {onSelectItem} items={listItems} onChangeStatus={onChangeStatus} />
+                <Col xs="12">
+                    <TBContent setModal = {setModal} onSelectItem = {onSelectItem} items={listItems} onChangeStatus={onChangeStatus} />
                 </Col>
-                <Col xs="3">
-                    <FormInput onSelectItem = {onSelectItem} selectItem = {selectItem} onChangeStatus={onChangeStatus} />
+                <Col xs="0">
+                    <FormInput modal = {modal} setModal = {setModal} onSelectItem = {onSelectItem} selectItem = {selectItem} onChangeStatus={onChangeStatus} />
                 </Col>
             </Row>
         </Container>

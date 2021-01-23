@@ -1,27 +1,38 @@
 import React from 'react';
 import CRUD from '../service/crud';
-import { Button, Table } from "reactstrap";
+import { Button, Table, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 function TBContent(props) {
     var { onChangeStatus } = props;
     const { items } = props;
     var { onSelectItem } = props;
+    const { setModal } = props;
+    const [md, setMd] = React.useState(false);
+    const togglee = () => {
+        setMd(!md);
+    }
     function handleClickDeleteEmp(id) {
         console.log(id);
         CRUD.delete_emp_by_id(id).then((res) => {
-            alert(res.data.message);
+            toast("Xóa thành công !");
+            setMd(false);
             onChangeStatus(true);
         }).catch(err => {
             console.log(err);
+            setMd(false);
         });
     }
     function handleClickEditEmp(item) {
+        setModal(true);
         onSelectItem(item);
     }
 
     return (
-        <Table hover style={{fontSize:12}}>
+        <Table hover style={{fontSize:15}}>
             <thead>
-                <tr style={{fontSize:10}}>
+                <tr style={{fontSize:15}}>
                     <th>ID</th>
                     <th>Last Name</th>
                     <th>First Name</th>
@@ -39,9 +50,10 @@ function TBContent(props) {
                     <th>Photo</th>
                     <th>Notes</th>
                     <th>Photo Path</th>
+                    <th></th>
                 </tr>
             </thead>
-            <tbody style={{fontSize:13}}>
+            <tbody style={{fontSize:15}}>
                 {items.map((item, index) => (
                     
                     <tr key={index} >
@@ -62,12 +74,20 @@ function TBContent(props) {
                         <td>{item.photo}</td>
                         <td>{item.notes}</td>
                         <td>{item.photo_path}</td>
-                        <td>
-                            <Button onClick={() => handleClickDeleteEmp(item.employee_id)}>Del</Button> 
-                        </td>
-                        <td>
+                        <td style={{ 'width': '10%' }}>
+                            <Button onClick={togglee}>Del</Button> {'  '}
                             <Button onClick={() => handleClickEditEmp(item)}>Edit</Button>
                         </td>
+                        <Modal isOpen={md} toggle={togglee}>
+                            <ModalHeader toggle={togglee}>Modal title</ModalHeader>
+                            <ModalBody>
+                                Bạn có chắc chắn muốn xóa ?
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" onClick={() => handleClickDeleteEmp(item.employee_id)}>Xóa</Button>{' '}
+                                <Button color="secondary" onClick={togglee}>Thoát</Button>
+                            </ModalFooter>
+                        </Modal>
                     </tr>
                 ))}
             </tbody>

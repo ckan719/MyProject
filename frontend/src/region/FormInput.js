@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
 import CRUD from '../service/crud';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+
+import { Button, Form, FormGroup, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
+
 function FormInput(props) {
 
     var { onChangeStatus } = props;
@@ -11,6 +16,11 @@ function FormInput(props) {
         region_id: "",
         region_description: "",
     });
+
+    const { modal } = props;
+    const { setModal } = props;
+    const toggle = () => setModal(!modal);
+
     const df = {
         region_id: "",
         region_description: "",
@@ -29,30 +39,36 @@ function FormInput(props) {
         if (selectItem === null) {
             CRUD.insertReg(postData).then((res) => {
                 if (res.data.message === "Insert Success!") {
-                    alert(res.data.message);
+                    toast('Thêm thành công !');
+                    setModal(false);
                     onChangeStatus(true);
                     setPostData(df);
                     setStatus(true);
+
+
                 } else {
-                    alert("Insert Fail !");
+                    toast('Thêm thất bại !');
+                    setModal(false);
                 }
-                
+
             }).catch((err) => {
-                alert(err);
+                toast(err);
+                setModal(false);
             });
         } else {
             CRUD.updateReg(postData).then(res => {
-                console.log("-<" +res.data.message);
+
                 if (res.data.message === "Update Success !") {
-                    alert(res.data.message);
+                    toast('Cập nhập thành công !');
+                    setModal(false);
                     onChangeStatus(true);
-                    document.getElementById('btnADD').textContent = 'Submit';
-                    document.getElementById('id').readOnly = false;
                     onSelectItem(null);
                     setPostData(df);
                     setStatus(true);
+
                 } else {
-                    alert("Update Fail !");
+                    toast('Cập nhập thất bại !');
+                    setModal(false);
                 }
 
             });
@@ -65,8 +81,6 @@ function FormInput(props) {
 
         } else {
             setPostData(selectItem);
-            document.getElementById('btnADD').textContent = 'Edit';
-            document.getElementById('id').readOnly = true;
         }
     }
 
@@ -76,17 +90,26 @@ function FormInput(props) {
     }, [status, selectItem])
 
     return (
-        <div style = {{'background-color' : '#ededed', 'padding': '5px', 'border-radius' : '5px'}}>
-            <Form>
-                <FormGroup>
-                    <Input type="text" id='id' value={postData?.region_id} name="region_id" placeholder="Region ID" />
-                </FormGroup>
-                <FormGroup>
-                    <Input type="text" onChange={onChangeData} value={postData?.region_description} name="region_description" placeholder="Region Description" />
-                </FormGroup>
-                <Button id="btnADD" name="btSubmit" value="Submit" onClick={handleOnClickOK} >Submit{""}</Button>
+        <div style={{ 'position': 'relative' }}>
+            <button className='btnADD' onClick={toggle} >ADD</button>
+            <Modal isOpen={modal} toggle={toggle} >
+                <ModalHeader toggle={toggle}>Form</ModalHeader>
+                <ModalBody>
+                    <Form>
+                        <FormGroup>
+                            <Input type="text" id='id' value={postData?.region_id} name="region_id" placeholder="Region ID" />
+                        </FormGroup>
+                        <FormGroup>
+                            <Input type="text" onChange={onChangeData} value={postData?.region_description} name="region_description" placeholder="Region Description" />
+                        </FormGroup>
+                    </Form>
+                </ModalBody>
+                <ModalFooter>
+                    <Button color="primary" onClick={handleOnClickOK}>OK</Button>{' '}
+                    <Button color="secondary" onClick={toggle}>Cancel</Button>
+                </ModalFooter>
+            </Modal>
 
-            </Form>
         </div>
     );
 }
